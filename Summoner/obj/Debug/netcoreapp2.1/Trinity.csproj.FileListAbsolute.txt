@@ -1,0 +1,6 @@
+C:\S3\Trinity\Summoner\bin\Debug\netcoreapp2.1\Trinity.deps.json
+C:\S3\Trinity\Summoner\bin\Debug\netcoreapp2.1\Trinity.dll
+C:\S3\Trinity\Summoner\obj\Debug\netcoreapp2.1\Trinity.csprojAssemblyReference.cache
+C:\S3\Trinity\Summoner\obj\Debug\netcoreapp2.1\Trinity.csproj.CoreCompileInputs.cache
+C:\S3\Trinity\Summoner\obj\Debug\netcoreapp2.1\Trinity.AssemblyInfoInputs.cache
+C:\S3\Trinity\Summoner\obj\Debug\netcoreapp2.1\Trinity.AssemblyInfo.cs
