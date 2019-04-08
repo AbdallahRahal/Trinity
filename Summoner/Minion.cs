@@ -15,6 +15,7 @@ namespace Trinity
         uint _dodge_rate;
         uint _accuracy;
 
+        readonly Armory _armories;
         Minion_inventory minion_inventory;
         Weapon weapon;
         Hat hat;
@@ -30,8 +31,7 @@ namespace Trinity
             _power = power;
             _dodge_rate = dodge_rate;
             _accuracy = accuracy;
-            _ratio = 1;
-
+            _armories = new Armory(this);
         }
 
         public string Name
@@ -44,7 +44,7 @@ namespace Trinity
             get { return _life_point; }
             set { _life_point = value; }
         }
-
+        nm
         public uint Max_life_point
         {
             get { return _max_life_point; }
@@ -85,6 +85,11 @@ namespace Trinity
         public bool is_alive()
         {
           return (_life_point > 0) ?  true :  false;
+        }
+
+        internal Armory Armories
+        {
+            get { return _armories; }
         }
     }
 }
