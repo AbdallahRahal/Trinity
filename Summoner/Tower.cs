@@ -5,8 +5,14 @@ namespace Trinity
 {
     public class Tower
     {
-        readonly Dictionary<string, Minion> _minions;
-        Summoner _summoner;
+        readonly Equipement_Collection _equipement;
+        readonly Minion_Collection _minion;
+
+        public Tower()
+        {
+            _equipement = new Equipement_Collection();
+            _minion = new Minion_Collection();
+        }
 
     }
 }
