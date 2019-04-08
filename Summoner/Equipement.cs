@@ -4,13 +4,18 @@ using System.Text;
 
 namespace Trinity
 {
-    public class Equipement
+    public abstract class Equipement
     {
-        readonly string name;
+        readonly string _name;
         uint ratio;
 
         Inventory inventory;
 
+        internal Equipement(string name)
+        {
+
+            _name = name;
+        }
 
     }
 }
