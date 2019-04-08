@@ -122,38 +122,38 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MBA MORGAN\\.nuget\\packages\\": {},
+    "C:\\Users\\Abdel\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MBA MORGAN\\Trinity\\Trinity.UnitTests\\Trinity.UnitTests.csproj",
+      "projectUniqueName": "C:\\S3\\Trinity\\Trinity.UnitTests\\Trinity.UnitTests.csproj",
       "projectName": "Trinity.UnitTests",
-      "projectPath": "C:\\Users\\MBA MORGAN\\Trinity\\Trinity.UnitTests\\Trinity.UnitTests.csproj",
-      "packagesPath": "C:\\Users\\MBA MORGAN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MBA MORGAN\\Trinity\\Trinity.UnitTests\\obj\\",
+      "projectPath": "C:\\S3\\Trinity\\Trinity.UnitTests\\Trinity.UnitTests.csproj",
+      "packagesPath": "C:\\Users\\Abdel\\.nuget\\packages\\",
+      "outputPath": "C:\\S3\\Trinity\\Trinity.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\MBA MORGAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\S3\\Trinity\\NuGet.Config",
+        "C:\\Users\\Abdel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net461"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://packagesource": {},
+        "https://api.nuget.org/v3/index.json": {},
         "https://www.myget.org/F/intechinfo-release/api/v3/index.json": {}
       },
       "frameworks": {
         "net461": {
           "projectReferences": {
-            "C:\\Users\\MBA MORGAN\\Trinity\\Summoner\\Trinity.csproj": {
-              "projectPath": "C:\\Users\\MBA MORGAN\\Trinity\\Summoner\\Trinity.csproj"
+            "C:\\S3\\Trinity\\Summoner\\Trinity.csproj": {
+              "projectPath": "C:\\S3\\Trinity\\Summoner\\Trinity.csproj"
             }
           }
         }
