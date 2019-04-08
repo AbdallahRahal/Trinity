@@ -7,7 +7,7 @@ namespace Trinity
     public class Summoner
     {
         readonly string name;
-        readonly Dictionary<string, Inventory> _inventories;
-        uint floor_level;
+        readonly Dictionary<string, Inventory> _inventorie;
+        
     }
 }

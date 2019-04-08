@@ -14,9 +14,8 @@ namespace Trinity
         uint _max_mana_point;
         uint _dodge_rate;
         uint _accuracy;
-        uint _ratio;
 
-        Inventory inventory;
+        Minion_inventory minion_inventory;
         Weapon weapon;
         Hat hat;
         Helmet helmet;
@@ -81,12 +80,7 @@ namespace Trinity
             get { return _accuracy; }
             set { _accuracy = value; }
         }
-
-        public uint Ratio
-        {
-            get { return _ratio; }
-            set { _ratio = value; }
-        }
+        
 
         public bool is_alive()
         {
