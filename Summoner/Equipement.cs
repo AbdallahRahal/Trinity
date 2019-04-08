@@ -9,5 +9,8 @@ namespace Trinity
         readonly string name;
         uint ratio;
 
+        Inventory inventory;
+
+
     }
 }

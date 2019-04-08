@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trinity", "Summoner\Trinity.csproj", "{5257E926-B563-4656-9FF9-DEB7E014FD06}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trinity.UI", "Trinity.UI\Trinity.UI.csproj", "{FC4CC87E-173E-4C7A-84AD-C349CE74FBCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinity.UnitTests", "Trinity.UnitTests\Trinity.UnitTests.csproj", "{CCA46E67-549B-42B3-8C2C-14BF8B2E88EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{5257E926-B563-4656-9FF9-DEB7E014FD06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5257E926-B563-4656-9FF9-DEB7E014FD06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5257E926-B563-4656-9FF9-DEB7E014FD06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC4CC87E-173E-4C7A-84AD-C349CE74FBCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4CC87E-173E-4C7A-84AD-C349CE74FBCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4CC87E-173E-4C7A-84AD-C349CE74FBCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC4CC87E-173E-4C7A-84AD-C349CE74FBCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCA46E67-549B-42B3-8C2C-14BF8B2E88EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCA46E67-549B-42B3-8C2C-14BF8B2E88EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCA46E67-549B-42B3-8C2C-14BF8B2E88EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCA46E67-549B-42B3-8C2C-14BF8B2E88EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

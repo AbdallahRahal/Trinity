@@ -4,3 +4,7 @@ C:\S3\Trinity\Summoner\obj\Debug\netcoreapp2.1\Trinity.csprojAssemblyReference.c
 C:\S3\Trinity\Summoner\obj\Debug\netcoreapp2.1\Trinity.csproj.CoreCompileInputs.cache
 C:\S3\Trinity\Summoner\obj\Debug\netcoreapp2.1\Trinity.AssemblyInfoInputs.cache
 C:\S3\Trinity\Summoner\obj\Debug\netcoreapp2.1\Trinity.AssemblyInfo.cs
+C:\Users\MBA MORGAN\Trinity\Summoner\obj\Debug\netcoreapp2.1\Trinity.csprojAssemblyReference.cache
+C:\Users\MBA MORGAN\Trinity\Summoner\obj\Debug\netcoreapp2.1\Trinity.csproj.CoreCompileInputs.cache
+C:\Users\MBA MORGAN\Trinity\Summoner\obj\Debug\netcoreapp2.1\Trinity.AssemblyInfoInputs.cache
+C:\Users\MBA MORGAN\Trinity\Summoner\obj\Debug\netcoreapp2.1\Trinity.AssemblyInfo.cs

@@ -16,6 +16,7 @@ namespace Trinity
         uint _accuracy;
         uint _ratio;
 
+        Inventory inventory;
         Weapon weapon;
         Hat hat;
         Helmet helmet;

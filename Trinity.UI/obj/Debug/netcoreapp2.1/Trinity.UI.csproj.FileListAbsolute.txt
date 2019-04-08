@@ -1,0 +1,5 @@
+C:\Users\MBA MORGAN\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.csprojAssemblyReference.cache
+C:\Users\MBA MORGAN\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.csproj.CoreCompileInputs.cache
+C:\Users\MBA MORGAN\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.AssemblyInfoInputs.cache
+C:\Users\MBA MORGAN\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.AssemblyInfo.cs
+C:\Users\MBA MORGAN\Trinity\Trinity.UI\bin\Debug\netcoreapp2.1\Trinity.dll
