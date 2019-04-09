@@ -14,15 +14,15 @@ namespace Trinity.UnitTests
         [Test]
         public void Create_Summoner()
         {
-            Tower tower = new Tower;
-            Summoner summoner = tower.CreateSummoner("karo");
+            Tower tower = new Tower() ;
+            Summoner summoner = tower.Create_Summoner("karo");
             Assert.That(summoner.Name, Is.EqualTo("karo"));
         }
 
         [Test]
         public void Try_New_direction() { }
 
-        [Test]
-        public void 
+     
+       
     }
 }

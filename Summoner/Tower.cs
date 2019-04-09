@@ -24,5 +24,13 @@ namespace Trinity
         {
             get { return _minion; }
         }
+
+        public Summoner Create_Summoner(string name)
+        {
+            //if (_minions.ContainsKey(name)) throw new ArgumentException("A minion with this name already exists.", nameof(name));
+            Summoner summoner = new Summoner(name);
+          
+            return summoner;
+        }
     }
 }

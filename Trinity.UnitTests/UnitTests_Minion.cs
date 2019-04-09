@@ -11,7 +11,7 @@ namespace Trinity.UnitTests
     [TestFixture]
     class UnitTests_Minion
     {
-        [Test]
-        public void 
+       
+        
     }
 }

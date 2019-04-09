@@ -3,3 +3,7 @@ C:\Users\MBA MORGAN\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.csproj
 C:\Users\MBA MORGAN\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.AssemblyInfoInputs.cache
 C:\Users\MBA MORGAN\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.AssemblyInfo.cs
 C:\Users\MBA MORGAN\Trinity\Trinity.UI\bin\Debug\netcoreapp2.1\Trinity.dll
+C:\S3\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.csprojAssemblyReference.cache
+C:\S3\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.csproj.CoreCompileInputs.cache
+C:\S3\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.AssemblyInfoInputs.cache
+C:\S3\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.AssemblyInfo.cs
