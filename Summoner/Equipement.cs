@@ -17,5 +17,9 @@ namespace Trinity
             _name = name;
         }
 
+        public string Name
+        {
+            get { return _name; }
+        }
     }
 }

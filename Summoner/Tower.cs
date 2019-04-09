@@ -14,5 +14,15 @@ namespace Trinity
             _minion = new Minion_Collection();
         }
 
+
+        public Equipement_Collection Equipement
+        {
+            get { return _equipement; }
+        }
+
+        public Minion_Collection Minion
+        {
+            get { return _minion; }
+        }
     }
 }

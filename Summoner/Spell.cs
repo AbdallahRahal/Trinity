@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trinity
 {
-    class Spell
+    public class Spell
     {
 
         // propriéter du sort

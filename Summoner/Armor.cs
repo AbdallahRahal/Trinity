@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trinity
 {
-    class Armor : Equipement 
+    public class Armor : Equipement 
     {
 
         readonly Dictionary<string, int> _stats;

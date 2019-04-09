@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trinity
 {
-    class Gem : Equipement
+    public class Gem : Equipement
     {
         uint _ratio;
         Spell _spell;
@@ -16,7 +16,7 @@ namespace Trinity
         {
             _ratio = ratio;
             _description = description;
-            _spell = spell
+            _spell = spell;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trinity
 {
-    class Weapon : Equipement
+    public class Weapon : Equipement
     {
         string _type;
         uint _power;
@@ -15,6 +15,15 @@ namespace Trinity
         {
             _power = power;
             _type = type;
+        }
+
+        public uint Power
+        {
+            get { return _power; }
+        }
+        public string Type
+        {
+            get { return _type ; }
         }
     }
 }
