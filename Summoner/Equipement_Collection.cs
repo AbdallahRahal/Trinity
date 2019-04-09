@@ -16,17 +16,17 @@ namespace Trinity
             _equipements = new Dictionary<string, Equipement>();
         }
 
-        public Hat Create_Hat(string name , Dictionary<string,int> stats )
+        public Hat Create_Hat(string name , uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy )
         {
            
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
 
-            Hat hat = new Hat(name,stats);
+            Hat hat = new Hat(name, max_life_point, max_mana_point, dodge_rate, accuracy);
 
             _equipements.Add(name, hat);
             return hat;
         }
-        public Breastplate Create_Breastplate(string name, Dictionary<string, int> stats)
+        public Breastplate Create_Breastplate(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy)
         {
 
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
@@ -38,7 +38,7 @@ namespace Trinity
         }
 
 
-        public Leg Create_leg(string name, Dictionary<string, int> stats)
+        public Leg Create_leg(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy)
         {
 
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
@@ -50,7 +50,7 @@ namespace Trinity
         }
 
 
-            public Boots Create_Boots(string name, Dictionary<string, int> stats)
+            public Boots Create_Boots(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy)
         {
 
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
