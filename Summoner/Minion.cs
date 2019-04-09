@@ -14,13 +14,9 @@ namespace Trinity
         uint _max_mana_point;
         uint _dodge_rate;
         uint _accuracy;
-        uint _ratio;
 
-        Weapon weapon;
-        Hat hat;
-        Helmet helmet;
-        Legging legging;
-        Boot boot;
+        readonly Armory _armories;
+        
 
         internal Minion ( string name, uint power, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy )
         {
@@ -30,8 +26,7 @@ namespace Trinity
             _power = power;
             _dodge_rate = dodge_rate;
             _accuracy = accuracy;
-            _ratio = 1;
-
+            _armories = new Armory(this);
         }
 
         public string Name
@@ -44,7 +39,7 @@ namespace Trinity
             get { return _life_point; }
             set { _life_point = value; }
         }
-
+        
         public uint Max_life_point
         {
             get { return _max_life_point; }
@@ -80,16 +75,16 @@ namespace Trinity
             get { return _accuracy; }
             set { _accuracy = value; }
         }
-
-        public uint Ratio
-        {
-            get { return _ratio; }
-            set { _ratio = value; }
-        }
+        
 
         public bool is_alive()
         {
           return (_life_point > 0) ?  true :  false;
+        }
+
+        internal Armory Armories
+        {
+            get { return _armories; }
         }
     }
 }
