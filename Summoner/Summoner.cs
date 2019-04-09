@@ -6,8 +6,19 @@ namespace Trinity
 {
     public class Summoner
     {
-        readonly string name;
-        readonly Dictionary<string, Inventory> _inventorie;
-        
+        readonly string _name;
+        readonly Dictionary<string, Inventory> _inventory;
+
+
+        internal Summoner(string name)
+        {
+            _name = name;
+           
+        }
+
+        public string Name
+        {
+            get { return _name; }
+        }
     }
 }

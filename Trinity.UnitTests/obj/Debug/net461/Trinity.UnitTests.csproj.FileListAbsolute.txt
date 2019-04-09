@@ -1,0 +1,12 @@
+C:\S3\Trinity\Trinity.UnitTests\obj\Debug\net461\Trinity.UnitTests.csprojAssemblyReference.cache
+C:\S3\Trinity\Trinity.UnitTests\obj\Debug\net461\Trinity.UnitTests.csproj.CoreCompileInputs.cache
+C:\S3\Trinity\Trinity.UnitTests\obj\Debug\net461\Trinity.UnitTests.AssemblyInfoInputs.cache
+C:\S3\Trinity\Trinity.UnitTests\obj\Debug\net461\Trinity.UnitTests.AssemblyInfo.cs
+C:\S3\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.UnitTests.dll
+C:\S3\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.UnitTests.pdb
+C:\S3\Trinity\Trinity.UnitTests\bin\Debug\net461\nunit.framework.dll
+C:\S3\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.dll
+C:\S3\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.pdb
+C:\S3\Trinity\Trinity.UnitTests\obj\Debug\net461\Trinity.UnitTests.csproj.CopyComplete
+C:\S3\Trinity\Trinity.UnitTests\obj\Debug\net461\Trinity.UnitTests.dll
+C:\S3\Trinity\Trinity.UnitTests\obj\Debug\net461\Trinity.UnitTests.pdb
