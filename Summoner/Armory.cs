@@ -33,12 +33,12 @@ namespace Trinity
 
         public bool Equip(Equipement equip)
         {
-           
 
-            if (_context.Equipement_Collection.Equipement_Dictionnary.ContainsKey(equip.Name) && equip.Is_Equiped == false )
+
+            if (_context.Equipement_Collection.Equipement_Dictionnary.ContainsKey(equip.Name) && equip.Is_Equiped == false)
             {
-               equip.Is_Equiped = true;
-               
+                equip.Is_Equiped = true;
+
 
                 if (equip.GetType().IsInstanceOfType(hat) && hat == null)
                 {
@@ -86,15 +86,51 @@ namespace Trinity
         public bool Desequip(string name)
         {
             Equipement equip;
-            if (_equipements.TryGetValue(name,out equip ))
+            if (_equipements.TryGetValue(name, out equip))
             {
                 equip.Is_Equiped = false;
 
-            if (name == hat.Name) { hat = null; }
+                if (name == hat.Name) { hat = null; }
 
 
                 return true;
             }
             return false;
         }
+
+        public Hat Hat
+        {
+            get { return hat; }
+        }
+
+        public Breastplate Breastplate
+        {
+            get { return breastplate; }
+        }
+
+        public Leg Leg
+        {
+            get { return leg; }
+        }
+
+        public Boots Boots
+        {
+            get { return boots; }
+        }
+
+        public Gem Gem1
+        {
+            get { return gem1; }
+        }
+
+        public Gem Gem2
+        {
+            get { return gem2; }
+        }
+
+        public Gem Gem3
+        {
+            get { return gem3; }
+        }
+    }
 }
