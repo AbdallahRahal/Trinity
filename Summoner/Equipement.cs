@@ -13,7 +13,6 @@ namespace Trinity
 
         internal Equipement(string name)
         {
-
             _name = name;
         }
 
