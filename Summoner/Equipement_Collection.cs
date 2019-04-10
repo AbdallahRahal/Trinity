@@ -38,7 +38,7 @@ namespace Trinity
         }
 
 
-        public Leg Create_leg(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy)
+        public Leg Create_Leg(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy)
         {
 
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
