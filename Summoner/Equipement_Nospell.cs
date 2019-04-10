@@ -1,13 +1,13 @@
 ﻿namespace Trinity
 {
-    internal class Equipement_Nospell : Equipement
+    public class Equipement_Nospell : Equipement
     {
         readonly uint _max_life_point;
         readonly uint _max_mana_point;
         readonly uint _dodge_rate;
         readonly uint _accuracy;
 
-        internal Equipement_Nospell(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy) : base(name)
+        public Equipement_Nospell(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy) : base(name)
         {
             _max_life_point = max_life_point;
             _max_mana_point = max_mana_point;

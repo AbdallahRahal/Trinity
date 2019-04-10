@@ -8,12 +8,20 @@ namespace Trinity
     {
         readonly string _name;
         uint ratio;
+        bool is_Equiped;
 
         Inventory inventory;
 
-        internal Equipement(string name)
+        public Equipement(string name)
         {
             _name = name;
+            is_Equiped = false;
+
+        }
+        public bool Is_Equiped
+        {
+            get { return is_Equiped; }
+            set { is_Equiped = value; }
         }
 
         public string Name

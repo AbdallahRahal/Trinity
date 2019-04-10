@@ -9,10 +9,12 @@ namespace Trinity
     public class Minion_Collection
     {
         Dictionary<string, Minion> _minions;
+        Tower _context;
 
-        internal Minion_Collection()
+        public Minion_Collection(Tower context)
         {
             _minions = new Dictionary<string, Minion>();
+            _context = context
         }
 
 
@@ -24,24 +26,24 @@ namespace Trinity
         public Minion Create_Minion(string name, uint power, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy)
         {
             if (_minions.ContainsKey(name)) throw new ArgumentException("A minion with this name already exists.", nameof(name));
-            Minion minion = new Minion(name, power, max_life_point, max_mana_point, dodge_rate, accuracy);
+            Minion minion = new Minion(name, power, max_life_point, max_mana_point, dodge_rate, accuracy, _context);
             _minions.Add(name, minion);
             return minion;
         }
 
-        internal Minion Find_By_Name( string name)
+        public Minion Find_By_Name( string name)
         {
             Minion minion;
             _minions.TryGetValue(name, out minion);
             return minion;
         }
 
-        internal void Remove_Minion ( Minion minion)
+        public void Remove_Minion ( Minion minion)
         {
             _minions.Remove(minion.Name);
         }
 
-        internal void On_Rename( Minion minion, string newName)
+        public void On_Rename( Minion minion, string newName)
         {
             if (_minions.ContainsKey(newName)) throw new ArgumentException(" A minion with this name already exists.", nameof(newName));
             _minions.Remove(minion.Name);

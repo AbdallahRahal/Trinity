@@ -10,7 +10,7 @@ namespace Trinity
     {
         readonly Dictionary<string, Equipement> _equipements;
 
-        internal Equipement_Collection()
+        public Equipement_Collection()
         {
 
             _equipements = new Dictionary<string, Equipement>();
@@ -31,7 +31,7 @@ namespace Trinity
 
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
 
-            Breastplate breastplate = new Breastplate(name, stats);
+            Breastplate breastplate = new Breastplate(name, max_life_point, max_mana_point, dodge_rate, accuracy);
 
             _equipements.Add(name, breastplate);
             return breastplate;
@@ -43,19 +43,19 @@ namespace Trinity
 
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
 
-            Leg leg = new Leg(name, stats);
+            Leg leg = new Leg(name, max_life_point, max_mana_point, dodge_rate, accuracy);
 
             _equipements.Add(name, leg);
             return leg;
         }
 
 
-            public Boots Create_Boots(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy)
+        public Boots Create_Boots(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy)
         {
 
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
 
-            Boots boots = new Boots(name, stats);
+            Boots boots = new Boots(name, max_life_point, max_mana_point, dodge_rate, accuracy);
 
             _equipements.Add(name, boots);
             return boots;
@@ -65,7 +65,7 @@ namespace Trinity
         {
             //type = type de l'arme, arc, baton , epée ...
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements with this name already exists.", nameof(name));
-            Weapon weapon = new Weapon(name, type, power);
+            Weapon weapon = new Weapon(name, power);
 
             _equipements.Add(name, weapon);
             return weapon;
@@ -80,6 +80,11 @@ namespace Trinity
             return gem;
         }
 
+
+        public Dictionary<string, Equipement> Equipement_Dictionnary
+        {
+            get { return _equipements; }
+        }
 
 
 

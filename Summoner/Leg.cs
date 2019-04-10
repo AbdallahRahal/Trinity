@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Trinity
 {
-    internal class Leg : Equipement_Nospell
+    public class Leg : Equipement_Nospell
     {
-        internal Leg(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy) : base(name, max_life_point, max_mana_point, dodge_rate, accuracy)
+        public Leg(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy) : base(name, max_life_point, max_mana_point, dodge_rate, accuracy)
         {
         }
     }

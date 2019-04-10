@@ -6,24 +6,95 @@ using System.Threading.Tasks;
 
 namespace Trinity
 {
-    class Armory
+    public class Armory
     {
         Minion _minion;
         Hat hat;
-        Breastplate Breastplate;
+        Breastplate breastplate;
         Leg leg;
         Boots boots;
         Gem gem1;
         Gem gem2;
         Gem gem3;
+        Weapon weapon;
+        Dictionary<string, Equipement> _equipements = new Dictionary<string, Equipement>();
+        Tower _context;
 
 
-        internal Armory(Minion minion)
+        public Armory(Minion minion, Tower context)
         {
             _minion = minion;
+            _context = context;
         }
 
-        internal Minion Minion { get { return _minion; } }
+        public Minion Minion { get { return _minion; } }
+        public Tower Tower { get { return _context; } }
 
-    }
+
+        public bool Equip(Equipement equip)
+        {
+           
+
+            if (_context.Equipement_Collection.Equipement_Dictionnary.ContainsKey(equip.Name) && equip.Is_Equiped == false )
+            {
+               equip.Is_Equiped = true;
+               
+
+                if (equip.GetType().IsInstanceOfType(hat) && hat == null)
+                {
+                    hat = (Hat)equip;
+                    _equipements.Add(equip.Name, equip);
+                }
+                else if (equip.GetType().IsInstanceOfType(breastplate) && breastplate == null)
+                {
+                    breastplate = (Breastplate)equip;
+                    _equipements.Add(equip.Name, equip);
+                }
+                else if (equip.GetType().IsInstanceOfType(leg) && leg == null)
+                {
+                    leg = (Leg)equip;
+                    _equipements.Add(equip.Name, equip);
+                }
+                else if (equip.GetType().IsInstanceOfType(boots) && boots == null)
+                {
+                    boots = (Boots)equip;
+                    _equipements.Add(equip.Name, equip);
+                }
+                else if (equip.GetType().IsInstanceOfType(weapon) && weapon == null)
+                {
+                    weapon = (Weapon)equip;
+                    _equipements.Add(equip.Name, equip);
+                }
+                else if (equip.GetType().IsInstanceOfType(gem1))
+                {
+                    if (gem1 == null) { gem1 = (Gem)equip; _equipements.Add(equip.Name, equip); }
+                    else if (gem2 == null) { gem2 = (Gem)equip; _equipements.Add(equip.Name, equip); }
+                    else if (gem3 == null) { gem3 = (Gem)equip; _equipements.Add(equip.Name, equip); }
+                }
+                else
+                {
+                    throw new ArgumentException("Un objet est deja equipé, ou le type de l'equipement n'est pas un : Hat,breastplate,leg,boots,weapon ou gem  ");
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
+
+        public bool Desequip(string name)
+        {
+            Equipement equip;
+            if (_equipements.TryGetValue(name,out equip ))
+            {
+                equip.Is_Equiped = false;
+
+            if (name == hat.Name) { hat = null; }
+
+
+                return true;
+            }
+            return false;
+        }
 }

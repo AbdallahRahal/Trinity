@@ -11,16 +11,16 @@ namespace Trinity
         public Tower()
         {
             _equipement = new Equipement_Collection();
-            _minion = new Minion_Collection();
+            _minion = new Minion_Collection(this);
         }
 
 
-        public Equipement_Collection Equipement
+        public Equipement_Collection Equipement_Collection
         {
             get { return _equipement; }
         }
 
-        public Minion_Collection Minion
+        public Minion_Collection Minion_Collection
         {
             get { return _minion; }
         }

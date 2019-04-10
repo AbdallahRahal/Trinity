@@ -11,7 +11,7 @@ namespace Trinity
 
         Summoner summoner;
 
-        internal Inventory()
+        public Inventory()
         {
             _minions = new Dictionary<string, Minion>();
             _equipements = new Dictionary<string, Equipement>();

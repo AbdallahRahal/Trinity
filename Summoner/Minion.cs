@@ -14,11 +14,12 @@ namespace Trinity
         uint _max_mana_point;
         uint _dodge_rate;
         uint _accuracy;
+        Tower _context;
 
-        readonly Armory _armories;
+         readonly Armory _armories;
         
 
-        internal Minion ( string name, uint power, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy )
+        public Minion ( string name, uint power, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, Tower context )
         {
             _name = name;
             _life_point = _max_life_point = max_life_point;
@@ -26,7 +27,8 @@ namespace Trinity
             _power = power;
             _dodge_rate = dodge_rate;
             _accuracy = accuracy;
-            _armories = new Armory(this);
+            _context = context;
+            _armories = new Armory(this, context);
         }
 
         public string Name
@@ -82,7 +84,7 @@ namespace Trinity
           return (_life_point > 0) ?  true :  false;
         }
 
-        internal Armory Armories
+        public Armory Armories
         {
             get { return _armories; }
         }

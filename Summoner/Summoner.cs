@@ -10,7 +10,7 @@ namespace Trinity
         readonly Dictionary<string, Inventory> _inventory;
 
 
-        internal Summoner(string name)
+        public Summoner(string name)
         {
             _name = name;
            
