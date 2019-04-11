@@ -14,7 +14,7 @@ namespace Trinity
         public Minion_Collection(Tower context)
         {
             _minions = new Dictionary<string, Minion>();
-            _context = context
+            _context = context;
         }
 
 

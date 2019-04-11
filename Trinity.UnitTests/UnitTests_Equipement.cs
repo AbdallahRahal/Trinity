@@ -16,9 +16,6 @@ namespace Trinity.UnitTests
         {
             Tower tower = new Tower();
 
-            Equipement hat1 = tower.Equipement_Collection.Create_Hat("hat1", );
-
-            Assert.That(arc1.Name, Is.EqualTo("equip1"));
         }
 
       

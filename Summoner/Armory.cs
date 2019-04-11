@@ -132,5 +132,10 @@ namespace Trinity
         {
             get { return gem3; }
         }
+
+        public Weapon Weapon
+        {
+            get { return weapon; }
+        }
     }
 }
