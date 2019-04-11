@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\S3\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.UnitTests.dll" total="3" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2019-04-09" time="09:55:45">
+<test-results name="C:\S3\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.UnitTests.dll" total="3" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2019-04-11" time="09:09:53">
   <environment nunit-version="2.6.4.14350" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Users\Abdel\.nuget\packages\nunit.runners.net4\2.6.4\tools" machine-name="DESKTOP-BEU4GND" user="Abdel" user-domain="DESKTOP-BEU4GND" />
   <culture-info current-culture="fr-FR" current-uiculture="fr-FR" />
-  <test-suite type="Assembly" name="C:\S3\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.UnitTests.dll" executed="True" result="Success" success="True" time="0.060" asserts="0">
+  <test-suite type="Assembly" name="C:\S3\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.UnitTests.dll" executed="True" result="Success" success="True" time="10.608" asserts="0">
     <results>
-      <test-suite type="Namespace" name="Trinity" executed="True" result="Success" success="True" time="0.048" asserts="0">
+      <test-suite type="Namespace" name="Trinity" executed="True" result="Success" success="True" time="10.607" asserts="0">
         <results>
-          <test-suite type="Namespace" name="UnitTests" executed="True" result="Success" success="True" time="0.048" asserts="0">
+          <test-suite type="Namespace" name="UnitTests" executed="True" result="Success" success="True" time="10.606" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="UnitTests_Equipement" executed="True" result="Success" success="True" time="0.038" asserts="0">
+              <test-suite type="TestFixture" name="UnitTests_Equipement" executed="True" result="Success" success="True" time="10.477" asserts="0">
                 <results>
-                  <test-case name="Trinity.UnitTests.UnitTests_Equipement.Create_Equipement" executed="True" result="Success" success="True" time="0.029" asserts="1" />
+                  <test-case name="Trinity.UnitTests.UnitTests_Equipement.Create_Equipement" executed="True" result="Success" success="True" time="10.443" asserts="1" />
                 </results>
               </test-suite>
               <test-suite type="TestFixture" name="UnitTests_Minion" executed="True" result="Inconclusive" success="False" time="0.000" asserts="0" />
-              <test-suite type="TestFixture" name="UnitTests_Summoner" executed="True" result="Success" success="True" time="0.004" asserts="0">
+              <test-suite type="TestFixture" name="UnitTests_Summoner" executed="True" result="Success" success="True" time="0.014" asserts="0">
                 <results>
-                  <test-case name="Trinity.UnitTests.UnitTests_Summoner.Create_Summoner" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                  <test-case name="Trinity.UnitTests.UnitTests_Summoner.Create_Summoner" executed="True" result="Success" success="True" time="0.002" asserts="1" />
                   <test-case name="Trinity.UnitTests.UnitTests_Summoner.Try_New_direction" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                 </results>
               </test-suite>
