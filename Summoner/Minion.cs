@@ -14,6 +14,7 @@ namespace Trinity
         uint _max_mana_point;
         uint _dodge_rate;
         uint _accuracy;
+        bool _is_Attach;
         Tower _context;
 
          readonly Armory _armories;
@@ -28,7 +29,14 @@ namespace Trinity
             _dodge_rate = dodge_rate;
             _accuracy = accuracy;
             _context = context;
+            _is_Attach = false;
             _armories = new Armory(this, context);
+        }
+
+        public bool is_Attach
+        {
+            get { return _is_Attach; }
+            set { _is_Attach = value; }
         }
 
         public string Name

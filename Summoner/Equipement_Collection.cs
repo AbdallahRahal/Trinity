@@ -80,7 +80,6 @@ namespace Trinity
             return gem;
         }
 
-
         public Dictionary<string, Equipement> Equipement_Dictionnary
         {
             get { return _equipements; }

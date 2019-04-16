@@ -7,6 +7,7 @@ namespace Trinity
     {
         readonly Equipement_Collection _equipement;
         readonly Minion_Collection _minion;
+        //readonly Summoner _summoner;
 
         public Tower()
         {
@@ -25,10 +26,15 @@ namespace Trinity
             get { return _minion; }
         }
 
+        //public Summoner Summoner
+        //{
+        //    get { return _summoner; }
+        //}
+
         public Summoner Create_Summoner(string name)
         {
             //if (_minions.ContainsKey(name)) throw new ArgumentException("A minion with this name already exists.", nameof(name));
-            Summoner summoner = new Summoner(name);
+            Summoner summoner = new Summoner(name, this);
           
             return summoner;
         }

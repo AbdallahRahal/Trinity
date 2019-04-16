@@ -50,6 +50,10 @@ namespace Trinity
             _minions.Add(newName, minion);
         }
 
-    
+        public Dictionary<string, Minion> Minion_Dictionnary
+        {
+            get { return _minions; }
+        }
+
     }
 }

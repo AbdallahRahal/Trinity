@@ -5,4 +5,3 @@ C:\S3\Trinity\Summoner\bin\Debug\net461\Trinity.dll
 C:\S3\Trinity\Summoner\bin\Debug\net461\Trinity.pdb
 C:\S3\Trinity\Summoner\obj\Debug\net461\Trinity.dll
 C:\S3\Trinity\Summoner\obj\Debug\net461\Trinity.pdb
-C:\S3\Trinity\Summoner\obj\Debug\net461\Trinity.csprojAssemblyReference.cache
