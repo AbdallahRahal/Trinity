@@ -12,7 +12,7 @@ namespace Trinity.UnitTests
     class UnitTests_Minion
     {
         [Test]
-        public void Create_Equipement()
+        public void Create_Equip_Equipement()
         {
             Tower tow = new Tower();
             Minion m1 = tow.Minion_Collection.Create_Minion("Ryan", 10, 10, 10, 10, 10);
@@ -21,13 +21,27 @@ namespace Trinity.UnitTests
             Leg pant = tow.Equipement_Collection.Create_Leg("Pantalon", 10, 10, 10, 10);
             m1.Armories.Equip(arc);
             m1.Armories.Equip(chapeau);
+            m1.Armories.Equip(pant);
 
             Assert.That(m1.Name, Is.EqualTo("Ryan"));
             Assert.That(arc.Name, Is.EqualTo("Arc de Ryan"));
             Assert.That(arc.Power, Is.EqualTo(50));
             Assert.That(m1.Armories.Weapon, Is.EqualTo(arc));
             Assert.That(m1.Armories.Hat, Is.EqualTo(chapeau));
-           // Assert.That(m1.Armories.Leg.name, Is.EqualTo("Pantalon"));
+            Assert.That(m1.Armories.Leg.Name, Is.EqualTo("Pantalon"));
+
+            Assert.That(pant.Is_Equiped, Is.True);
+            //  le pantalon est equipé
+
+            m1.Armories.Desequip("Pantalon");
+
+            //Assert.That(m1.Armories.Leg, Is.Null);
+            Assert.That(pant.Is_Equiped, Is.False);
+
+
+
+
+
         }
     }
 }
