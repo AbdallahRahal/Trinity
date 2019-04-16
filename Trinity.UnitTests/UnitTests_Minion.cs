@@ -36,7 +36,8 @@ namespace Trinity.UnitTests
 
             m1.Armories.Desequip("Pantalon");
 
-            //Assert.That(m1.Armories.Leg, Is.Null);
+
+            Assert.That(m1.Armories.Leg, Is.Null);
             Assert.That(pant.Is_Equiped, Is.False);
 
 

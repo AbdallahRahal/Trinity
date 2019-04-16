@@ -129,24 +129,35 @@ namespace Trinity
 
         public bool Desequip(string name)
         {
-            Equipement equip = null;
+           
             if (_equipements.ContainsKey(name))
             {
-                equip.Is_Equiped = false;
+
+                _equipements[name].Is_Equiped = false;
                 _equipements.Remove(name);
-                if (name == _hat.Name) { _hat = null;}else
-                if (name == _breastplate.Name) { _breastplate = null;}else
-                if (name == _leg.Name) { _leg = null;}else
-                if (name == _boots.Name) { _boots = null;}else
-                if (name == _weapon.Name) { _weapon = null;}else
-                if (name == _gem1.Name) { _gem1 = null;}else
-                if (name == _gem2.Name) { _gem2 = null;}else
-                if (name == _gem3.Name) { _gem3 = null;}
+                if (_hat != null && name == _hat.Name) { _hat = null; }
+                else
+                if (_breastplate != null && name == _breastplate.Name) { _breastplate = null; }
+                else
+                if (_leg != null &&  name == _leg.Name) { _leg = null; }
+                else
+                if (_boots != null && name == _boots.Name) { _boots = null; }
+                else
+                if (_weapon != null && name == _weapon.Name) { _weapon = null; }
+                else
+                if (_gem1 != null && name == _gem1.Name) { _gem1 = null; }
+                else
+                if (_gem2 != null && name == _gem2.Name) { _gem2 = null; }
+                else
+                if (_gem3 != null && name == _gem3.Name ){ _gem3 = null; }
 
 
                 return true;
             }
-            return false;
+            else
+            {
+                throw new ArgumentException("L'objet n'est pas équipé ");
+            }
         }
 
         public Hat Hat
