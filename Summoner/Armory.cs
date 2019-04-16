@@ -9,14 +9,14 @@ namespace Trinity
     public class Armory
     {
         Minion _minion;
-        Hat hat;
-        Breastplate breastplate;
-        Leg leg;
-        Boots boots;
-        Gem gem1;
-        Gem gem2;
-        Gem gem3;
-        Weapon weapon;
+        Hat _hat;
+        Breastplate _breastplate;
+        Leg _leg;
+        Boots _boots;
+        Gem _gem1;
+        Gem _gem2;
+        Gem _gem3;
+        Weapon _weapon;
         Dictionary<string, Equipement> _equipements = new Dictionary<string, Equipement>();
         Tower _context;
 
@@ -25,72 +25,123 @@ namespace Trinity
         {
             _minion = minion;
             _context = context;
+            _weapon = null;
         }
 
         public Minion Minion { get { return _minion; } }
         public Tower Tower { get { return _context; } }
 
 
-        public bool Equip(Equipement equip)
+        public bool Equip(Weapon weapon)
         {
-
-
-            if (_context.Equipement_Collection.Equipement_Dictionnary.ContainsKey(equip.Name) && equip.Is_Equiped == false)
+            if (_context.Equipement_Collection.Equipement_Dictionnary.ContainsKey(weapon.Name) && weapon.Is_Equiped == false && _weapon == null)
             {
-                equip.Is_Equiped = true;
+                weapon.Is_Equiped = true;
+                _weapon = weapon;
+                    _equipements.Add(weapon.Name, weapon);
 
-
-                if (equip.GetType().IsInstanceOfType(hat) && hat == null)
-                {
-                    hat = (Hat)equip;
-                    _equipements.Add(equip.Name, equip);
-                }
-                else if (equip.GetType().IsInstanceOfType(breastplate) && breastplate == null)
-                {
-                    breastplate = (Breastplate)equip;
-                    _equipements.Add(equip.Name, equip);
-                }
-                else if (equip.GetType().IsInstanceOfType(leg) && leg == null)
-                {
-                    leg = (Leg)equip;
-                    _equipements.Add(equip.Name, equip);
-                }
-                else if (equip.GetType().IsInstanceOfType(boots) && boots == null)
-                {
-                    boots = (Boots)equip;
-                    _equipements.Add(equip.Name, equip);
-                }
-                else if (equip.GetType().IsInstanceOfType(weapon) && weapon == null)
-                {
-                    weapon = (Weapon)equip;
-                    _equipements.Add(equip.Name, equip);
-                }
-                else if (equip.GetType().IsInstanceOfType(gem1))
-                {
-                    if (gem1 == null) { gem1 = (Gem)equip; _equipements.Add(equip.Name, equip); }
-                    else if (gem2 == null) { gem2 = (Gem)equip; _equipements.Add(equip.Name, equip); }
-                    else if (gem3 == null) { gem3 = (Gem)equip; _equipements.Add(equip.Name, equip); }
-                }
-                else
-                {
-                    throw new ArgumentException("Un objet est deja equipé, ou le type de l'equipement n'est pas un : Hat,breastplate,leg,boots,weapon ou gem  ");
-                }
-
-                return true;
             }
+            else
+            {
+                throw new ArgumentException("Un objet est deja equipé ");
+            }
+            return true;
+        }
 
-            return false;
+        public bool Equip(Hat hat)
+        {
+            if (_context.Equipement_Collection.Equipement_Dictionnary.ContainsKey(hat.Name) && hat.Is_Equiped == false && _hat == null)
+            {
+                hat.Is_Equiped = true;
+                _hat = hat;
+                _equipements.Add(hat.Name, hat);
+
+            }
+            else
+            {
+                throw new ArgumentException("Un objet est deja equipé ");
+            }
+            return true;
+        }
+        public bool Equip(Breastplate breastplate)
+        {
+            if (_context.Equipement_Collection.Equipement_Dictionnary.ContainsKey(breastplate.Name) && breastplate.Is_Equiped == false && _breastplate == null)
+            {
+                breastplate.Is_Equiped = true;
+                _breastplate = breastplate;
+                _equipements.Add(breastplate.Name, breastplate);
+
+            }
+            else
+            {
+                throw new ArgumentException("Un objet est deja equipé ");
+            }
+            return true;
         }
 
 
+        public bool Equip(Leg leg)
+        {
+            if (_context.Equipement_Collection.Equipement_Dictionnary.ContainsKey(leg.Name) && leg.Is_Equiped == false && _leg == null)
+            {
+                leg.Is_Equiped = true;
+                _leg = leg;
+                _equipements.Add(leg.Name, leg);
+
+            }
+            else
+            {
+                throw new ArgumentException("Un objet est deja equipé ");
+            }
+            return true;
+        }
+
+        public bool Equip(Boots boots)
+        {
+            if (_context.Equipement_Collection.Equipement_Dictionnary.ContainsKey(boots.Name) && boots.Is_Equiped == false && _boots == null)
+            {
+                boots.Is_Equiped = true;
+                _boots = boots;
+                _equipements.Add(boots.Name, boots);
+
+            }
+            else
+            {
+                throw new ArgumentException("Un objet est deja equipé ");
+            }
+            return true;
+        }
+        public bool Equip(Gem gem)
+        {
+            if (_context.Equipement_Collection.Equipement_Dictionnary.ContainsKey(gem.Name) && gem.Is_Equiped == false)
+            {
+                
+                if (_gem1 == null) { gem.Is_Equiped = true; _gem1 = gem; _equipements.Add(gem.Name, gem); }
+                else if (_gem2 == null) { gem.Is_Equiped = true; _gem2 = gem; _equipements.Add(gem.Name, gem); }
+                else if (_gem3 == null) { gem.Is_Equiped = true; _gem3 = gem; _equipements.Add(gem.Name, gem); }
+            }
+            else
+            {
+                throw new ArgumentException("Un objet est deja equipé ");
+            }
+            return true;
+        }
+
         public bool Desequip(string name)
         {
-            Equipement equip;
-            if (_equipements.TryGetValue(name, out equip))
+            Equipement equip = null;
+            if (_equipements.ContainsKey(name))
             {
                 equip.Is_Equiped = false;
-
-                if (name == hat.Name) { hat = null; }
+                _equipements.Remove(name);
+                if (name == _hat.Name) { _hat = null;}else
+                if (name == _breastplate.Name) { _breastplate = null;}else
+                if (name == _leg.Name) { _leg = null;}else
+                if (name == _boots.Name) { _boots = null;}else
+                if (name == _weapon.Name) { _weapon = null;}else
+                if (name == _gem1.Name) { _gem1 = null;}else
+                if (name == _gem2.Name) { _gem2 = null;}else
+                if (name == _gem3.Name) { _gem3 = null;}
 
 
                 return true;
@@ -100,42 +151,42 @@ namespace Trinity
 
         public Hat Hat
         {
-            get { return hat; }
+            get { return _hat; }
         }
 
         public Breastplate Breastplate
         {
-            get { return breastplate; }
+            get { return _breastplate; }
         }
 
         public Leg Leg
         {
-            get { return leg; }
+            get { return _leg; }
         }
 
         public Boots Boots
         {
-            get { return boots; }
+            get { return _boots; }
         }
 
         public Gem Gem1
         {
-            get { return gem1; }
+            get { return _gem1; }
         }
 
         public Gem Gem2
         {
-            get { return gem2; }
+            get { return _gem2; }
         }
 
         public Gem Gem3
         {
-            get { return gem3; }
+            get { return _gem3; }
         }
 
         public Weapon Weapon
         {
-            get { return weapon; }
+            get { return _weapon; }
         }
     }
 }
