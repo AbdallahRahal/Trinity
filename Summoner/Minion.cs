@@ -67,6 +67,7 @@ namespace Trinity
 
         public uint Bonus_max_life_point
         {
+            get { return _bonus_max_life_point; }
             set { _bonus_max_life_point = value; }
         }
 
@@ -77,6 +78,7 @@ namespace Trinity
 
         public uint Bonus_power
         {
+            get { return _bonus_power; }
             set { _bonus_power = value; }
         }
 
@@ -93,6 +95,7 @@ namespace Trinity
 
         public uint Bonus_max_mana_point
         {
+            get { return _bonus_max_mana_point; }
             set { _bonus_max_mana_point = value; }
         }
 
@@ -103,6 +106,7 @@ namespace Trinity
 
         public uint Bonus_dodge_rate
         {
+            get { return _bonus_dodge_rate; }
             set { _bonus_dodge_rate = value; }
         }
 
@@ -113,6 +117,7 @@ namespace Trinity
 
         public uint Bonus_accuracy
         {
+            get { return _bonus_accuracy; }
             set { _bonus_accuracy = value; }
         }
         
