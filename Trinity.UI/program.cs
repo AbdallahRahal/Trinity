@@ -7,8 +7,14 @@ using SFML.Window;
 
 namespace Trinity.UI
 {
-    class program
+    class Program
     {
-
+        public static void Main(string[] args)
+        {
+            SFML.GraphicsNative.Load();
+            SFML.AudioNative.Load();
+            Trinity trinity = new Trinity();
+            trinity.Run();
+        }
     }
 }

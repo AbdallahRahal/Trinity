@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,11 +6,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="csfml-network-2.dll" />
+    <None Remove="libsndfile-1.dll" />
+    <None Remove="OpenTK.Compatibility.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ITI.SFML.Audio" Version="0.1.0" />
     <PackageReference Include="ITI.SFML.Graphics" Version="0.1.0" />
+    <PackageReference Include="ITI.SFML.System" Version="0.1.0" />
+    <PackageReference Include="ITI.SFML.Window" Version="0.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Summoner\Trinity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="program.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
 </Project>
