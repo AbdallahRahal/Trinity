@@ -65,9 +65,19 @@ namespace Trinity
             get { return _base_max_life_point + _bonus_max_life_point; }
         }
 
+        public uint Bonus_max_life_point
+        {
+            set { _bonus_max_life_point = value; }
+        }
+
         public uint Power
         {
             get { return _base_power + _bonus_power; }
+        }
+
+        public uint Bonus_power
+        {
+            set { _bonus_power = value; }
         }
 
         public uint Mana_point
@@ -81,14 +91,29 @@ namespace Trinity
             get { return _base_max_mana_point + _bonus_max_mana_point; }
         }
 
+        public uint Bonus_max_mana_point
+        {
+            set { _bonus_max_mana_point = value; }
+        }
+
         public uint Dodge_rate
         {
             get { return _base_dodge_rate + _bonus_dodge_rate; }
         }
 
+        public uint Bonus_dodge_rate
+        {
+            set { _bonus_dodge_rate = value; }
+        }
+
         public uint Accuracy
         {
             get { return _base_accuracy + _bonus_accuracy; }
+        }
+
+        public uint Bonus_accuracy
+        {
+            set { _bonus_accuracy = value; }
         }
         
         public bool is_alive()
