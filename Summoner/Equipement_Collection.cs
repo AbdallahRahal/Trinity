@@ -10,33 +10,68 @@ namespace Trinity
     {
         readonly Dictionary<string, Equipement> _equipements;
 
-        internal Equipement_Collection()
+        public Equipement_Collection()
         {
 
             _equipements = new Dictionary<string, Equipement>();
         }
 
-        public Armor Create_Equipement(string name , string type, Dictionary<string,int> stats )
+        public Hat Create_Hat(string name , uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy )
         {
-            //type = type de la piece d'armure , chapeau,plastron, jambiere, botte
+           
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
-            Armor armor = new Armor(name,type,stats);
 
-            _equipements.Add(name, armor);
-            return armor;
+            Hat hat = new Hat(name, max_life_point, max_mana_point, dodge_rate, accuracy);
+
+            _equipements.Add(name, hat);
+            return hat;
+        }
+        public Breastplate Create_Breastplate(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy)
+        {
+
+            if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
+
+            Breastplate breastplate = new Breastplate(name, max_life_point, max_mana_point, dodge_rate, accuracy);
+
+            _equipements.Add(name, breastplate);
+            return breastplate;
         }
 
-        public Weapon Create_Equipement(string name, string type, uint power)
+
+        public Leg Create_Leg(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy)
+        {
+
+            if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
+
+            Leg leg = new Leg(name, max_life_point, max_mana_point, dodge_rate, accuracy);
+
+            _equipements.Add(name, leg);
+            return leg;
+        }
+
+
+        public Boots Create_Boots(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy)
+        {
+
+            if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
+
+            Boots boots = new Boots(name, max_life_point, max_mana_point, dodge_rate, accuracy);
+
+            _equipements.Add(name, boots);
+            return boots;
+        }
+
+        public Weapon Create_Weapon(string name,  uint power)
         {
             //type = type de l'arme, arc, baton , epée ...
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements with this name already exists.", nameof(name));
-            Weapon weapon = new Weapon(name, type, power);
+            Weapon weapon = new Weapon(name, power);
 
             _equipements.Add(name, weapon);
             return weapon;
         }
 
-        public Gem Create_Equipement(string name, uint ratio, Spell spell, string description)
+        public Gem Create_Gem(string name, uint ratio, Spell spell, string description)
         {
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements with this name already exists.", nameof(name));
             Gem gem = new Gem(name, ratio, spell, description);
@@ -45,6 +80,10 @@ namespace Trinity
             return gem;
         }
 
+        public Dictionary<string, Equipement> Equipement_Dictionnary
+        {
+            get { return _equipements; }
+        }
 
 
 

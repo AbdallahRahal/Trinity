@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<<<<<<< HEAD
+<<<<<<< HEAD
+<test-results name="C:\S3\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.UnitTests.dll" total="3" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2019-04-11" time="09:09:53">
+  <environment nunit-version="2.6.4.14350" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Users\Abdel\.nuget\packages\nunit.runners.net4\2.6.4\tools" machine-name="DESKTOP-BEU4GND" user="Abdel" user-domain="DESKTOP-BEU4GND" />
+  <culture-info current-culture="fr-FR" current-uiculture="fr-FR" />
+  <test-suite type="Assembly" name="C:\S3\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.UnitTests.dll" executed="True" result="Success" success="True" time="10.608" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="Trinity" executed="True" result="Success" success="True" time="10.607" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="UnitTests" executed="True" result="Success" success="True" time="10.606" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="UnitTests_Equipement" executed="True" result="Success" success="True" time="10.477" asserts="0">
+                <results>
+                  <test-case name="Trinity.UnitTests.UnitTests_Equipement.Create_Equipement" executed="True" result="Success" success="True" time="10.443" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="UnitTests_Minion" executed="True" result="Inconclusive" success="False" time="0.000" asserts="0" />
+              <test-suite type="TestFixture" name="UnitTests_Summoner" executed="True" result="Success" success="True" time="0.014" asserts="0">
+                <results>
+                  <test-case name="Trinity.UnitTests.UnitTests_Summoner.Create_Summoner" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                  <test-case name="Trinity.UnitTests.UnitTests_Summoner.Try_New_direction" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+=======
+<test-results name="C:\Users\MBA MORGAN\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.UnitTests.dll" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2019-04-10" time="12:00:39">
+=======
+<test-results name="C:\Users\MBA MORGAN\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.UnitTests.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2019-04-16" time="10:05:02">
+>>>>>>> 03ac89c1ca17917a58602bef119db2f95e6032ea
+  <environment nunit-version="2.6.4.14350" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 6.2.9200.0" platform="Win32NT" cwd="C:\Users\MBA MORGAN\.nuget\packages\nunit.runners.net4\2.6.4\tools" machine-name="DESKTOP-O303NP6" user="MBA MORGAN" user-domain="DESKTOP-O303NP6" />
+  <culture-info current-culture="fr-FR" current-uiculture="fr-FR" />
+  <test-suite type="Assembly" name="C:\Users\MBA MORGAN\Trinity\Trinity.UnitTests\bin\Debug\net461\Trinity.UnitTests.dll" executed="True" result="Success" success="True" time="0.005" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="Trinity" executed="True" result="Success" success="True" time="0.005" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="UnitTests" executed="True" result="Success" success="True" time="0.005" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="UnitTests_Summoner" executed="True" result="Success" success="True" time="0.004" asserts="0">
+                <results>
+<<<<<<< HEAD
+                  <test-case name="Trinity.UnitTests.UnitTests_Minion.Create_Equipement" executed="True" result="Error" success="False" time="0.001" asserts="0">
+                    <failure>
+                      <message><![CDATA[System.ArgumentException : Un objet est deja equipé, ou le type de l'equipement n'est pas un : Hat,breastplate,leg,boots,weapon ou gem  ]]></message>
+                      <stack-trace><![CDATA[à Trinity.Armory.Equip(Equipement equip)
+à Trinity.UnitTests.UnitTests_Minion.Create_Equipement()
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+>>>>>>> ffb0d4553ad3fb6adf1c77ff56b8de2c6c33f46d
+=======
+                  <test-case name="Trinity.UnitTests.UnitTests_Summoner.Create_Summoner" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+>>>>>>> 03ac89c1ca17917a58602bef119db2f95e6032ea
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

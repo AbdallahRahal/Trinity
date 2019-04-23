@@ -8,14 +8,26 @@ namespace Trinity
     {
         readonly Dictionary<string, Minion> _minions;
         readonly Dictionary<string, Equipement> _equipements;
+        Minion _minion1;
+        Minion _minion2;
+        Minion _minion3;
+        Tower _context;
 
         Summoner summoner;
 
-        internal Inventory()
+        public Inventory(Tower context)
         {
             _minions = new Dictionary<string, Minion>();
             _equipements = new Dictionary<string, Equipement>();
+            _context = context;
         }
+
+        public Dictionary<string, Equipement> Equipement
+        {
+            get { return _equipements; }
+        }
+
+        public Tower Tower { get { return _context; } }
 
         /// <summary>
         /// Find Minion by it name
@@ -30,21 +42,61 @@ namespace Trinity
         }
 
         /// <summary>
-        ///add a minion from a inventory 
-        /// </summary>
-        /// <param name="minion"></param>
-        /*public void  
-        {
-            
-        }*/
-
-        /// <summary>
         ///Remove a minion from a inventory 
         /// </summary>
         /// <param name="minion"></param>
         public void RemoveMinion(Minion m)
         {
             if (_minions.TryGetValue(m.Name, out m)) _minions.Remove(m.Name);
+        }
+
+        /// <summary>
+        ///add a minion from a inventory 
+        /// </summary>
+        /// <param name="minion"></param>
+        public bool Attach_Minons(Minion minion)
+        {
+            if ( _context.Minion_Collection.Minion_Dictionnary.ContainsKey(minion.Name) && minion.is_Attach == false)
+            {
+                minion.is_Attach = true;
+
+                if (_minion1 == null)
+                {
+                    _minion1 = minion;
+                    _minions.Add(minion.Name, minion);
+                }
+               else if (_minion2 == null)
+                {
+                    _minion2 = minion;
+                    _minions.Add(minion.Name, minion);
+                }
+                else if (_minion3 == null)
+                {
+                    _minion3 = minion;
+                    _minions.Add(minion.Name, minion);
+                }
+                else
+                {
+                    throw new ArgumentException("les minions sont deja attachés");
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public Minion Minion1
+        {
+            get { return _minion1; }
+        }
+
+        public Minion Minion2
+        {
+            get { return _minion2; }
+        }
+
+        public Minion Minion3
+        {
+            get { return _minion3; }
         }
     }
 }

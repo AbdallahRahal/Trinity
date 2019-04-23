@@ -1,4 +1,3 @@
-C:\S3\Trinity\Summoner\obj\Debug\net461\Trinity.csprojAssemblyReference.cache
 C:\S3\Trinity\Summoner\obj\Debug\net461\Trinity.csproj.CoreCompileInputs.cache
 C:\S3\Trinity\Summoner\obj\Debug\net461\Trinity.AssemblyInfoInputs.cache
 C:\S3\Trinity\Summoner\obj\Debug\net461\Trinity.AssemblyInfo.cs
