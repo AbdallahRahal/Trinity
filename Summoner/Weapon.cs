@@ -22,5 +22,9 @@ namespace Trinity
             get { return _power; }
         }
        
+        public uint Update()
+        {
+            return _power;
+        }
     }
 }

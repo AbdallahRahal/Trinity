@@ -7,13 +7,23 @@ namespace Trinity
     public class Minion
     {
         readonly string _name;
+        // life_point
         uint _life_point;
-        uint _max_life_point;
-        uint _power;
+        readonly uint _base_max_life_point;
+        uint _bonus_max_life_point;
+        // mana_point
         uint _mana_point;
-        uint _max_mana_point;
-        uint _dodge_rate;
-        uint _accuracy;
+        readonly uint _base_max_mana_point;
+        uint _bonus_max_mana_point;
+        // power
+        readonly uint _base_power;
+        uint _bonus_power;
+        // dodge_rate
+        readonly uint _base_dodge_rate;
+        uint _bonus_dodge_rate;
+        // accuracy
+        readonly uint _base_accuracy;
+        uint _bonus_accuracy;
         bool _is_Attach;
         Tower _context;
 
@@ -23,11 +33,11 @@ namespace Trinity
         public Minion ( string name, uint power, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, Tower context )
         {
             _name = name;
-            _life_point = _max_life_point = max_life_point;
-            _mana_point = _max_mana_point = max_mana_point;
-            _power = power;
-            _dodge_rate = dodge_rate;
-            _accuracy = accuracy;
+            _life_point = _base_max_life_point = max_life_point;
+            _mana_point = _base_max_mana_point = max_mana_point;
+            _base_power = power;
+            _base_dodge_rate = dodge_rate;
+            _base_accuracy = accuracy;
             _context = context;
             _is_Attach = false;
             _armories = new Armory(this, context);
@@ -52,14 +62,12 @@ namespace Trinity
         
         public uint Max_life_point
         {
-            get { return _max_life_point; }
-            set { _max_life_point = value; }
+            get { return _base_max_life_point + _bonus_max_life_point; }
         }
 
         public uint Power
         {
-            get { return _power; }
-            set { _power = value; }
+            get { return _base_power + _bonus_power; }
         }
 
         public uint Mana_point
@@ -70,23 +78,19 @@ namespace Trinity
 
         public uint Max_mana_point
         {
-            get { return _max_mana_point; }
-            set { _max_mana_point = value; }
+            get { return _base_max_mana_point + _bonus_max_mana_point; }
         }
 
         public uint Dodge_rate
         {
-            get { return _dodge_rate; }
-            set { _dodge_rate = value; }
+            get { return _base_dodge_rate + _bonus_dodge_rate; }
         }
 
         public uint Accuracy
         {
-            get { return _accuracy; }
-            set { _accuracy = value; }
+            get { return _base_accuracy + _bonus_accuracy; }
         }
         
-
         public bool is_alive()
         {
           return (_life_point > 0) ?  true :  false;
