@@ -117,11 +117,7 @@ namespace Trinity
 
         public uint Bonus_accuracy
         {
-<<<<<<< HEAD
-
-=======
             get { return _bonus_accuracy; }
->>>>>>> 3c9ca388841d7143a8b020c7b244c381d595fa81
             set { _bonus_accuracy = value; }
         }
         
