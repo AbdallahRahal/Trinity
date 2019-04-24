@@ -113,6 +113,7 @@ namespace Trinity
 
         public uint Bonus_accuracy
         {
+
             set { _bonus_accuracy = value; }
         }
         

@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 using SFML.Graphics;
 using SFML.System;
-using SFML.Window;
+using System.IO;
 
 namespace Trinity.UI
 {
-    class Program
+    static class Program
     {
-        public static void Main(string[] args)
+        static void Main()
         {
-            SFML.GraphicsNative.Load();
-            SFML.AudioNative.Load();
-            Trinity trinity = new Trinity();
-            trinity.Run();
+            Game game = new Game();
+            game.Start();
         }
     }
 }
