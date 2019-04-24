@@ -1,4 +1,6 @@
-﻿namespace Trinity
+﻿using System.Collections.Generic;
+
+namespace Trinity
 {
     public class Equipement_Nospell : Equipement
     {
@@ -33,6 +35,16 @@
         public uint Accuracy
         {
             get { return _accuracy; }
+        }
+
+        public Dictionary<string,uint> Update()
+        {
+            Dictionary<string, uint> stats = new Dictionary<string, uint>();
+            stats.Add("_max_life_point", _max_life_point);
+            stats.Add("_max_mana_point", _max_mana_point);
+            stats.Add("_dodge_rate", _dodge_rate);
+            stats.Add("_accuracy", _accuracy);
+            return stats;
         }
     }
 }

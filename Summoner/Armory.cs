@@ -45,6 +45,7 @@ namespace Trinity
             {
                 throw new ArgumentException("Un objet est deja equipé ");
             }
+            Update();
             return true;
         }
 
@@ -61,6 +62,7 @@ namespace Trinity
             {
                 throw new ArgumentException("Un objet est deja equipé ");
             }
+            Update();
             return true;
         }
         public bool Equip(Breastplate breastplate)
@@ -76,6 +78,7 @@ namespace Trinity
             {
                 throw new ArgumentException("Un objet est deja equipé ");
             }
+            Update();
             return true;
         }
 
@@ -93,6 +96,7 @@ namespace Trinity
             {
                 throw new ArgumentException("Un objet est deja equipé ");
             }
+            Update();
             return true;
         }
 
@@ -109,6 +113,7 @@ namespace Trinity
             {
                 throw new ArgumentException("Un objet est deja equipé ");
             }
+            Update();
             return true;
         }
         public bool Equip(Gem gem)
@@ -124,10 +129,76 @@ namespace Trinity
             {
                 throw new ArgumentException("Un objet est deja equipé ");
             }
+            Update();
             return true;
         }
 
-        public bool Desequip(string name)
+        public void Update()
+        {
+            uint _max_life_point = 0;
+            uint _max_mana_point = 0;
+            uint _dodge_rate = 0;
+            uint _accuracy = 0;
+            uint _power = 0;
+
+            if (_hat != null) {
+
+                Dictionary<string, uint> stats = _hat.Update();
+                _max_life_point += stats["_max_life_point"];
+                _max_mana_point += stats["_max_mana_point"];
+                _dodge_rate += stats["_dodge_rate"];
+                _accuracy += stats["_accuracy"];
+
+            }
+            if (_breastplate != null)
+            {
+
+                Dictionary<string, uint> stats = _breastplate.Update();
+                _max_life_point += stats["_max_life_point"];
+                _max_mana_point += stats["_max_mana_point"];
+                _dodge_rate += stats["_dodge_rate"];
+                _accuracy += stats["_accuracy"];
+
+            }
+            if (_leg != null)
+            {
+
+                Dictionary<string, uint> stats = _leg.Update();
+                _max_life_point += stats["_max_life_point"];
+                _max_mana_point += stats["_max_mana_point"];
+                _dodge_rate += stats["_dodge_rate"];
+                _accuracy += stats["_accuracy"];
+
+            }
+            if (_boots != null)
+            {
+
+                Dictionary<string, uint> stats = _boots.Update();
+                _max_life_point += stats["_max_life_point"];
+                _max_mana_point += stats["_max_mana_point"];
+                _dodge_rate += stats["_dodge_rate"];
+                _accuracy += stats["_accuracy"];
+
+            }
+            if (_weapon != null)
+            {
+
+                _power += _weapon.Update();
+
+            }
+
+            _minion.Bonus_max_life_point = _max_life_point;
+            _minion.Bonus_max_mana_point = _max_mana_point;
+            _minion.Bonus_dodge_rate = _dodge_rate;
+            _minion.Bonus_accuracy = _accuracy;
+            _minion.Bonus_power = _power;
+
+        }
+
+        
+
+
+            public bool Desequip(string name)
         {
            
             if (_equipements.ContainsKey(name))
