@@ -18,7 +18,7 @@ namespace Trinity.UI
             int tilemapwidth = 65;
             int tilemapheight = 150;
             int tilesize = 32;
-
+            
             Texture texture = new Texture("C:/S3/Trinity/Trinity.UI/Map/terrain.png");
             Sprite[] tilemap = new Sprite[tilemapwidth * tilemapheight];
 

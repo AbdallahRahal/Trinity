@@ -10,12 +10,14 @@ namespace Trinity.UI
 {
     class Game
     {
-           static Tower tower = new Tower();
+        static Tower tower = new Tower();
         static Summoner summoner = new Summoner("Joueur", tower);
-        static Inventory_UI inventory_UI = new Inventory_UI("C:/S3/Trinity/Trinity.UI/Sprites/Inventory.png", summoner);
+        static Inventory_UI inventory_UI = new Inventory_UI("C:/dev/Trinity/Trinity.UI/Sprites/Inventory.png", summoner);
          
         public void Start()
         {
+
+            Map map = new Map();
             Weapon arc = tower.Equipement_Collection.Create_Weapon("Arc de Ryan", 50, "C:/S3/Trinity/Trinity.UI/Sprites/arc.png");
             Weapon arcc = tower.Equipement_Collection.Create_Weapon("Arc de Ryyan", 50, "C:/S3/Trinity/Trinity.UI/Sprites/arcc.png");
 
@@ -30,17 +32,15 @@ namespace Trinity.UI
             
 
             // Generation
-            /* Map map = new Map(); */
             Player player = new Player();
 
             Clock clock = new Clock();
 
-            Map map = new Map();
 
             while (window.IsOpen)
             {
                 window.DispatchEvents();
-                window.Clear(new Color(0, 0, 0))  ;
+                map.Draw(window);
 
                 float deltaTime = clock.Restart().AsSeconds();
 
@@ -55,7 +55,7 @@ namespace Trinity.UI
 
                 if (inventory_UI.Drawed) { inventory_UI.Draw(window); }
                 
-                map.Draw(window);
+               
 
                 window.Display();
             }
