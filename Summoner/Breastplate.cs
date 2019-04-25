@@ -8,7 +8,7 @@ namespace Trinity
 {
     public class Breastplate : Equipement_Nospell
         {
-            public Breastplate(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy) : base(name, max_life_point, max_mana_point, dodge_rate, accuracy)
+            public Breastplate(string name, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy,string path) : base(name, max_life_point, max_mana_point, dodge_rate, accuracy,path)
             {
             }
         }

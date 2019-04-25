@@ -40,14 +40,22 @@ namespace Trinity
             _minions.TryGetValue(name, out result);
             return result;
         }
-
+        public void AddEquip(Equipement equip)
+        {
+            _equipements.Add(equip.Name, equip);
+           
+        }
+        public void RemovEquip(Equipement equip)
+        {
+            if (_equipements.TryGetValue(equip.Name, out equip)) { _equipements.Remove(equip.Name);}
+        }
         /// <summary>
         ///Remove a minion from a inventory 
         /// </summary>
         /// <param name="minion"></param>
         public void RemoveMinion(Minion m)
         {
-            if (_minions.TryGetValue(m.Name, out m)) _minions.Remove(m.Name);
+            if (_minions.TryGetValue(m.Name, out m)) { _minions.Remove(m.Name); m.is_Attach = false; }
         }
 
         /// <summary>
@@ -58,22 +66,25 @@ namespace Trinity
         {
             if ( _context.Minion_Collection.Minion_Dictionnary.ContainsKey(minion.Name) && minion.is_Attach == false)
             {
-                minion.is_Attach = true;
+               
 
                 if (_minion1 == null)
                 {
                     _minion1 = minion;
                     _minions.Add(minion.Name, minion);
+                    minion.is_Attach = true;
                 }
                else if (_minion2 == null)
                 {
                     _minion2 = minion;
                     _minions.Add(minion.Name, minion);
+                    minion.is_Attach = true;
                 }
                 else if (_minion3 == null)
                 {
                     _minion3 = minion;
                     _minions.Add(minion.Name, minion);
+                    minion.is_Attach = true;
                 }
                 else
                 {

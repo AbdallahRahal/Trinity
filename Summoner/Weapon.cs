@@ -11,7 +11,7 @@ namespace Trinity
        
         uint _power;
 
-        public Weapon(string name,  uint power) : base(name)
+        public Weapon(string name,  uint power,string path) : base(name, path)
         {
             _power = power;
          
