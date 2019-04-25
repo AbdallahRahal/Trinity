@@ -27,10 +27,26 @@ namespace Trinity.UI
             window.Closed += Window_Closed;
             window.KeyPressed += Window_KeyPressed;
             
+
+            // Generation
+            /* Map map = new Map(); */
+            Player player = new Player();
+
+            Clock clock = new Clock();
+
             while (window.IsOpen)
             {
                 window.DispatchEvents();
-                window.Clear(new Color(43, 100, 0, 0));
+                window.Clear(new Color(0, 0, 0))  ;
+
+                float deltaTime = clock.Restart().AsSeconds();
+
+                // Update
+                player.Update(deltaTime);
+
+                // Draw 
+                /* map.Draw(window); */
+                player.Draw(window);
 
                 
 

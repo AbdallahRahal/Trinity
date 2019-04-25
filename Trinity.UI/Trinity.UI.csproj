@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Folder Include="Maps\" />
   </ItemGroup>
 
   <ItemGroup>
