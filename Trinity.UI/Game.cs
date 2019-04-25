@@ -16,11 +16,14 @@ namespace Trinity.UI
             window.SetFramerateLimit(60);
             window.Closed += Window_Closed;
 
+            Map map = new Map();
+
             while (window.IsOpen)
             {
                 window.DispatchEvents();
 
-                window.Clear(new Color(43, 100, 0, 0));
+                //ndow.Clear(new Color(43, 100, 0, 0));
+                map.Draw(window);
 
                 window.Display();
             }
