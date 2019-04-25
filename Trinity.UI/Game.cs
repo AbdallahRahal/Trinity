@@ -34,6 +34,8 @@ namespace Trinity.UI
 
             Clock clock = new Clock();
 
+            Map map = new Map();
+
             while (window.IsOpen)
             {
                 window.DispatchEvents();
@@ -51,7 +53,8 @@ namespace Trinity.UI
                 
 
                 if (inventory_UI.Drawed) { inventory_UI.Draw(window); }
-
+                
+                map.Draw(window);
 
                 window.Display();
             }
