@@ -17,7 +17,6 @@ namespace Trinity.UI
             Anim_Down = new Animation(0, 0, 4);
             Anim_Right = new Animation(128, 0, 4);
 
-            moveSpeed = 250;
             animationSpeed = 0.05f;
         }
 
@@ -42,6 +41,10 @@ namespace Trinity.UI
                 this.CurrentState = CharacterState.MovingRight;
             }
 
+            if(Keyboard.IsKeyPressed(Keyboard.Key.LShift))
+            {
+                moveSpeed = 400;
+            }
             base.Update(deltaTime);
         }
     }

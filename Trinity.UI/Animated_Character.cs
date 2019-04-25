@@ -91,6 +91,7 @@ namespace Trinity.UI
                 }
                 animationClock.Restart();
             }
+            moveSpeed = 150;
             sprite.TextureRect = spriteRect;
         }
         public void Draw(RenderWindow window)
