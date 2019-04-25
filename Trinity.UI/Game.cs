@@ -12,12 +12,12 @@ namespace Trinity.UI
     {
            static Tower tower = new Tower();
         static Summoner summoner = new Summoner("Joueur", tower);
-        static Inventory_UI inventory_UI = new Inventory_UI("C:/S3/Trinity/Trinity.UI/Resources/Inventory.png", summoner);
+        static Inventory_UI inventory_UI = new Inventory_UI("C:/dev/Trinity/Trinity.UI/Sprites/Inventory.png", summoner);
          
         public void Start()
         {
-            Weapon arc = tower.Equipement_Collection.Create_Weapon("Arc de Ryan", 50, "C:/S3/Trinity/Trinity.UI/Resources/arc.png");
-            Weapon arcc = tower.Equipement_Collection.Create_Weapon("Arc de Ryyan", 50, "C:/S3/Trinity/Trinity.UI/Resources/arcc.png");
+            Weapon arc = tower.Equipement_Collection.Create_Weapon("Arc de Ryan", 50, "C:/dev/Trinity/Trinity.UI/Sprites/arc.png");
+            Weapon arcc = tower.Equipement_Collection.Create_Weapon("Arc de Ryyan", 50, "C:/dev/Trinity/Trinity.UI/Sprites/arcc.png");
 
             summoner.Inventory.AddEquip(arc);
             summoner.Inventory.AddEquip(arcc);
