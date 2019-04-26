@@ -13,7 +13,7 @@ namespace Trinity.UI
         int mapwidth = 100;
         int mapheight = 100;
 
-        public Map()
+        public Map(RenderWindow window)
         {
             int tilemapwidth = 64;
             int tilemapheight = 32;
@@ -42,7 +42,7 @@ namespace Trinity.UI
                 {
                     int id = Convert.ToInt32(items[x]);
                     tiles[x, y] = new Sprite(tilemap[id]);
-                    tiles[x, y].Position = new SFML.System.Vector2f(tilesize * x, tilesize * y);
+                    tiles[x, y].Position = new SFML.System.Vector2f(tilesize*window.Size.X/1700 * x, tilesize * window.Size.Y / 900 * y);
                 }
             }
             reader.Close();
@@ -54,6 +54,7 @@ namespace Trinity.UI
             {
                 for (int x = 0; x < mapwidth; x++)
                 {
+                    //x = /1700
                     window.Draw(tiles[x, y]);
                 }
             }
