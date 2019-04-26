@@ -18,8 +18,8 @@ namespace Trinity.UI
         {
 
             Map map = new Map();
-            Weapon arc = tower.Equipement_Collection.Create_Weapon("Arc de Ryan", 50, "C:/dev/Trinity/Trinity.UI/Sprites/arc.png");
-            Weapon arcc = tower.Equipement_Collection.Create_Weapon("Arc de Ryyan", 50, "C:/dev/Trinity/Trinity.UI/Sprites/arcc.png");
+            Weapon arc = tower.Equipement_Collection.Create_Weapon("Arc de Ryan", 50, "C:/S3/Trinity/Trinity.UI/Sprites/arc.png");
+            Weapon arcc = tower.Equipement_Collection.Create_Weapon("Arc de Ryyan", 50, "C:/S3/Trinity/Trinity.UI/Sprites/arcc.png");
 
             summoner.Inventory.AddEquip(arc);
             summoner.Inventory.AddEquip(arcc);
@@ -28,6 +28,7 @@ namespace Trinity.UI
             window.SetFramerateLimit(60);
             window.Closed += Window_Closed;
             window.KeyPressed += Window_KeyPressed;
+            
             
 
             // Generation

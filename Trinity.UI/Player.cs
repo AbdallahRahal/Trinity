@@ -10,7 +10,7 @@ namespace Trinity.UI
 {
     class Player : Animated_Character
     {
-        public Player() : base("C:/dev/Trinity/Trinity.UI/Sprites/Sprite_Character.png", 64)
+        public Player() : base("C:/S3/Trinity/Trinity.UI/Sprites/Sprite_Character.png", 64)
         {
             
             Anim_Up = new Animation(192, 0, 4);

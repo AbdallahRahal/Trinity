@@ -18,8 +18,8 @@ namespace Trinity.UI
             int tilemapwidth = 64;
             int tilemapheight = 32;
             int tilesize = 32;
-
-            Texture texture = new Texture("C:/dev/Trinity/Trinity.UI/Maps/terrain.png");
+            
+            Texture texture = new Texture("C:/S3/Trinity/Trinity.UI/Map/terrain.png");
             Sprite[] tilemap = new Sprite[tilemapwidth * tilemapheight];
 
             for (int y = 0; y < tilemapheight; y++)
@@ -33,6 +33,7 @@ namespace Trinity.UI
 
             tiles = new Sprite[mapwidth, mapheight];
             StreamReader reader = new StreamReader("C:/dev/Trinity/Trinity.UI/Maps/map_test.csv");
+
 
             for (int y = 0; y < mapheight; y++)
             {

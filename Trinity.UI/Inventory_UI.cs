@@ -40,9 +40,24 @@ namespace Trinity.UI
             
             foreach (KeyValuePair<string, Equipement> equip in _summoner.Inventory.Equipement) {
              
-               Sprite spriteEquip = new Sprite(new Texture(equip.Value.Path));
+                Sprite spriteEquip = new Sprite(new Texture(equip.Value.Path));
                 spriteEquip.Position = new Vector2f(27 + x*62, 286);
                 window.Draw(spriteEquip);
+
+                if(Mouse.GetPosition().Equals(  spriteEquip.Position))
+                {
+                    window.Close();
+                }
+
+
+
+
+
+
+
+
+
+
                 x++;
                 if (x == 9)
                 {
@@ -50,7 +65,6 @@ namespace Trinity.UI
                     y++;
                 }
             }
-            //Update();
         }
         public bool  Drawed
         {
