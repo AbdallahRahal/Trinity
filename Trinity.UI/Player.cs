@@ -12,6 +12,7 @@ namespace Trinity.UI
     {
         public Player() : base("C:/dev/Trinity/Trinity.UI/Sprites/Sprite_Character.png", 64)
         {
+            
             Anim_Up = new Animation(192, 0, 4);
             Anim_Left = new Animation(64, 0, 4);
             Anim_Down = new Animation(0, 0, 4);
