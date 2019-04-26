@@ -42,7 +42,8 @@ namespace Trinity.UI
                 Sprite spriteEquip = new Sprite(new Texture(equip.Value.Path));
                 spriteEquip.Position = new Vector2f(27 + x*62, 286);
                 window.Draw(spriteEquip);
-                Console.WriteLine("X = {0} et le sprite fait de {1} à {2}", Mouse.GetPosition().X, spriteEquip.Position.X, spriteEquip.Position.X + spriteEquip.Texture.Size.X);
+                Console.WriteLine("X = {0}, Y = {1} et le sprite fait de {2}  et la fentre max est  {3}", Mouse.GetPosition(window).X, Mouse.GetPosition(window).Y, spriteEquip.GetLocalBounds()
+, window.Size );
 
                 if (Mouse.GetPosition().X > spriteEquip.Position.X &&
                        Mouse.GetPosition().X < spriteEquip.Position.X + spriteEquip.Texture.Size.X &&
@@ -53,8 +54,7 @@ namespace Trinity.UI
                         Drawed = !Drawed;
                     }
 
-
-
+                
 
 
 
