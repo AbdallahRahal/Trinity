@@ -40,6 +40,7 @@ namespace Trinity.UI
             while (window.IsOpen)
             {
                 window.DispatchEvents();
+                window.Clear();
                 map.Draw(window);
 
                 float deltaTime = clock.Restart().AsSeconds();

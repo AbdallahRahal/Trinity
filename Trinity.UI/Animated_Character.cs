@@ -18,8 +18,8 @@ namespace Trinity.UI
     }
     abstract class Animated_Character
     {
-        public float Xpos { get; set; }
-        public float Ypos { get; set; }
+        public float Xpos = 818;
+        public float Ypos = 770;
 
         private Sprite sprite;
         private IntRect spriteRect;
