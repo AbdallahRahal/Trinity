@@ -5,12 +5,12 @@ using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
 using SFML.Audio;
-
+using System.IO;
 namespace Trinity.UI
 {
     class Player : Animated_Character
     {
-        public Player() : base("C:/S3/Trinity/Trinity.UI/Sprites/Sprite_Character.png", 64)
+        public Player() : base(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Sprite_Character.png"), 64)
         {
             Anim_Up = new Animation(192, 0, 4);
             Anim_Left = new Animation(64, 0, 4);

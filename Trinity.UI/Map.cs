@@ -19,7 +19,7 @@ namespace Trinity.UI
             int tilemapheight = 150;
             int tilesize = 32;
             
-            Texture texture = new Texture("C:/S3/Trinity/Trinity.UI/Map/terrain.png");
+            Texture texture = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Maps/terrain.png"));
             Sprite[] tilemap = new Sprite[tilemapwidth * tilemapheight];
 
             for (int y = 0; y < tilemapheight; y++)
@@ -32,7 +32,7 @@ namespace Trinity.UI
             }
 
             tiles = new Sprite[mapwidth, mapheight];
-            StreamReader reader = new StreamReader("C:/S3/Trinity/Trinity.UI/Map/mapTriinity.csv");
+            StreamReader reader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "../../../Maps/map_trinity.csv"));
 
             for (int y = 0; y < mapheight; y++)
             {

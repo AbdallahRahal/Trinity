@@ -15,7 +15,7 @@ namespace Trinity.UI
         Texture texture;
         bool _draw;
         Summoner _summoner ;
-        
+
         public Inventory_UI(string filename, Summoner summoner)
         {
            
@@ -25,8 +25,7 @@ namespace Trinity.UI
             _summoner = summoner;
 
         }
-
-
+        
         public void Update()
         {
            
@@ -43,12 +42,16 @@ namespace Trinity.UI
                 Sprite spriteEquip = new Sprite(new Texture(equip.Value.Path));
                 spriteEquip.Position = new Vector2f(27 + x*62, 286);
                 window.Draw(spriteEquip);
+                Console.WriteLine("X = {0} et le sprite fait de {1} à {2}", Mouse.GetPosition().X, spriteEquip.Position.X, spriteEquip.Position.X + spriteEquip.Texture.Size.X);
 
-                if(Mouse.GetPosition().Equals(  spriteEquip.Position))
-                {
-                    window.Close();
-                }
-
+                if (Mouse.GetPosition().X > spriteEquip.Position.X &&
+                       Mouse.GetPosition().X < spriteEquip.Position.X + spriteEquip.Texture.Size.X &&
+                       Mouse.GetPosition().Y < spriteEquip.Position.Y &&
+                       Mouse.GetPosition().Y > spriteEquip.Position.Y + spriteEquip.Texture.Size.Y
+                       )
+                    {
+                        Drawed = !Drawed;
+                    }
 
 
 
