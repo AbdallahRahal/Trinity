@@ -10,7 +10,7 @@ namespace Trinity.UI
 {
     class Player : Animated_Character
     {
-        public Player() : base(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Sprite_Character.png"), 64)
+        public Player(RenderWindow window) : base(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Sprite_Character.png"), 64,  window)
         {
             
             Anim_Up = new Animation(192, 0, 4);

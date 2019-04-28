@@ -55,7 +55,7 @@ namespace Trinity.UI
                 for (int x = 0; x < mapwidth; x++)
                 {
                     //x = /1700
-                    window.Draw(tiles[x, y]);
+                   window.Draw(tiles[x, y]);
                 }
             }
         }

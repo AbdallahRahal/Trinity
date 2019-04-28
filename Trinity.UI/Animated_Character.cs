@@ -18,8 +18,8 @@ namespace Trinity.UI
     }
     abstract class Animated_Character
     {
-        public float Xpos = 818;
-        public float Ypos = 770;
+        public float Xpos;
+        public float Ypos;
 
         private Sprite sprite;
         private IntRect spriteRect;
@@ -36,8 +36,11 @@ namespace Trinity.UI
         protected float moveSpeed = 50  ;
         protected float animationSpeed = 0.1f;
 
-        public Animated_Character(string filename, int frameSize)
+        public Animated_Character(string filename, int frameSize, RenderWindow window)
         {
+
+            Xpos = 818 * window.Size.X / 1700;
+            Ypos = 770 * window.Size.Y / 900;
             this.frameSize = frameSize;
             Texture texture = new Texture(filename);
 
