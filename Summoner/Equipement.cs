@@ -40,7 +40,7 @@ namespace Trinity
         public virtual Dictionary<string, string> Stats()
         {
             Dictionary<string, string> equip = new Dictionary<string, string>();
-            equip.Add("Nom :", _name);
+            equip.Add("Nom : ", _name);
 
             if (this is Equipement_Nospell)
             {
