@@ -10,7 +10,7 @@ namespace Trinity.UI
 {
     class Game
     {
-        static RenderWindow window = new RenderWindow(new SFML.Window.VideoMode(1700, 900), "Trinity");
+        static RenderWindow window = new RenderWindow(new SFML.Window.VideoMode(800, 600), "Trinity");
         static Tower tower = new Tower();
         static Summoner summoner = new Summoner("Joueur", tower);
         static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner, window);
@@ -42,6 +42,7 @@ namespace Trinity.UI
                 window.DispatchEvents();
                 window.Clear();
                 map.Draw(window);
+                player.collide();
 
                 float deltaTime = clock.Restart().AsSeconds();
 
