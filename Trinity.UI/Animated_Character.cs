@@ -5,6 +5,7 @@ using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
 using SFML.Audio;
+using System.IO;
 
 namespace Trinity.UI
 {
@@ -20,6 +21,8 @@ namespace Trinity.UI
     {
         public float Xpos;
         public float Ypos;
+        public float previousX;
+        public float previousY;
 
         private Sprite sprite;
         private IntRect spriteRect;
@@ -31,6 +34,7 @@ namespace Trinity.UI
         protected Animation Anim_Left;
         protected Animation Anim_Down;
         protected Animation Anim_Right;
+        
 
         private Clock animationClock;
         protected float moveSpeed = 50  ;
@@ -56,6 +60,7 @@ namespace Trinity.UI
         {
             Animation currentAnimation = null;
 
+
             switch(CurrentState)
             {
                 case CharacterState.MovingUp:
@@ -75,6 +80,9 @@ namespace Trinity.UI
                     Xpos += moveSpeed * deltaTime;
                     break;
             }
+
+            previousX = Xpos;
+            previousY = Ypos;
 
             sprite.Position = new Vector2f(Xpos, Ypos);
 
@@ -97,6 +105,46 @@ namespace Trinity.UI
             moveSpeed = 150;
             sprite.TextureRect = spriteRect;
         }
+
+        /// <summary>
+        /// initialize tiles table map and detecte collision
+        /// </summary> 
+        public void collide()
+        { 
+            StreamReader reader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "../../../Maps/map_trinity.csv"));
+            int[,] tabmap = new int[100,100];
+            for (int y = 0; y < 100; y++)
+            {
+                string line = reader.ReadLine();
+                string[] items = line.Split(',');
+
+                for (int x = 0; x < 100; x++)
+                {
+                    int id = Convert.ToInt32(items[x]);
+                    tabmap[x,y] = id;
+                }
+            }
+            reader.Close();
+
+            for (int y = 0; y < 100; y++)
+            {
+                for (int x = 0; x < 100; x++)
+                {
+                    int top = y * 32;
+                    int bottom = y * 32 + 32;
+                    int left = x * 32;
+                    int right = x * 32 + 32;
+                    if (tabmap[y, x] == 854 && Xpos + 32 >= left && Xpos <= right && Ypos + 32 >= top && Ypos <= bottom)
+                    {
+                        Xpos = previousX;
+                        Ypos = previousY;
+                        Console.WriteLine("bon");
+                        //Console.WriteLine(Ypos);
+                    }
+                }
+            }
+        }
+
         public void Draw(RenderWindow window)
         {
             window.Draw(sprite);
