@@ -26,6 +26,10 @@ namespace Trinity
         {
             get { return _equipements; }
         }
+        public Dictionary<string, Minion> minionItem
+        {
+            get { return _minions; }
+        }
 
         public Tower Tower { get { return _context; } }
 
