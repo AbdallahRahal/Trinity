@@ -11,6 +11,7 @@ namespace Trinity
     {
         readonly string _name;
         uint ratio;
+        bool is_Paid;
         bool is_Equiped;
         string _path;
 
@@ -20,6 +21,8 @@ namespace Trinity
         {
             _name = name;
             _path = path;
+
+            is_Paid = false;
             is_Equiped = false;
 
         }
@@ -27,6 +30,12 @@ namespace Trinity
         {
             get { return is_Equiped; }
             set { is_Equiped = value; }
+        }
+
+        public bool is_paid
+        {
+            get { return is_Paid; }
+            set { is_Paid = value; }
         }
 
         public string Name

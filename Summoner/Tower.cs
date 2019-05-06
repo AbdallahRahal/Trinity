@@ -7,7 +7,7 @@ namespace Trinity
     {
         readonly Equipement_Collection _equipement;
         readonly Minion_Collection _minion;
-        //readonly Summoner _summoner;
+        readonly Summoner _summoner;
 
         public Tower()
         {
@@ -26,10 +26,10 @@ namespace Trinity
             get { return _minion; }
         }
 
-        //public Summoner Summoner
-        //{
-        //    get { return _summoner; }
-        //}
+        public Summoner Summoner
+        {
+            get { return _summoner; }
+        }
 
         public Summoner Create_Summoner(string name)
         {

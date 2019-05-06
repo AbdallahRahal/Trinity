@@ -38,7 +38,7 @@ namespace Trinity
             {
                 weapon.Is_Equiped = true;
                 _weapon = weapon;
-                    _equipements.Add(weapon.Name, weapon);
+                _equipements.Add(weapon.Name, weapon);
 
             }
             else
@@ -198,7 +198,7 @@ namespace Trinity
         
 
 
-            public bool Desequip(string name)
+        public bool Desequip(string name)
         {
            
             if (_equipements.ContainsKey(name))

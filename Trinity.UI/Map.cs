@@ -37,7 +37,7 @@ namespace Trinity.UI
             {
                 string line = reader.ReadLine();
                 string[] items = line.Split(',');
-
+                
                 for (int x = 0; x < mapwidth; x++)
                 {
                     int id = Convert.ToInt32(items[x]);
@@ -47,14 +47,13 @@ namespace Trinity.UI
             }
             reader.Close();
         }
-
+        
         public void Draw(RenderWindow window)
         {
             for (int y = 0; y < mapheight; y++)
             {
                 for (int x = 0; x < mapwidth; x++)
                 {
-                    //x = /1700
                    window.Draw(tiles[x, y]);
                 }
             }

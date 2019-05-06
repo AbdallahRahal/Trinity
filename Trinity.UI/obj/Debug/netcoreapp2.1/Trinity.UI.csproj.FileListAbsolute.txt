@@ -7,3 +7,17 @@ C:\S3\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.csprojAssemblyRefere
 C:\S3\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.csproj.CoreCompileInputs.cache
 C:\S3\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.AssemblyInfoInputs.cache
 C:\S3\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.AssemblyInfo.cs
+C:\Trinity\Trinity.UI\bin\Debug\netcoreapp2.1\Trinity.UI.deps.json
+C:\Trinity\Trinity.UI\bin\Debug\netcoreapp2.1\Trinity.UI.runtimeconfig.json
+C:\Trinity\Trinity.UI\bin\Debug\netcoreapp2.1\Trinity.UI.runtimeconfig.dev.json
+C:\Trinity\Trinity.UI\bin\Debug\netcoreapp2.1\Trinity.UI.dll
+C:\Trinity\Trinity.UI\bin\Debug\netcoreapp2.1\Trinity.UI.pdb
+C:\Trinity\Trinity.UI\bin\Debug\netcoreapp2.1\Trinity.dll
+C:\Trinity\Trinity.UI\bin\Debug\netcoreapp2.1\Trinity.pdb
+C:\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.csprojAssemblyReference.cache
+C:\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.csproj.CoreCompileInputs.cache
+C:\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.AssemblyInfoInputs.cache
+C:\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.AssemblyInfo.cs
+C:\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.csproj.CopyComplete
+C:\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.dll
+C:\Trinity\Trinity.UI\obj\Debug\netcoreapp2.1\Trinity.UI.pdb
