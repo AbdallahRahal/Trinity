@@ -10,29 +10,29 @@ namespace Trinity.UI
 {
     class Game
     {
+        static RenderWindow window = new RenderWindow(new SFML.Window.VideoMode(800, 600), "Trinity");
         static Tower tower = new Tower();
         static Summoner summoner = new Summoner("Joueur", tower);
-        static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner);
+        static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner, window);
          
         public void Start()
         {
-
-            Map map = new Map();
+            
             Weapon arc = tower.Equipement_Collection.Create_Weapon("Arc de Ryan", 50, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/arc.png"));
-            Weapon arcc = tower.Equipement_Collection.Create_Weapon("Arc de Ryyan", 50, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/arcc.png"));
+            Hat carre = tower.Equipement_Collection.Create_Hat("Carré rouge",50,20,2, 4, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/arcc.png"));
 
-            summoner.Inventory.AddEquip(arc);
-            summoner.Inventory.AddEquip(arcc);
+           summoner.Inventory.AddEquip(arc);
+           summoner.Inventory.AddEquip(carre);
 
-            RenderWindow window = new RenderWindow(new SFML.Window.VideoMode(1700, 900), "Trinity");
+            
             window.SetFramerateLimit(60);
             window.Closed += Window_Closed;
             window.KeyPressed += Window_KeyPressed;
-            
-            
 
+
+            Map map = new Map(window);
             // Generation
-            Player player = new Player();
+            Player player = new Player(window);
 
             Clock clock = new Clock();
 
@@ -41,14 +41,11 @@ namespace Trinity.UI
                 window.DispatchEvents();
                 window.Clear();
                 map.Draw(window);
+                player.collide();
 
                 float deltaTime = clock.Restart().AsSeconds();
 
-                // Update
                 player.Update(deltaTime);
-
-                // Draw 
-                /* map.Draw(window); */
                 player.Draw(window);
 
                 

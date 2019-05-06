@@ -15,60 +15,29 @@ namespace Trinity.UI
         Texture texture;
         bool _draw;
         Summoner _summoner ;
+        Item item;
 
-        public Inventory_UI(string filename, Summoner summoner)
+        public Inventory_UI(string filename, Summoner summoner ,RenderWindow window)
         {
            
             texture = new Texture(filename);
             sprite = new Sprite(texture);
+            sprite.Scale = new Vector2f((float)window.Size.X / 1700f, (float)window.Size.Y / 900f);
             _draw = false;
             _summoner = summoner;
-
+            
         }
         
-        public void Update()
-        {
-           
-        }
         public void Draw(RenderWindow window)
         {
-            int x = 0;
-            int y = 0;
             _draw = true;
             window.Draw(sprite);
+            item = new Item(_summoner.Inventory.Equipement, window);
+            item.Draw(sprite);
+
             
-            foreach (KeyValuePair<string, Equipement> equip in _summoner.Inventory.Equipement) {
-             
-                Sprite spriteEquip = new Sprite(new Texture(equip.Value.Path));
-                spriteEquip.Position = new Vector2f(27 + x*62, 286);
-                window.Draw(spriteEquip);
-                Console.WriteLine("X = {0} et le sprite fait de {1} à {2}", Mouse.GetPosition().X, spriteEquip.Position.X, spriteEquip.Position.X + spriteEquip.Texture.Size.X);
-
-                if (Mouse.GetPosition().X > spriteEquip.Position.X &&
-                       Mouse.GetPosition().X < spriteEquip.Position.X + spriteEquip.Texture.Size.X &&
-                       Mouse.GetPosition().Y < spriteEquip.Position.Y &&
-                       Mouse.GetPosition().Y > spriteEquip.Position.Y + spriteEquip.Texture.Size.Y
-                       )
-                    {
-                        Drawed = !Drawed;
-                    }
-
-
-
-
-
-
-
-
-
-                x++;
-                if (x == 9)
-                {
-                    x = 0;
-                    y++;
-                }
-            }
         }
+        
         public bool  Drawed
         {
             get { return _draw; }
