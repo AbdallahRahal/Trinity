@@ -36,7 +36,6 @@ namespace Trinity.UI
 
             Clock clock = new Clock();
 
-
             while (window.IsOpen)
             {
                 window.DispatchEvents();
