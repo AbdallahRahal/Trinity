@@ -33,7 +33,6 @@ namespace Trinity.UI
             Map map = new Map(window);
             // Generation
             Player player = new Player(window);
-
             Clock clock = new Clock();
 
 

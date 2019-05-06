@@ -8,6 +8,7 @@ namespace Trinity
     {
         readonly string _name;
         Tower _context;
+        uint _money;
         readonly  Inventory _inventory;
 
 
@@ -27,6 +28,12 @@ namespace Trinity
         public Inventory Inventory
         {
             get { return _inventory;}
+        }
+
+        public uint money
+        {
+            get { return _money; }
+            set { _money = value; }
         }
     }
 }

@@ -21,8 +21,7 @@ namespace Trinity.UI
     {
         public float Xpos;
         public float Ypos;
-        public float previousX;
-        public float previousY;
+        public Vector2f OldPlace;
 
         private Sprite sprite;
         private IntRect spriteRect;
@@ -50,7 +49,7 @@ namespace Trinity.UI
 
             spriteRect = new IntRect(0, 0, frameSize, frameSize);
             sprite = new Sprite(texture, spriteRect);
-
+            sprite.Scale = new Vector2f((float)window.Size.X / 1700f, (float)window.Size.Y / 900f);
 
             animationClock = new Clock();
 
@@ -81,12 +80,11 @@ namespace Trinity.UI
                     break;
             }
 
-            previousX = Xpos;
-            previousY = Ypos;
-
             sprite.Position = new Vector2f(Xpos, Ypos);
+            //previousX = sprite.Position.X;
+            //previousY = sprite.Position.Y;
 
-            if(animationClock.ElapsedTime.AsSeconds() > animationSpeed)
+            if (animationClock.ElapsedTime.AsSeconds() > animationSpeed)
             {
                 if(currentAnimation != null)
                 {
@@ -134,12 +132,17 @@ namespace Trinity.UI
                     int bottom = y * 32 + 32;
                     int left = x * 32;
                     int right = x * 32 + 32;
-                    if (tabmap[y, x] == 854 && Xpos + 32 >= left && Xpos <= right && Ypos + 32 >= top && Ypos <= bottom)
+                    if (tabmap[y, x] != 854 && Xpos + 32 >= left && Xpos <= right && Ypos + 32 >= top && Ypos <= bottom)
                     {
-                        Xpos = previousX;
-                        Ypos = previousY;
-                        Console.WriteLine("bon");
+
+                        OldPlace = new Vector2f(Xpos, Ypos);
+                        Console.WriteLine("collision mur "+ OldPlace);
+                        Console.WriteLine(sprite.Position);
+
                         //Console.WriteLine(Ypos);
+                    }
+                    else
+                    {
                     }
                 }
             }

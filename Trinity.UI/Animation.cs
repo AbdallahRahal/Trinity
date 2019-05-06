@@ -8,7 +8,7 @@ using SFML.Audio;
 
 namespace Trinity.UI
 {
-    class Animation
+    public class Animation
     {
         public int offsetTop;
         public int offsetLeft;
