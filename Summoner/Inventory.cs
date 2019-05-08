@@ -13,8 +13,6 @@ namespace Trinity
         Minion _minion3;
         Tower _context;
 
-        Summoner summoner;
-
         public Inventory(Tower context)
         {
             _minions = new Dictionary<string, Minion>();

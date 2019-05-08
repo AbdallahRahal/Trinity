@@ -16,6 +16,7 @@ namespace Trinity
         {
             _name = name;
             _inventory = new Inventory(context);
+            _money = 100;
         }
 
         public Tower Tower { get { return _context; } }
@@ -30,7 +31,7 @@ namespace Trinity
             get { return _inventory;}
         }
 
-        public uint money
+        public uint Money
         {
             get { return _money; }
             set { _money = value; }
