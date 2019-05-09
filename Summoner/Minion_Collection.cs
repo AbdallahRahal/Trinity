@@ -17,16 +17,15 @@ namespace Trinity
             _context = context;
         }
 
-
         /// <summary>
         /// Creates a new minion in this collection.
         /// </summary>
         /// <param name="name">name of the new minion. This name must be unique otherwise an <see cref="ArgumentException"/> is thrown.</param>
         /// <returns>The newly created minion.</returns>
-        public Minion Create_Minion(string name, uint power, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy)
+        public Minion Create_Minion(string name, uint power, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, string path)
         {
             if (_minions.ContainsKey(name)) throw new ArgumentException("A minion with this name already exists.", nameof(name));
-            Minion minion = new Minion(name, power, max_life_point, max_mana_point, dodge_rate, accuracy, _context);
+            Minion minion = new Minion(name, power, max_life_point, max_mana_point, dodge_rate, accuracy, path, _context);
             _minions.Add(name, minion);
             return minion;
         }

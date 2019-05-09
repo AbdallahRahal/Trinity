@@ -7,6 +7,7 @@ namespace Trinity
     public class Minion
     {
         readonly string _name;
+        string _path;
         // life_point
         uint _life_point;
         readonly uint _base_max_life_point;
@@ -30,9 +31,10 @@ namespace Trinity
          readonly Armory _armories;
         
 
-        public Minion ( string name, uint power, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, Tower context )
+        public Minion ( string name, uint power, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, string path, Tower context )
         {
             _name = name;
+            _path = path;
             _life_point = _base_max_life_point = max_life_point;
             _mana_point = _base_max_mana_point = max_mana_point;
             _base_power = power;
@@ -75,6 +77,7 @@ namespace Trinity
         {
             get { return _base_power + _bonus_power; }
         }
+        
 
         public uint Bonus_power
         {
@@ -125,10 +128,28 @@ namespace Trinity
         {
           return (_life_point > 0) ?  true :  false;
         }
-
+        public string Path
+        {
+            get { return _path; }
+        }
         public Armory Armories
         {
             get { return _armories; }
+        }
+
+        public virtual List<string> Stats()
+        {
+
+            List<string> stats = new List<string>();
+            stats.Add(String.Concat(" ", this.Name));
+
+            stats.Add(String.Concat("Vie : ", this.Max_life_point," (",this._base_max_life_point," + ",this.Bonus_max_life_point,") "     ));
+            stats.Add(String.Concat("Mana : ", this.Max_mana_point, " (", this._base_max_mana_point, " + ", this.Bonus_max_mana_point, ") "));
+            stats.Add(String.Concat("Pouvoir : ", this.Power, " (", this._base_power, " + ", this.Bonus_power, ") "));
+            stats.Add(String.Concat("Esquive : ", this.Dodge_rate, " (", this._base_dodge_rate, " + ", this.Bonus_dodge_rate, ") "));
+            stats.Add(String.Concat("Précision : ", this.Accuracy, " (", this._base_accuracy, " + ", this.Bonus_accuracy, ") "));
+
+            return stats;
         }
     }
 }

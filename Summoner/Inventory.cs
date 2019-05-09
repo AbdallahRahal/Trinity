@@ -13,8 +13,6 @@ namespace Trinity
         Minion _minion3;
         Tower _context;
 
-        Summoner summoner;
-
         public Inventory(Tower context)
         {
             _minions = new Dictionary<string, Minion>();
@@ -25,6 +23,10 @@ namespace Trinity
         public Dictionary<string, Equipement> Equipement
         {
             get { return _equipements; }
+        }
+        public Dictionary<string, Minion> minionItem
+        {
+            get { return _minions; }
         }
 
         public Tower Tower { get { return _context; } }
@@ -108,6 +110,14 @@ namespace Trinity
         public Minion Minion3
         {
             get { return _minion3; }
+        }
+
+        public void Update()
+        {
+            if (_minion1 != null) Minion1.Armories.Update();
+            if (_minion2 != null) Minion2.Armories.Update();
+            if (_minion3 != null) Minion3.Armories.Update();
+
         }
     }
 }

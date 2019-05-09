@@ -18,7 +18,7 @@ namespace Trinity.UI
             Anim_Left = new Animation(64, 0, 4);
             Anim_Down = new Animation(0, 0, 4);
             Anim_Right = new Animation(128, 0, 4);
-
+            
             animationSpeed = 0.05f;
         }
 

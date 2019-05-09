@@ -10,16 +10,18 @@ namespace Trinity
     public abstract class Equipement
     {
         readonly string _name;
-        uint ratio;
+        uint _price;
+        bool is_Paid;
         bool is_Equiped;
         string _path;
 
-        Inventory inventory;
-
-        public Equipement(string name, string path)
+        public Equipement(string name, uint price, string path)
         {
             _name = name;
+            _price = price;
             _path = path;
+
+            is_Paid = false;
             is_Equiped = false;
 
         }
@@ -29,9 +31,19 @@ namespace Trinity
             set { is_Equiped = value; }
         }
 
+        public bool is_paid
+        {
+            get { return is_Paid; }
+            set { is_Paid = value; }
+        }
+
         public string Name
         {
             get { return _name; }
+        }
+        public uint Price
+        {
+            get { return _price; }
         }
         public string Path
         {
@@ -67,6 +79,6 @@ namespace Trinity
 
             return equip;
         }
-
+        
     }
 }
