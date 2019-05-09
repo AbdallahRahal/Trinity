@@ -10,9 +10,10 @@ namespace Trinity.UI
 {
     class Player : Animated_Character
     {
-        public Player(RenderWindow window) : base(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Sprite_Character.png"), 64,  window)
+        RenderWindow window;
+        public Player(RenderWindow _window) : base(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Sprite_Character.png"), 64,  _window)
         {
-            
+            window = _window;
             Anim_Up = new Animation(192, 0, 4);
             Anim_Left = new Animation(64, 0, 4);
             Anim_Down = new Animation(0, 0, 4);
@@ -25,7 +26,7 @@ namespace Trinity.UI
         {
             this.CurrentState = CharacterState.None;
 
-            if(Keyboard.IsKeyPressed(Keyboard.Key.Up))
+            if(Keyboard.IsKeyPressed(Keyboard.Key.Up) )
             {
                 this.CurrentState = CharacterState.MovingUp;
             }
@@ -45,6 +46,12 @@ namespace Trinity.UI
             if(Keyboard.IsKeyPressed(Keyboard.Key.LShift))
             {
                 moveSpeed = 400;
+            }
+
+            if (Keyboard.IsKeyPressed(Keyboard.Key.O))
+            {
+                Xpos = 818 * window.Size.X / 1700;
+                Ypos = 770 * window.Size.Y / 900;
             }
             base.Update(deltaTime);
         }

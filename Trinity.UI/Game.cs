@@ -12,10 +12,10 @@ namespace Trinity.UI
     class Game
     {
         static RenderWindow window = new RenderWindow(new SFML.Window.VideoMode(1700, 900), "Trinity");
-        //static Music music = new Music("../../../Music/Bloodytears.mp3");
         static Tower tower = new Tower();
         static Summoner summoner = new Summoner("Joueur", tower);
         static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner, window);
+        Player player;
         bool Onfight = false;
         public void Start()
         {
@@ -23,8 +23,8 @@ namespace Trinity.UI
             Weapon arc = tower.Equipement_Collection.Create_Weapon("Arc de Ryan", 50, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/arc.png"));
             Hat carre = tower.Equipement_Collection.Create_Hat("Carré rouge",50,20,2, 4, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/arcc.png"));
 
-           summoner.Inventory.AddEquip(arc);
-           summoner.Inventory.AddEquip(carre);
+            summoner.Inventory.AddEquip(arc);
+            summoner.Inventory.AddEquip(carre);
 
             
             window.SetFramerateLimit(60);
@@ -35,54 +35,61 @@ namespace Trinity.UI
             Map map = new Map(window,"");
             Map fight_map = new Map(window,"fight");
 
-            // Generation
-            Player player = new Player(window);
+            // Generation du player
+            player = new Player(window);
 
             Clock clock = new Clock();
-            Music music = new Music(Path.Combine(Directory.GetCurrentDirectory(), "../../../Music/Menu_Zelda.ogg"));
-            music.Play();
-
+            Music zelda_menu_music = new Music(Path.Combine(Directory.GetCurrentDirectory(), "../../../Music/Zelda_Menu_Music.ogg"));
+            Music pokemon_fight_music = new Music(Path.Combine(Directory.GetCurrentDirectory(), "../../../Music/Pokemon_Fight_Music.ogg"));
+            zelda_menu_music.Play();
+            zelda_menu_music.Loop = true;
             while (window.IsOpen)
             {
                 window.DispatchEvents();
                 window.Clear();
                 map.Draw(window);
+               
                 player.collide();
-
+               
                 float deltaTime = clock.Restart().AsSeconds();
 
                 player.Update(deltaTime);
                 player.Draw(window);
 
                 if (inventory_UI.Drawed) { inventory_UI.Draw(window); }
-               
+                pokemon_fight_music.Volume = 20;
+                pokemon_fight_music.Play();
+                pokemon_fight_music.Loop = true;
+
                 while (Onfight)
                 {
+                    zelda_menu_music.Stop();
                     window.DispatchEvents();
                     window.Clear();
-
                     fight_map.Draw(window);
-
+                    player.Draw(window);
                     window.Display();
+                    zelda_menu_music.Play();
                 }
 
                 window.Display();
             }
-
-
         }
 
-      private  void Window_KeyPressed(object sender, KeyEventArgs e)
+        private void Window_MouseMoved(object sender, MouseMoveEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private  void Window_KeyPressed(object sender, KeyEventArgs e)
         {
             if (e.Code == Keyboard.Key.I)
             {
                 inventory_UI.Drawed = !inventory_UI.Drawed;
-
             }
             if (e.Code == Keyboard.Key.F)
             {
                 Onfight = !Onfight;
-
             }
         }
 
