@@ -12,7 +12,7 @@ namespace Trinity
         Spell _spell;
         string _description;
 
-        public Gem(string name, uint ratio, Spell spell, string description,string path) : base(name,path)
+        public Gem(string name, uint price, uint ratio, Spell spell, string description,string path) : base(name, price, path)
         {
             _ratio = ratio;
             _description = description;
