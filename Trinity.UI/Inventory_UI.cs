@@ -16,6 +16,7 @@ namespace Trinity.UI
         bool _draw;
         Summoner _summoner ;
         Item item;
+        Minion_UI minion;
 
         public Inventory_UI(string filename, Summoner summoner ,RenderWindow window)
         {
@@ -30,12 +31,18 @@ namespace Trinity.UI
         
         public void Draw(RenderWindow window)
         {
+
+            _summoner.Inventory.Update();
+
             _draw = true;
             window.Draw(sprite);
+
             item = new Item(_summoner.Inventory.Equipement, window);
             item.Draw(sprite);
 
-            
+
+            minion = new Minion_UI(_summoner.Inventory.minionItem, window);
+            minion.Draw(sprite);
         }
         
         public bool  Drawed

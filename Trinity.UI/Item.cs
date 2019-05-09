@@ -7,11 +7,11 @@
     using SFML.Audio;
 using System.IO;
 
-    namespace Trinity.UI
-    {
+namespace Trinity.UI
+{
 
-        class Item
-        {
+    class Item
+    {
 
         Sprite sprite;
         RenderWindow window;
@@ -19,6 +19,8 @@ using System.IO;
         List<Sprite> itemSpriteList = new List<Sprite>();
         ItemDescription itemDescription;
         List<Equipement> equipementList = new List<Equipement>();
+        Option_Info_UI option;
+
         public Item(Dictionary<string, Equipement> equipementDictionnary, RenderWindow newWindow)
         {
             equip = equipementDictionnary;
@@ -52,12 +54,16 @@ using System.IO;
                 foreach (Sprite sprite in itemSpriteList)
                 {
 
-                    if ((float)Mouse.GetPosition(window).X > sprite.Position.X * scaleX && (float)Mouse.GetPosition(window).X < sprite.Position.X * scaleX + 54f * scaleX
-                     && (float)Mouse.GetPosition(window).Y > sprite.Position.Y * scaleY && (float)Mouse.GetPosition(window).Y < sprite.Position.Y * scaleY + 54f * scaleY)
+                    if ((float)Mouse.GetPosition(window).X > sprite.Position.X  && (float)Mouse.GetPosition(window).X < sprite.Position.X  + 54f * scaleX
+                        && (float)Mouse.GetPosition(window).Y > sprite.Position.Y  && (float)Mouse.GetPosition(window).Y < sprite.Position.Y  + 54f * scaleY)
 
                     {
                         itemDescription = new ItemDescription(equipementList[equipement], window);
                         itemDescription.Draw(window);
+                    }
+                    if (Mouse.IsButtonPressed(Mouse.Button.Left))
+                    {
+                        option = new Option_Info_UI(summoner, window);
                     }
                     equipement++;
                 }
@@ -78,4 +84,4 @@ using System.IO;
         
      
     }
-    }
+}
