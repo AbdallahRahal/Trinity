@@ -25,19 +25,19 @@ namespace Trinity.UI
         {
             this.CurrentState = CharacterState.None;
 
-            if(Keyboard.IsKeyPressed(Keyboard.Key.Z) || Keyboard.IsKeyPressed(Keyboard.Key.Up))
+            if(Keyboard.IsKeyPressed(Keyboard.Key.Up))
             {
                 this.CurrentState = CharacterState.MovingUp;
             }
-            else if(Keyboard.IsKeyPressed(Keyboard.Key.Q) || Keyboard.IsKeyPressed(Keyboard.Key.Left))
+            else if(Keyboard.IsKeyPressed(Keyboard.Key.Left))
             {
                 this.CurrentState = CharacterState.MovingLeft;
             }
-            else if(Keyboard.IsKeyPressed(Keyboard.Key.S) || Keyboard.IsKeyPressed(Keyboard.Key.Down))
+            else if(Keyboard.IsKeyPressed(Keyboard.Key.Down))
             {
                 this.CurrentState = CharacterState.MovingDown;
             }
-            else if(Keyboard.IsKeyPressed(Keyboard.Key.D) || Keyboard.IsKeyPressed(Keyboard.Key.Right))
+            else if(Keyboard.IsKeyPressed(Keyboard.Key.Right))
             {
                 this.CurrentState = CharacterState.MovingRight;
             }

@@ -17,7 +17,7 @@ namespace Trinity.UI
         Summoner _summoner ;
         Item item;
 
-        public Inventory_UI(string filename, Summoner summoner ,RenderWindow window)
+        public Inventory_UI(string filename, Summoner summoner, RenderWindow window)
         {
            
             texture = new Texture(filename);
