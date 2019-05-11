@@ -79,6 +79,6 @@ namespace Trinity
 
             return equip;
         }
-
+        
     }
 }

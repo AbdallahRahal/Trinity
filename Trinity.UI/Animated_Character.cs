@@ -138,6 +138,7 @@ namespace Trinity.UI
                         this.sprite.Position = new Vector2f(Xpos, Ypos);
                         OldPlace = new Vector2f(Xpos, Ypos);
                         Console.WriteLine("collision mur "+ OldPlace);
+                        //Console.WriteLine("collision mur "+ OldPlace);
                         //Console.WriteLine(sprite.Position);
 
                         //Console.WriteLine(Xpos+" "+Ypos);

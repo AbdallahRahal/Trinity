@@ -33,14 +33,14 @@ namespace Trinity.UI
         {
             int x = 1;
            
-            Console.WriteLine(" l'equipement s'appelle {0} ", Mouse.GetPosition());
+            
             window.Draw(sprite);
 
 
             foreach (KeyValuePair<string, string> item in equip.Stats())
             {
                 text.DisplayedString = item.Key+item.Value;
-                text.Position = new Vector2f(Mouse.GetPosition(window).X + 2f, (Mouse.GetPosition(window).Y) - (138f - x * (2f+(float)text.CharacterSize)) * (float)window.Size.Y / 900f);
+                text.Position = new Vector2f(Mouse.GetPosition(window).X + 4f, (Mouse.GetPosition(window).Y) - (138f - x * (2f+(float)text.CharacterSize)) * (float)window.Size.Y / 900f);
                 text.FillColor = new Color(0, 0, 0);
                 if (item.Key == "Type : ") {
                     text.FillColor = new Color(200, 0, 0);
