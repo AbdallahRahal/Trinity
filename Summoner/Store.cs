@@ -8,7 +8,6 @@ namespace Trinity
     public class Store
     {
         Dictionary<string, Equipement> _equipements;
-        Inventory _inventory;
         Tower _context;
         List<Equipement> _all_equip;
         List<Equipement> _aviable_equip;
@@ -18,7 +17,7 @@ namespace Trinity
             _equipements = context.Equipement_Collection.Equipement_Dictionnary;
         }
 
-        public List<Equipement> Aviable()
+        public void Aviable()
         {
             int maxItems = 5;
             var tmp = new Dictionary<string, Equipement>();
@@ -27,14 +26,14 @@ namespace Trinity
             var tab = _equipements.ToList();
             while (tmp.Count < maxItems)
             {
-                int r = rand.Next(maxItems);
+                int r = rand.Next(tab.Count);
                 var pairEquipTmp = tab[r];
                 if (!tmp.ContainsKey(pairEquipTmp.Key))
                 {
                     tmp.Add(pairEquipTmp.Key, pairEquipTmp.Value);
                 }
             }
-            return tmp.Values.ToList();
+            _aviable_equip = tmp.Values.ToList();
         }
 
         public bool Buy_Equip(Equipement equip)
@@ -47,7 +46,7 @@ namespace Trinity
                     _context.Summoner.Money -= equip.Price;
                     equip.is_paid = true;
                     _aviable_equip.Remove(equip);
-                    _inventory.AddEquip(equip);
+                    _context.Summoner.Inventory.AddEquip(equip);
                 }
                 else
                 if (_context.Summoner.Money < equip.Price)
@@ -64,9 +63,9 @@ namespace Trinity
 
         public Tower Tower { get { return _context; } }
 
-        public Inventory Inventory
+        public List<Equipement> Aviable_Equipement
         {
-            get { return _inventory; }
+            get { return _aviable_equip; }
         }
     }
 

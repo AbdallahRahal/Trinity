@@ -21,6 +21,7 @@ namespace Trinity.UI
     {
         public float Xpos;
         public float Ypos;
+        public bool _Open_Shop = false;
         public Vector2f OldPlace;
 
         private Sprite sprite;
@@ -132,17 +133,21 @@ namespace Trinity.UI
                     int bottom = y * 32 + 32;
                     int left = x * 32;
                     int right = x * 32 + 32;
-                    if (tabmap[y, x] != 854 && Xpos + 32 >= left && Xpos <= right && Ypos + 32 >= top && Ypos <= bottom)
+                    if (tabmap[y, x] == 854 && Xpos + 32 >= left && Xpos <= right && Ypos + 32 >= top && Ypos <= bottom)
                     {
-
+                        this.sprite.Position = new Vector2f(Xpos, Ypos);
                         OldPlace = new Vector2f(Xpos, Ypos);
                         Console.WriteLine("collision mur "+ OldPlace);
-                        Console.WriteLine(sprite.Position);
+                        //Console.WriteLine(sprite.Position);
 
-                        //Console.WriteLine(Ypos);
+                        //Console.WriteLine(Xpos+" "+Ypos);
                     }
-                    else
+                    else 
+                    if(tabmap[y, x] == 1140 && 660 < Xpos && Xpos < 700 && 130 < Ypos && Ypos < 140)
                     {
+                        _Open_Shop = true;
+                        Console.WriteLine("collision shop ");
+                        
                     }
                 }
             }
