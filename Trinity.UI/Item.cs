@@ -20,6 +20,7 @@ namespace Trinity.UI
         ItemDescription itemDescription;
         List<Equipement> equipementList = new List<Equipement>();
         Option_Info_UI option;
+        Tower _context;
 
         public Item(Dictionary<string, Equipement> equipementDictionnary, RenderWindow newWindow)
         {
@@ -48,8 +49,6 @@ namespace Trinity.UI
                 equipementList.Add(item.Value);
                 itemSpriteList.Add(sprite);
                 window.Draw(sprite);
-
-
 
                 float scaleX = (float)window.Size.X / 1700f;
                 float scaleY = (float)window.Size.Y / 900f;
@@ -90,6 +89,21 @@ namespace Trinity.UI
 
         }
         
-     
+        public void Draw_Store(Sprite storeSprite)
+        {
+            int x = 0;
+            int y = 0;
+
+            for(int i = 0; i < equipList.Count; i++)
+            {
+                sprite = new Sprite(new Texture(equipList[i].Path));
+                sprite.Position = new Vector2f(1131f * (float)storeSprite.Scale.X, 285f * (float)storeSprite.Scale.Y);
+                sprite.Scale = new Vector2f((float)storeSprite.Scale.X, (float)storeSprite.Scale.Y);
+                window.Draw(sprite);
+
+                itemSpriteList.Add(sprite);
+
+            }
+        }
     }
 }

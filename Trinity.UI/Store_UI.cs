@@ -35,6 +35,7 @@ namespace Trinity.UI
             _draw = true;
             window.Draw(sprite);
             _item = new Item(_context.Store.Aviable_Equipement, window);
+            _item.Draw_Store(sprite);
         }
 
         public bool Drawed
