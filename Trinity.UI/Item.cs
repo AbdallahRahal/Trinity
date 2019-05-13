@@ -58,13 +58,20 @@ namespace Trinity.UI
                         && (float)Mouse.GetPosition(window).Y > sprite.Position.Y  && (float)Mouse.GetPosition(window).Y < sprite.Position.Y  + 54f * scaleY)
 
                     {
-                        itemDescription = new ItemDescription(equipementList[equipement], window);
-                        itemDescription.Draw(window);
+                        option = new Option_Info_UI(window, equipementList[equipement]);
+                        if (Mouse.IsButtonPressed(Mouse.Button.Left) && option.Drawed == false)
+                        {
+                            option.Drawed = !option.Drawed;
+                        }
+                        else
+                        {
+                            itemDescription = new ItemDescription(equipementList[equipement], window);
+                            itemDescription.Draw(window);
+                        }
+
+                        if (option.Drawed) option.Draw(window);
                     }
-                    if (Mouse.IsButtonPressed(Mouse.Button.Left))
-                    {
-                        option = new Option_Info_UI(summoner, window);
-                    }
+                   
                     equipement++;
                 }
 
