@@ -22,6 +22,7 @@ namespace Trinity.UI
         public float Xpos;
         public float Ypos;
         public bool _Open_Shop = false;
+        Animation currentAnimation;
         public Vector2f OldPlace;
 
         private Sprite sprite;
@@ -34,7 +35,6 @@ namespace Trinity.UI
         protected Animation Anim_Left;
         protected Animation Anim_Down;
         protected Animation Anim_Right;
-        
 
         private Clock animationClock;
         protected float moveSpeed = 50  ;
@@ -58,7 +58,7 @@ namespace Trinity.UI
 
         public virtual void Update(float deltaTime)
         {
-            Animation currentAnimation = null;
+            currentAnimation = null;
 
 
             switch(CurrentState)
@@ -138,6 +138,10 @@ namespace Trinity.UI
                         this.sprite.Position = new Vector2f(Xpos, Ypos);
                         OldPlace = new Vector2f(Xpos, Ypos);
                         Console.WriteLine("collision mur "+ OldPlace);
+                        if (Keyboard.IsKeyPressed(Keyboard.Key.Left))
+                        {
+                            moveSpeed = 0;
+                        }
                         //Console.WriteLine("collision mur "+ OldPlace);
                         //Console.WriteLine(sprite.Position);
 
