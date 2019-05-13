@@ -24,6 +24,8 @@ namespace Trinity.UI
         public bool _Open_Shop = false;
         Animation currentAnimation;
         public Vector2f OldPlace;
+        float xscale;
+        float yscale;
 
         private Sprite sprite;
         private IntRect spriteRect;
@@ -43,8 +45,10 @@ namespace Trinity.UI
         public Animated_Character(string filename, int frameSize, RenderWindow window)
         {
 
-            Xpos = 818 * window.Size.X / 1700;
-            Ypos = 770 * window.Size.Y / 900;
+            Xpos = 1400 * window.Size.X / 1700; //818
+            Ypos = 250 * window.Size.Y / 900; //770
+            xscale = window.Size.X / 1700;
+            yscale = window.Size.Y / 900;
             this.frameSize = frameSize;
             Texture texture = new Texture(filename);
 
@@ -147,14 +151,19 @@ namespace Trinity.UI
 
                         //Console.WriteLine(Xpos+" "+Ypos);
                     }
-                    else 
-                    if(tabmap[y, x] == 1140 && 660 < Xpos && Xpos < 700 && 130 < Ypos && Ypos < 140)
-                    {
-                        _Open_Shop = true;
-                        Console.WriteLine("collision shop ");
-                        
-                    }
+                    
                 }
+            }
+
+            if (1280 * xscale < Xpos && Xpos < 1629 * xscale && 63 * yscale < Ypos && Ypos < 223 * yscale)
+            {
+                _Open_Shop = true;
+                //Console.WriteLine("collision shop ");
+
+            }
+            else
+            {
+                _Open_Shop = false;
             }
         }
 

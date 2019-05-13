@@ -15,6 +15,7 @@ namespace Trinity
             _equipement = new Equipement_Collection();
             _minion = new Minion_Collection(this);
             _store = new Store(this);
+            _summoner = new Summoner("Joueur", this);
         }
 
 

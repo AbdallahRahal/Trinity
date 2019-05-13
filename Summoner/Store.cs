@@ -15,6 +15,7 @@ namespace Trinity
         public Store(Tower context)
         {
             _equipements = context.Equipement_Collection.Equipement_Dictionnary;
+            _context = context;
         }
 
         public void Aviable()
@@ -36,9 +37,8 @@ namespace Trinity
             _aviable_equip = tmp.Values.ToList();
         }
 
-        public bool Buy_Equip(Equipement equip)
+        public void  Buy_Equip(Equipement equip)
         {
-            if(_aviable_equip.Contains(equip)) throw new ArgumentException("An equipements  with this name already exists.", nameof(equip.Name));
             if (equip.is_paid == false)
             {
                 if (_context.Summoner.Money >= equip.Price)
@@ -53,11 +53,6 @@ namespace Trinity
                 {
                     throw new ArgumentException("you aren't too much money for buy this equipement .", nameof(equip.Name));
                 }
-                return true;
-            }
-            else
-            {
-                throw new ArgumentException("An equipement is already buy.", nameof(equip.Name));
             }
         }
 

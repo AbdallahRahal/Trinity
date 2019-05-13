@@ -20,7 +20,7 @@ namespace Trinity.UI
 
         public Store_UI(string filename,Tower tower, RenderWindow window)
         {
-            Xpos = 520;
+            Xpos = window.Size.X - (window.Size.X - 1245 + 600) * window.Size.X / 1700f;
             Ypos = 0;
             texture = new Texture(filename);
             sprite = new Sprite(texture);
@@ -34,7 +34,7 @@ namespace Trinity.UI
         {
             _draw = true;
             window.Draw(sprite);
-            _item = new Item(_context.Store.Aviable_Equipement, window);
+            _item = new Item(_context.Store.Aviable_Equipement, window, _context);
             _item.Draw_Store(sprite);
         }
 

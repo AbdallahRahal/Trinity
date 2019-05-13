@@ -11,9 +11,9 @@ namespace Trinity.UI
 {
     class Game
     {
-        static RenderWindow window = new RenderWindow(new SFML.Window.VideoMode(800, 600), "Trinity");
+        static RenderWindow window = new RenderWindow(new SFML.Window.VideoMode(1700, 900), "Trinity");
         static Tower tower = new Tower();
-        static Summoner summoner = new Summoner("Joueur", tower);
+        static Summoner summoner = tower.Summoner;
         static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner, window);
         static Store_UI story_UI = new Store_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/shop.png"), tower, window);
         Player player;
@@ -28,20 +28,20 @@ namespace Trinity.UI
             Boots nike = tower.Equipement_Collection.Create_Boots("nike", 5, 10, 10, 20, 4, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/boot2.png"));
             Hat carre = tower.Equipement_Collection.Create_Hat("Carré rouge", 50, 10, 20, 2, 4, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/chapeau.png"));
             Breastplate ocho = tower.Equipement_Collection.Create_Breastplate("quavo", 10, 10, 10, 10, 10, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/quavo.jpg"));
-
+            //Leg jambiere = tower.Equipement_Collection.Create_Leg("Jambier des z'homme", 1000, 10,50,20,50,)
             Minion minion1 = tower.Minion_Collection.Create_Minion("Morgan", 100, 100, 100, 20, 20, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
             Minion minion2 = tower.Minion_Collection.Create_Minion("Mergi", 50, 23, 65, 0, 20, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
 
             tower.Store.Aviable();
             List<Equipement> ma_liste = tower.Store.Aviable_Equipement;
-            summoner.Inventory.AddEquip(arc);
-            summoner.Inventory.AddEquip(carre);
+            
 
             summoner.Inventory.Attach_Minons(minion1);
             summoner.Inventory.Attach_Minons(minion2);
 
 
             window.SetFramerateLimit(60);
+
             window.Closed += Window_Closed;
             window.KeyPressed += Window_KeyPressed;
 
@@ -59,10 +59,10 @@ namespace Trinity.UI
             zelda_menu_music.Loop = true;
             while (window.IsOpen)
             {
+                Console.WriteLine(" gold {0}", summoner.Money);
                 window.DispatchEvents();
                 window.Clear();
                 map.Draw(window);
-
                 player.collide();
 
                 float deltaTime = clock.Restart().AsSeconds();
@@ -73,11 +73,7 @@ namespace Trinity.UI
                 if (player._Open_Shop == true)
                 {
                     story_UI.Draw(window);
-                    if (Keyboard.IsKeyPressed(Keyboard.Key.O))
-                    {
-                        player._Open_Shop = false;
-                        story_UI.Drawed = !story_UI.Drawed;
-                    }
+                    
                 }
 
                 if (inventory_UI.Drawed) { inventory_UI.Draw(window); }
