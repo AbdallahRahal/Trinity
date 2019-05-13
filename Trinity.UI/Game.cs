@@ -18,8 +18,8 @@ namespace Trinity.UI
         public void Start()
         {
             
-            Weapon arc = tower.Equipement_Collection.Create_Weapon("Arc de Ryan", 50, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/arc.png"));
-            Hat carre = tower.Equipement_Collection.Create_Hat("Carré rouge",50,20,2, 4, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/arcc.png"));
+            Weapon arc = tower.Equipement_Collection.Create_Weapon("Arc de Ryan",5, 50, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/arc.png"));
+            Hat carre = tower.Equipement_Collection.Create_Hat("Carré rouge",5,50,20,2, 4, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/arcc.png"));
             Minion minion1 = tower.Minion_Collection.Create_Minion("Morgan", 100, 100, 100, 20, 20, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
             Minion minion2 = tower.Minion_Collection.Create_Minion("Mergi", 50, 23, 65, 0, 20, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
 
