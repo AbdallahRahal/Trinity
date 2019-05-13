@@ -11,8 +11,8 @@ namespace Trinity
     {
         readonly string _name;
         uint _price;
-        bool is_Paid;
-        bool is_Equiped;
+        bool _is_Paid;
+        bool _is_Equiped;
         string _path;
 
         public Equipement(string name, uint price, string path)
@@ -21,20 +21,20 @@ namespace Trinity
             _price = price;
             _path = path;
 
-            is_Paid = false;
-            is_Equiped = false;
+            _is_Paid = false;
+            _is_Equiped = false;
 
         }
         public bool Is_Equiped
         {
-            get { return is_Equiped; }
-            set { is_Equiped = value; }
+            get { return _is_Equiped; }
+            set { _is_Equiped = value; }
         }
 
         public bool is_paid
         {
-            get { return is_Paid; }
-            set { is_Paid = value; }
+            get { return _is_Paid; }
+            set { _is_Paid = value; }
         }
 
         public string Name
@@ -62,6 +62,7 @@ namespace Trinity
                 equip.Add("Esquive : +", equip_nospell.Dodge_rate.ToString());
                 equip.Add("Précision : +", equip_nospell.Accuracy.ToString());
 
+
                 if(equip_nospell is Hat) equip.Add("Type : ", "Chapeau");
                 if (equip_nospell is Breastplate) equip.Add("Type : ", "Plastron");
                 if (equip_nospell is Leg) equip.Add("Type : ", "Jambières");
@@ -76,6 +77,7 @@ namespace Trinity
             }
 
 
+            equip.Add("Prix : ", this.Price.ToString());
 
             return equip;
         }

@@ -13,13 +13,14 @@ namespace Trinity.UI
         int mapwidth = 100;
         int mapheight = 100;
 
-        public Map(RenderWindow window)
+        public Map(RenderWindow window,string typemap)
         {
             int tilemapwidth = 64;
             int tilemapheight = 32;
             int tilesize = 32;
-            
+
             Texture texture = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Maps/terrain.png"));
+
             Sprite[] tilemap = new Sprite[tilemapwidth * tilemapheight];
 
             for (int y = 0; y < tilemapheight; y++)
@@ -32,7 +33,16 @@ namespace Trinity.UI
             }
 
             tiles = new Sprite[mapwidth, mapheight];
-            StreamReader reader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "../../../Maps/map_trinity.csv"));
+            StreamReader reader;
+            if (typemap == "fight")
+            {
+                reader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "../../../Maps/map_fight_trinity.csv"));
+            }
+            else
+            {
+                reader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "../../../Maps/map_trinity.csv"));
+            }
+               
             for (int y = 0; y < mapheight; y++)
             {
                 string line = reader.ReadLine();

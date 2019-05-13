@@ -8,48 +8,40 @@ using SFML.Audio;
 
 namespace Trinity.UI
 {
-   
-    class Inventory_UI
+    class Store_UI
     {
+        public float Xpos;
+        public float Ypos;
         Sprite sprite;
         Texture texture;
         bool _draw;
-        Summoner _summoner ;
-        Item item;
-        Minion_UI minion;
+        Tower _context;
+        Item _item;
 
-        public Inventory_UI(string filename, Summoner summoner, RenderWindow window)
+        public Store_UI(string filename,Tower tower, RenderWindow window)
         {
-           
+            Xpos = window.Size.X - (window.Size.X - 1245 + 600) * window.Size.X / 1700f;
+            Ypos = 0;
             texture = new Texture(filename);
             sprite = new Sprite(texture);
             sprite.Scale = new Vector2f((float)window.Size.X / 1700f, (float)window.Size.Y / 900f);
+            sprite.Position = new Vector2f(Xpos, Ypos);
             _draw = false;
-            _summoner = summoner;
-            
+            _context = tower;
         }
-        
+
         public void Draw(RenderWindow window)
         {
-
-            _summoner.Inventory.Update();
-
             _draw = true;
             window.Draw(sprite);
-
-            item = new Item(_summoner.Inventory.Equipement, window);
-            item.Draw(sprite);
-
-
-            minion = new Minion_UI(_summoner.Inventory.minionItem, window);
-            minion.Draw(sprite);
+            _item = new Item(_context.Store.Aviable_Equipement, window, _context);
+            _item.Draw_Store(sprite);
         }
-        
-        public bool  Drawed
+
+        public bool Drawed
         {
             get { return _draw; }
             set { _draw = value; }
         }
-
     }
 }

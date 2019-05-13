@@ -16,7 +16,7 @@ namespace Trinity
         {
             _name = name;
             _inventory = new Inventory(context);
-            _money = 100;
+            _money = 10000;
         }
 
         public Tower Tower { get { return _context; } }
