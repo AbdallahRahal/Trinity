@@ -129,10 +129,31 @@ namespace Trinity.UI
             }
             reader.Close();
 
-            for (int y = 0; y < 100; y++)
+            //for (int y = 0; y < 100; y++)
+            //{
+            //    for (int x = 0; x < 100; x++)
+            //    {
+            //        int top = y * 32;
+            //        int bottom = y * 32 + 32;
+            //        int left = x * 32;
+            //        int right = x * 32 + 32;
+                   
+                    
+            //    }
+            //}
+            if ( /*tabmap[y, x] == 854 && Xpos + 64 >= left && Xpos <= right && Ypos + 64 >= top && Ypos <= bottom*/((Xpos < 0 && (0 < Ypos && Ypos < 900))
+                       || (Xpos > 1700 && (0 < Ypos && Ypos < 900) || (Ypos < 0 && (0 < Xpos && Xpos < 1700)) || (Ypos > 900 && (0 < Xpos && Xpos < 1700))
+                       )))
             {
-                for (int x = 0; x < 100; x++)
+                this.sprite.Position = new Vector2f(Xpos, Ypos);
+                OldPlace = new Vector2f(Xpos, Ypos);
+                Console.WriteLine("collision mur " + OldPlace);
+                //Console.WriteLine("collision mur "+ OldPlace);
+                //Console.WriteLine(sprite.Position);
+
+                if(Xpos < 5 && ((0 < Ypos) || (Ypos < 900)) )
                 {
+<<<<<<< HEAD
                     int top = y * 32;
                     int bottom = y * 32 + 32;
                     int left = x * 32;
@@ -152,9 +173,24 @@ namespace Trinity.UI
                         //Console.WriteLine(Xpos+" "+Ypos);
                     }
                     
+=======
+                    Console.WriteLine("collision gauche");
+                } else
+                    if (Xpos > 1695 && ((0 < Ypos) || (Ypos < 900)))
+                {
+                    Console.WriteLine("collision droite");
+                } else
+                    if (Ypos < 5 && ((0 < Xpos) || (Xpos < 1700)))
+                {
+                    Console.WriteLine("collision haut");
+                } else
+                    if(Ypos > 895 && ((0 < Xpos) || (Xpos < 1700)))
+                {
+                    Console.WriteLine("collision bas");
+>>>>>>> a431b6ce86bae4540dff68f8788f80f0a0126e75
                 }
-            }
 
+            }
             if (1280 * xscale < Xpos && Xpos < 1629 * xscale && 63 * yscale < Ypos && Ypos < 223 * yscale)
             {
                 _Open_Shop = true;
