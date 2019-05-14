@@ -44,6 +44,7 @@ namespace Trinity.UI
 
             window.Closed += Window_Closed;
             window.KeyPressed += Window_KeyPressed;
+            window.MouseButtonPressed += Window_MouseButtonPressed;
 
             Map map = new Map(window, "");
             Map fight_map = new Map(window, "fight");
@@ -59,7 +60,7 @@ namespace Trinity.UI
             zelda_menu_music.Loop = true;
             while (window.IsOpen)
             {
-                Console.WriteLine(" gold {0}", summoner.Money);
+                
                 window.DispatchEvents();
                 window.Clear();
                 map.Draw(window);
@@ -73,7 +74,11 @@ namespace Trinity.UI
                 if (player._Open_Shop == true)
                 {
                     story_UI.Draw(window);
-                    
+
+                }
+                else
+                {
+                    story_UI.Drawed = false;
                 }
 
                 if (inventory_UI.Drawed) { inventory_UI.Draw(window); }
@@ -115,7 +120,22 @@ namespace Trinity.UI
             //{
             //}
         }
+        private void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
+        {
+            if (e.Button == Mouse.Button.Left && story_UI.Drawed)
+            {
+               
 
+                for (int i = 0; i < 9; i++)
+                {
+                    if (672 + i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 726 + i * 62
+                        && 284 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338)
+                    {
+                        if (tower.Store.Aviable_Equipement.Count > i) tower.Store.Buy_Equip(tower.Store.Aviable_Equipement[i]);
+                    }
+                }
+            }
+        }
         private void Window_Closed(object sender, EventArgs e)
         {
             Window window = (Window)sender;

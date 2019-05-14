@@ -16,7 +16,7 @@ namespace Trinity.UI
         static Sprite sprite;
         static Texture texture;
         static Font font = new Font(Path.Combine(Directory.GetCurrentDirectory(), "../../../Fonts/Arial.ttf"));
-        static Text text = new Text("Test description objet", font, 12);
+        static Text text = new Text("Text description objet", font, 12);
 
         public ItemDescription(Equipement equipement, RenderWindow window)
         {
@@ -39,8 +39,8 @@ namespace Trinity.UI
 
             foreach (KeyValuePair<string, string> item in equip.Stats())
             {
-                text.DisplayedString = item.Key+item.Value;
-                text.Position = new Vector2f(Mouse.GetPosition(window).X + 4f, (Mouse.GetPosition(window).Y) - (138f - x * (2f+(float)text.CharacterSize)) * (float)window.Size.Y / 900f);
+                text.DisplayedString = item.Key + item.Value;
+                text.Position = new Vector2f(Mouse.GetPosition(window).X + 4f, (Mouse.GetPosition(window).Y) - (138f - x * (2f + (float)text.CharacterSize)) * (float)window.Size.Y / 900f);
                 text.FillColor = new Color(0, 0, 0);
                 if (item.Key == "Type : ") {
                     text.FillColor = new Color(200, 0, 0);

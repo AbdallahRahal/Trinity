@@ -160,6 +160,7 @@ namespace Trinity.UI
             else
             {
                 _Open_Shop = false;
+                
             }
         }
 
