@@ -20,18 +20,28 @@ namespace Trinity
 
         public void Aviable()
         {
-            int maxItems = 5;
+            int maxItems = 0;
+            foreach (Equipement item in _equipements.Values.ToList())
+            {
+                if (!item.is_paid) {
+                    maxItems++;
+                }
+            }
+            maxItems = Math.Min(maxItems, 9);
             var tmp = new Dictionary<string, Equipement>();
             Random rand = new Random();
 
             var tab = _equipements.ToList();
             while (tmp.Count < maxItems)
             {
-                int r = rand.Next(tab.Count);
-                var pairEquipTmp = tab[r];
-                if (!tmp.ContainsKey(pairEquipTmp.Key))
+                if (tab.Count > 0)
                 {
-                    tmp.Add(pairEquipTmp.Key, pairEquipTmp.Value);
+                    int r = rand.Next(tab.Count);
+                    var pairEquipTmp = tab[r];
+                    if (!tmp.ContainsKey(pairEquipTmp.Key) && !pairEquipTmp.Value.is_paid )
+                    {
+                        tmp.Add(pairEquipTmp.Key, pairEquipTmp.Value);
+                    }
                 }
             }
             _aviable_equip = tmp.Values.ToList();

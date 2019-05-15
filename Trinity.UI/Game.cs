@@ -16,7 +16,6 @@ namespace Trinity.UI
         static Summoner summoner = tower.Summoner;
         static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner, window);
         static Store_UI story_UI = new Store_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/shop.png"), tower, window);
-        Player player;
         bool Onfight = false;
 
         public void Start()
@@ -111,6 +110,10 @@ namespace Trinity.UI
             if (e.Code == Keyboard.Key.I)
             {
                 inventory_UI.Drawed = !inventory_UI.Drawed;
+            }
+            if (e.Code == Keyboard.Key.S)
+            {
+                tower.Store.Aviable();
             }
             if (e.Code == Keyboard.Key.F)
             {
