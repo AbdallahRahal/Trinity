@@ -15,46 +15,46 @@ namespace Trinity
             _equipements = new Dictionary<string, Equipement>();
         }
 
-        public Hat Create_Hat(string name , uint price, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, string path)
+        public Hat Create_Hat(string name , uint price, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy,uint lead, string path)
         {
            
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
 
-            Hat hat = new Hat(name, price, max_life_point, max_mana_point, dodge_rate, accuracy,path);
+            Hat hat = new Hat(name, price, max_life_point, max_mana_point, dodge_rate,lead, accuracy,path);
 
             _equipements.Add(name, hat);
             return hat;
         }
-        public Breastplate Create_Breastplate(string name, uint price, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy,string path)
+        public Breastplate Create_Breastplate(string name, uint price, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, uint lead, string path)
         {
 
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
 
-            Breastplate breastplate = new Breastplate(name, price, max_life_point, max_mana_point, dodge_rate, accuracy,path);
+            Breastplate breastplate = new Breastplate(name, price, max_life_point, max_mana_point, dodge_rate, lead, accuracy, path);
 
             _equipements.Add(name, breastplate);
             return breastplate;
         }
 
 
-        public Leg Create_Leg(string name, uint price, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, string path)
+        public Leg Create_Leg(string name, uint price, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, uint lead, string path)
         {
 
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
 
-            Leg leg = new Leg(name, price, max_life_point, max_mana_point, dodge_rate, accuracy, path);
+            Leg leg = new Leg(name, price, max_life_point, max_mana_point, dodge_rate, lead, accuracy, path);
 
             _equipements.Add(name, leg);
             return leg;
         }
 
 
-        public Boots Create_Boots(string name, uint price, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, string path)
+        public Boots Create_Boots(string name, uint price, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, uint lead, string path)
         {
 
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements  with this name already exists.", nameof(name));
 
-            Boots boots = new Boots(name, price, max_life_point, max_mana_point, dodge_rate, accuracy,path);
+            Boots boots = new Boots(name, price, max_life_point, max_mana_point, dodge_rate, lead, accuracy, path);
 
             _equipements.Add(name, boots);
             return boots;
