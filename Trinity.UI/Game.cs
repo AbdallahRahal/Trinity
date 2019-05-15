@@ -59,7 +59,7 @@ namespace Trinity.UI
             zelda_menu_music.Loop = true;
             while (window.IsOpen)
             {
-                Console.WriteLine(" gold {0}", summoner.Money);
+                //Console.WriteLine(" gold {0}", summoner.Money);
                 window.DispatchEvents();
                 window.Clear();
                 map.Draw(window);

@@ -45,7 +45,7 @@ namespace Trinity.UI
 
             if(Keyboard.IsKeyPressed(Keyboard.Key.LShift))
             {
-                moveSpeed = 400;
+                moveSpeed = 1000;
             }
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.O))

@@ -141,8 +141,8 @@ namespace Trinity.UI
                     
             //    }
             //}
-            if ( /*tabmap[y, x] == 854 && Xpos + 64 >= left && Xpos <= right && Ypos + 64 >= top && Ypos <= bottom*/((Xpos < 0 && (0 < Ypos && Ypos < 900))
-                       || (Xpos > 1700 && (0 < Ypos && Ypos < 900) || (Ypos < 0 && (0 < Xpos && Xpos < 1700)) || (Ypos > 900 && (0 < Xpos && Xpos < 1700))
+            if ( /*tabmap[y, x] == 854 && Xpos + 64 >= left && Xpos <= right && Ypos + 64 >= top && Ypos <= bottom*/((Xpos < 20 && (0 < Ypos && Ypos < 805))
+                       || (Xpos > 1622 && (0 < Ypos && Ypos < 805) || (Ypos < 0 && (20 < Xpos && Xpos < 1622)) || (Ypos > 805 && (20 < Xpos && Xpos < 1622))
                        )))
             {
                 this.sprite.Position = new Vector2f(Xpos, Ypos);
@@ -151,43 +151,25 @@ namespace Trinity.UI
                 //Console.WriteLine("collision mur "+ OldPlace);
                 //Console.WriteLine(sprite.Position);
 
-                if(Xpos < 5 && ((0 < Ypos) || (Ypos < 900)) )
+                if(Xpos < 20 && ((-0 < Ypos) || (Ypos < 800)) && Keyboard.IsKeyPressed(Keyboard.Key.Left))
                 {
-<<<<<<< HEAD
-                    int top = y * 32;
-                    int bottom = y * 32 + 32;
-                    int left = x * 32;
-                    int right = x * 32 + 32;
-                    if (tabmap[y, x] == 854 && Xpos + 32 >= left && Xpos <= right && Ypos + 32 >= top && Ypos <= bottom)
-                    {
-                        this.sprite.Position = new Vector2f(Xpos, Ypos);
-                        OldPlace = new Vector2f(Xpos, Ypos);
-                        Console.WriteLine("collision mur "+ OldPlace);
-                        if (Keyboard.IsKeyPressed(Keyboard.Key.Left))
-                        {
-                            moveSpeed = 0;
-                        }
-                        //Console.WriteLine("collision mur "+ OldPlace);
-                        //Console.WriteLine(sprite.Position);
-
-                        //Console.WriteLine(Xpos+" "+Ypos);
-                    }
-                    
-=======
+                    moveSpeed = 0;
                     Console.WriteLine("collision gauche");
                 } else
-                    if (Xpos > 1695 && ((0 < Ypos) || (Ypos < 900)))
+                    if (Xpos > 1620 && ((0 < Ypos) || (Ypos < 800)) && Keyboard.IsKeyPressed(Keyboard.Key.Right))
                 {
+                    moveSpeed = 0;
                     Console.WriteLine("collision droite");
                 } else
-                    if (Ypos < 5 && ((0 < Xpos) || (Xpos < 1700)))
+                    if (Ypos < 0 && ((20 < Xpos) || (Xpos < 1620)) && Keyboard.IsKeyPressed(Keyboard.Key.Up))
                 {
+                    moveSpeed = 0;
                     Console.WriteLine("collision haut");
                 } else
-                    if(Ypos > 895 && ((0 < Xpos) || (Xpos < 1700)))
+                    if(Ypos > 800 && ((0 < Xpos) || (Xpos < 1620)) && Keyboard.IsKeyPressed(Keyboard.Key.Down))
                 {
+                    moveSpeed = 0;
                     Console.WriteLine("collision bas");
->>>>>>> a431b6ce86bae4540dff68f8788f80f0a0126e75
                 }
 
             }
