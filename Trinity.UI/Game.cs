@@ -45,7 +45,6 @@ namespace Trinity.UI
             zelda_menu_music.Loop = true;
             while (window.IsOpen)
             {
-                
                 window.DispatchEvents();
                 window.Clear();
                 map.Draw(window);
