@@ -61,9 +61,10 @@ namespace Trinity
                 equip.Add("Mana : +", equip_nospell.Max_mana_point.ToString());
                 equip.Add("Esquive : +", equip_nospell.Dodge_rate.ToString());
                 equip.Add("Précision : +", equip_nospell.Accuracy.ToString());
+                equip.Add("Initiative : +", equip_nospell.Lead.ToString());
 
 
-                if(equip_nospell is Hat) equip.Add("Type : ", "Chapeau");
+                if (equip_nospell is Hat) equip.Add("Type : ", "Chapeau");
                 if (equip_nospell is Breastplate) equip.Add("Type : ", "Plastron");
                 if (equip_nospell is Leg) equip.Add("Type : ", "Jambières");
                 if (equip_nospell is Boots) equip.Add("Type : ", "Bottes");

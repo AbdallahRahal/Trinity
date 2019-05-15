@@ -21,7 +21,10 @@ namespace Trinity
         uint _bonus_power;
         // dodge_rate
         readonly uint _base_dodge_rate;
-        uint _bonus_dodge_rate;
+        uint _bonus_dodge_rate; 
+        // lead
+        readonly uint _base_lead;
+        uint _bonus_lead;
         // accuracy
         readonly uint _base_accuracy;
         uint _bonus_accuracy;
@@ -31,7 +34,7 @@ namespace Trinity
          readonly Armory _armories;
         
 
-        public Minion ( string name, uint power, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, string path, Tower context )
+        public Minion ( string name, uint power, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy,uint lead, string path, Tower context )
         {
             _name = name;
             _path = path;
@@ -39,6 +42,7 @@ namespace Trinity
             _mana_point = _base_max_mana_point = max_mana_point;
             _base_power = power;
             _base_dodge_rate = dodge_rate;
+            _base_lead = lead;
             _base_accuracy = accuracy;
             _context = context;
             _is_Attach = false;
@@ -112,7 +116,17 @@ namespace Trinity
             get { return _bonus_dodge_rate; }
             set { _bonus_dodge_rate = value; }
         }
+        //
+        public uint Lead
+        {
+            get { return _base_lead + _bonus_lead; }
+        }
 
+        public uint Bonus_lead
+        {
+            get { return _bonus_lead; }
+            set { _bonus_lead = value; }
+        }
         public uint Accuracy
         {
             get { return _base_accuracy + _bonus_accuracy; }
@@ -148,6 +162,7 @@ namespace Trinity
             stats.Add(String.Concat("Pouvoir : ", this.Power, " (", this._base_power, " + ", this.Bonus_power, ") "));
             stats.Add(String.Concat("Esquive : ", this.Dodge_rate, " (", this._base_dodge_rate, " + ", this.Bonus_dodge_rate, ") "));
             stats.Add(String.Concat("Précision : ", this.Accuracy, " (", this._base_accuracy, " + ", this.Bonus_accuracy, ") "));
+            stats.Add(String.Concat("Initiative : ", this.Lead, " (", this._base_lead, " + ", this.Bonus_lead, ") "));
 
             return stats;
         }

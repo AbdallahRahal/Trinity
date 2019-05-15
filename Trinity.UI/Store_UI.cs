@@ -5,6 +5,8 @@ using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
 using SFML.Audio;
+using System.IO;
+
 
 namespace Trinity.UI
 {
@@ -17,6 +19,9 @@ namespace Trinity.UI
         bool _draw;
         Tower _context;
         Item _item;
+        static Font font = new Font(Path.Combine(Directory.GetCurrentDirectory(), "../../../Fonts/Arial.ttf"));
+        static Text text = new Text("Gold", font, 15);
+
 
         public Store_UI(string filename,Tower tower, RenderWindow window)
         {
@@ -33,7 +38,11 @@ namespace Trinity.UI
         public void Draw(RenderWindow window)
         {
             _draw = true;
+            text.DisplayedString = "Money Argent Pesos Oseille Dol's : " + _context.Summoner.Money.ToString("### ### ###");
+            text.Position = new Vector2f(672f * window.Size.X / 1700f, 256f * window.Size.Y / 900f);
+            text.FillColor = new Color(0, 0, 0);
             window.Draw(sprite);
+            window.Draw(text);
             _item = new Item(_context.Store.Aviable_Equipement, window, _context);
             _item.Draw_Store(sprite);
         }
@@ -42,6 +51,10 @@ namespace Trinity.UI
         {
             get { return _draw; }
             set { _draw = value; }
+        }
+        public Item item
+        {
+            get { return _item; }
         }
     }
 }

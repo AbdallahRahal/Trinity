@@ -8,13 +8,15 @@ namespace Trinity
         readonly uint _max_mana_point;
         readonly uint _dodge_rate;
         readonly uint _accuracy;
+        readonly uint _lead;
 
-        public Equipement_Nospell(string name, uint price, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy,string path) : base(name, price, path)
+        public Equipement_Nospell(string name, uint price, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy, uint lead,string path) : base(name, price, path)
         {
             _max_life_point = max_life_point;
             _max_mana_point = max_mana_point;
             _dodge_rate = dodge_rate;
             _accuracy = accuracy;
+            _lead = lead;
         }
 
         public uint Max_life_point
@@ -36,6 +38,11 @@ namespace Trinity
         {
             get { return _accuracy; }
         }
+        public uint Lead
+        {
+            get { return _lead; }
+        }
+
 
         public Dictionary<string,uint> Update()
         {

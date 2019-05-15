@@ -9,6 +9,7 @@ namespace Trinity
         readonly Minion_Collection _minion;
         readonly Store _store;
         readonly Summoner _summoner;
+        readonly Weaponry _weaponry;
 
         public Tower()
         {
@@ -16,6 +17,7 @@ namespace Trinity
             _minion = new Minion_Collection(this);
             _store = new Store(this);
             _summoner = new Summoner("Joueur", this);
+            _weaponry = new Weaponry(this);
         }
 
 
@@ -37,6 +39,11 @@ namespace Trinity
         public Store Store
         {
             get { return _store; }
+        }
+
+        public Weaponry Weaponry
+        {
+            get { return _weaponry; }
         }
 
         public Summoner Create_Summoner(string name)

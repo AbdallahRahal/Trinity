@@ -102,8 +102,8 @@ namespace Trinity.UI
         }
 
         public void Draw_Store(Sprite storeSprite)
-        {
-            
+        { 
+
             for (int i = 0; i < equipList.Count; i++)
             {
                 sprite = new Sprite(new Texture(equipList[i].Path));
@@ -120,21 +120,16 @@ namespace Trinity.UI
                 {
                     if (Mouse.GetPosition(window).X > sprite.Position.X && Mouse.GetPosition(window).X < sprite.Position.X + 54f * scaleX
                      && Mouse.GetPosition(window).Y > sprite.Position.Y && Mouse.GetPosition(window).Y < sprite.Position.Y + 54f * scaleY)
-
                     {
                         itemDescription = new ItemDescription(equipementListShop[compte], window);
                         itemDescription.Draw(window);
-
-                        if (Mouse.IsButtonPressed(Mouse.Button.Left))
-                        {
-                            _context.Store.Buy_Equip(equipementListShop[compte]);
-                        }
                     }
-                    
-                   
+
                     compte++;   
                 }
             }
         }
+
+        
     }
 }
