@@ -18,6 +18,7 @@ namespace Trinity.UI
         static Store_UI story_UI = new Store_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/shop.png"), tower, window);
         bool Onfight = false;
         static Weaponry warriors = tower.Weaponry;
+        FightUI fight_UI = new FightUI(window, tower);
 
         public void Start()
         {
@@ -42,7 +43,7 @@ namespace Trinity.UI
             Music zelda_menu_music = new Music(Path.Combine(Directory.GetCurrentDirectory(), "../../../Music/Zelda_Menu_Music.ogg"));
             Music pokemon_fight_music = new Music(Path.Combine(Directory.GetCurrentDirectory(), "../../../Music/Pokemon_Fight_Music.ogg"));
             zelda_menu_music.Play();
-            zelda_menu_music.Loop = true;
+
             while (window.IsOpen)
             {
                 window.DispatchEvents();
@@ -71,14 +72,18 @@ namespace Trinity.UI
                 pokemon_fight_music.Loop = true;
 
                 while (Onfight)
-                {
+                { 
                     zelda_menu_music.Stop();
                     window.DispatchEvents();
                     window.Clear();
                     fight_map.Draw(window);
-                    player.Draw(window);
+                    //player.Draw(window);
+                    fight_UI.Round();
+                   
 
-                    FightUI fight_UI = new FightUI(window, tower);
+
+
+
 
 
 
@@ -108,6 +113,8 @@ namespace Trinity.UI
             }
             if (e.Code == Keyboard.Key.F)
             {
+
+                fight_UI.Start();
                 Onfight = !Onfight;
             }
             //if (e.Code == Keyboard.Key.O /*&& player._Open_Shop == true*/)
@@ -128,6 +135,11 @@ namespace Trinity.UI
                         if (tower.Store.Aviable_Equipement.Count > i) tower.Store.Buy_Equip(tower.Store.Aviable_Equipement[i]);
                     }
                 }
+            }
+            if (e.Button == Mouse.Button.Right )
+            {
+
+                Console.WriteLine(Mouse.GetPosition(window));
             }
         }
         private void Window_Closed(object sender, EventArgs e)
