@@ -17,11 +17,7 @@ namespace Trinity.UI
         static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner, window);
         static Store_UI story_UI = new Store_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/shop.png"), tower, window);
         bool Onfight = false;
-<<<<<<< HEAD
         static Weaponry warriors = tower.Weaponry;
-=======
-        
->>>>>>> f12802235276846903503401774731c4f58e77cb
 
         public void Start()
         {
