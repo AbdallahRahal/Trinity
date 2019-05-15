@@ -11,8 +11,8 @@ namespace Trinity
 
         public Weaponry(Tower tower)
         {
-            Weapon arc = tower.Equipement_Collection.Create_Weapon("Arc de Ryan", 10, 50, 10,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/arc.png"));
-            Weapon epee = tower.Equipement_Collection.Create_Weapon("epee de Ryan", 10, 50, 20,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/epee.png"));
+            Weapon arc = tower.Equipement_Collection.Create_Weapon("Arc de Ryan", 10, 50,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/arc.png"));
+            Weapon epee = tower.Equipement_Collection.Create_Weapon("epee de Ryan", 10, 50,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/epee.png"));
             Hat bob = tower.Equipement_Collection.Create_Hat("bob de morgan", 50, 10, 20, 2, 4, 30,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/bob.jpg"));
             Boots lv = tower.Equipement_Collection.Create_Boots("lv", 5, 10, 10, 20, 4, 40,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/boot1.png"));
             Boots nike = tower.Equipement_Collection.Create_Boots("nike", 5, 10, 10, 20, 4, 15,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/boot2.png"));
