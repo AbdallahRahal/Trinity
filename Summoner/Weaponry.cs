@@ -32,9 +32,17 @@ namespace Trinity
             Minion minion2 = tower.Minion_Collection.Create_Minion("Ryan", 999, 999, 999, 999, 999, 999, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Ryan.png"));
             Minion minion3 = tower.Minion_Collection.Create_Minion("Abdel", 0, 0, 0, 0, 0, 0, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Abdel.png"));
 
+            Minion minion4 = tower.Minion_Collection.Create_Minion("mechant1", 100, 100, 100, 20, 85, 30, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
+            Minion minion5 = tower.Minion_Collection.Create_Minion("mechant2", 50, 23, 65, 0, 20, 12, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
+            Minion minion6 = tower.Minion_Collection.Create_Minion("mechant3", 50, 23, 65, 0, 20, 69, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
+
             tower.Summoner.Inventory.Attach_Minons(minion1);
             tower.Summoner.Inventory.Attach_Minons(minion2);
             tower.Summoner.Inventory.Attach_Minons(minion3);
+
+            tower.Boss.Inventory.Attach_Minons(minion4);
+            tower.Boss.Inventory.Attach_Minons(minion5);
+            tower.Boss.Inventory.Attach_Minons(minion6);
         }
     }
 }
