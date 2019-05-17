@@ -19,12 +19,10 @@ namespace Trinity.UI
         static Store_UI story_UI = new Store_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/shop.png"), tower, window);
         //static Armory_UI armory_UI = new Armory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/armory.png"), summoner, window);
         bool Onfight = false;
-<<<<<<< HEAD
-=======
         static Weaponry warriors = tower.Weaponry;
         FightUI fight_UI = new FightUI(window, tower);
-
->>>>>>> 04603acdbafb1c86e010e5e265804e324d28581a
+        Option_Info_UI option;
+        
 
         public void Start()
         {
@@ -76,24 +74,22 @@ namespace Trinity.UI
                 pokemon_fight_music.Play();
                 pokemon_fight_music.Loop = true;
 
-                while (Onfight)
-                { 
-                    zelda_menu_music.Stop();
-                    window.DispatchEvents();
-                    window.Clear();
+                if (Onfight) {
+                    fight_UI.Start();
                     fight_map.Draw(window);
-                    //player.Draw(window);
-                    fight_UI.Round();
-                   
+                }
 
+                while (Onfight)
+                {
+                    zelda_menu_music.Stop();
 
+                    int roundresult = fight_UI.Round(fight_map);
+                    if  (roundresult == 1 || roundresult == -1)
+                    {
+                        Onfight = false;
+                    }
 
-
-
-
-
-
-                    window.Display();
+                    
                     zelda_menu_music.Play();
                 }
 
@@ -155,6 +151,16 @@ namespace Trinity.UI
 
                 Console.WriteLine(Mouse.GetPosition(window));
             }
+            if (e.Button == Mouse.Button.Left &&  Onfight)
+            {
+
+                Console.WriteLine("tour du summoner joué");
+                fight_UI.next = true;
+            }
+
+
+
+
         }
         private void Window_Closed(object sender, EventArgs e)
         {
