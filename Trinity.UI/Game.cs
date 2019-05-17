@@ -6,6 +6,7 @@ using SFML.System;
 using System.IO;
 using SFML.Audio;
 using SFML.Window;
+using System.Linq;
 
 namespace Trinity.UI
 {
@@ -16,17 +17,18 @@ namespace Trinity.UI
         static Summoner summoner = tower.Summoner;
         static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner, window);
         static Store_UI story_UI = new Store_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/shop.png"), tower, window);
+        //static Armory_UI armory_UI = new Armory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/armory.png"), summoner, window);
         bool Onfight = false;
         static Weaponry warriors = tower.Weaponry;
         FightUI fight_UI = new FightUI(window, tower);
         Option_Info_UI option;
+        
 
         public void Start()
         {
 
-            tower.Store.Aviable();
+            tower.Store.available();
             
-
             window.SetFramerateLimit(60);
 
             window.Closed += Window_Closed;
@@ -108,7 +110,7 @@ namespace Trinity.UI
             }
             if (e.Code == Keyboard.Key.S)
             {
-                tower.Store.Aviable();
+                tower.Store.available();
             }
             if (e.Code == Keyboard.Key.F)
             {
@@ -124,18 +126,27 @@ namespace Trinity.UI
         {
             if (e.Button == Mouse.Button.Left && story_UI.Drawed)
             {
-
-
                 for (int i = 0; i < 9; i++)
                 {
                     if (672 + i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 726 + i * 62
                         && 284 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338)
                     {
-                        if (tower.Store.Aviable_Equipement.Count > i) tower.Store.Buy_Equip(tower.Store.Aviable_Equipement[i]);
+                        if (tower.Store.available_Equipement.Count > i) tower.Store.Buy_Equip(tower.Store.available_Equipement[i]);
                     }
                 }
             }
-            if (e.Button == Mouse.Button.Right)
+            /*if (e.Button == Mouse.Button.Left && inventory_UI.Drawed)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    if (672 + i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 726 + i * 62
+                        && 284 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338)
+                    {
+                        if (tower.Store.available_Equipement.Count > i) tower.Store.Buy_Equip(tower.Store.available_Equipement[i]);
+                    }
+                }
+            }*/
+            if (e.Button == Mouse.Button.Right )
             {
 
                 Console.WriteLine(Mouse.GetPosition(window));

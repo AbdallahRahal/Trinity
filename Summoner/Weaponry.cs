@@ -11,17 +11,26 @@ namespace Trinity
 
         public Weaponry(Tower tower)
         {
-            Weapon arc = tower.Equipement_Collection.Create_Weapon("Arc de Ryan", 10, 50,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/arc.png"));
-            Weapon epee = tower.Equipement_Collection.Create_Weapon("epee de Ryan", 10, 50,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/epee.png"));
-            Hat bob = tower.Equipement_Collection.Create_Hat("bob de morgan", 50, 10, 20, 2, 4, 30,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/bob.jpg"));
-            Boots lv = tower.Equipement_Collection.Create_Boots("lv", 5, 10, 10, 20, 4, 40,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/boot1.png"));
-            Boots nike = tower.Equipement_Collection.Create_Boots("nike", 5, 10, 10, 20, 4, 15,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/boot2.png"));
-            Hat carre = tower.Equipement_Collection.Create_Hat("Carré rouge", 50, 10, 20, 2, 4, 25,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/chapeau.png"));
-            Breastplate ocho = tower.Equipement_Collection.Create_Breastplate("quavo", 10, 10, 10, 10, 10, 35,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/quavo.jpg"));
+            Weapon sword_1 = tower.Equipement_Collection.Create_Weapon("Epee de Hulerion", 10, 50,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/hulerion_sword.png"));
+            Weapon sword_2 = tower.Equipement_Collection.Create_Weapon("Epee de Ultraran", 10, 50,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/ultraran_sword.png"));
 
-            Minion minion1 = tower.Minion_Collection.Create_Minion("Morgan", 100, 100, 100, 20, 20,5, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
-            Minion minion2 = tower.Minion_Collection.Create_Minion("Ryaan", 50, 23, 65, 0, 20, 20, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
-            Minion minion3 = tower.Minion_Collection.Create_Minion("Abdel", 50, 23, 65, 0, 20, 70, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
+            Hat hat_1 = tower.Equipement_Collection.Create_Hat("Visère de Hulerion", 50, 10, 20, 2, 4, 25, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/hulerion_hat.png"));
+            Hat hat_2 = tower.Equipement_Collection.Create_Hat("Chapeau de Ultraran", 50, 10, 20, 2, 4, 30, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/ultraran_hat.png"));
+
+            Breastplate armor_1 = tower.Equipement_Collection.Create_Breastplate("Armure de Hulerion", 10, 10, 10, 10, 10, 35, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/hulerion_breastplate.png"));
+            Breastplate armor_2 = tower.Equipement_Collection.Create_Breastplate("Armure de Ultraran", 10, 10, 10, 10, 10, 35, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/ultraran_breastplate.png"));
+            
+            Leg leg_1 = tower.Equipement_Collection.Create_Leg("Jambières de Hulerion", 10, 10 ,10, 10, 10, 10, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/hulerion_leg.png"));
+            Leg leg_2 = tower.Equipement_Collection.Create_Leg("Jambières de Ultraran", 10, 10, 10, 10, 10, 10, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/ultraran_leg.png"));
+            
+            Boots boots_1 = tower.Equipement_Collection.Create_Boots("Chaussures de Hulerion", 5, 10, 10, 20, 4, 40,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/hulerion_boots.png"));
+            Boots boots_2 = tower.Equipement_Collection.Create_Boots("Chaussures de Ultraran", 5, 10, 10, 20, 4, 15,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/ultraran_boots.png"));
+            
+            
+
+            Minion minion1 = tower.Minion_Collection.Create_Minion("Morgan", 1, 1, 1, 1, 1, 1, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
+            Minion minion2 = tower.Minion_Collection.Create_Minion("Ryan", 999, 999, 999, 999, 999, 999, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Ryan.png"));
+            Minion minion3 = tower.Minion_Collection.Create_Minion("Abdel", 0, 0, 0, 0, 0, 0, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Abdel.png"));
 
             Minion minion4 = tower.Minion_Collection.Create_Minion("mechant1", 100, 100, 100, 20, 85, 30, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
             Minion minion5 = tower.Minion_Collection.Create_Minion("mechant2", 50, 23, 65, 0, 20, 12, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
