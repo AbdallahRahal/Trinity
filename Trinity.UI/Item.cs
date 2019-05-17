@@ -21,7 +21,6 @@ namespace Trinity.UI
         List<Equipement> equipementListShop = new List<Equipement>();
         List<Sprite> itemSpriteList = new List<Sprite>();
         List<Equipement> equipementList = new List<Equipement>();
-        Option_Info_UI option;
         Tower _context;
         float scaleX;
         float scaleY;
@@ -52,7 +51,7 @@ namespace Trinity.UI
             foreach (KeyValuePair<string, Equipement> item in equip)
             {
                 sprite = new Sprite(new Texture(item.Value.Path));
-                sprite.Position = new Vector2f(27f * (float)inventorySprite.Scale.X + x * 62f * (float)inventorySprite.Scale.X, 286f * (float)inventorySprite.Scale.Y);
+                sprite.Position = new Vector2f(27f * (float)inventorySprite.Scale.X + x * 62f * (float)inventorySprite.Scale.X,(286f + y * 62f) * (float)inventorySprite.Scale.Y);
                 sprite.Scale = new Vector2f((float)inventorySprite.Scale.X, (float)inventorySprite.Scale.Y);
 
                 equipementList.Add(item.Value);
@@ -68,18 +67,7 @@ namespace Trinity.UI
                         && (float)Mouse.GetPosition(window).Y > sprite.Position.Y && (float)Mouse.GetPosition(window).Y < sprite.Position.Y + 54f * scaleY)
 
                     {
-                        option = new Option_Info_UI(window, equipementList[equipement]);
-                        if (Mouse.IsButtonPressed(Mouse.Button.Left) && option.Drawed == false)
-                        {
-                            option.Drawed = !option.Drawed;
-                        }
-                        else
-                        {
-                            itemDescription = new ItemDescription(equipementList[equipement], window);
-                            itemDescription.Draw(window);
-                        }
 
-                        if (option.Drawed) option.Draw(window);
                         itemDescription = new ItemDescription(equipementList[equipement], window);
                         itemDescription.Draw(window);
                     }

@@ -42,6 +42,12 @@ namespace Trinity
             _minions.TryGetValue(name, out result);
             return result;
         }
+        public bool ContainMinion(Minion minion)
+        {
+            if (Minion1 == minion || Minion2 == minion || Minion3 == minion ) return true;
+
+            return false;
+        }
         public void AddEquip(Equipement equip)
         {
             _equipements.Add(equip.Name, equip);

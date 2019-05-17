@@ -142,7 +142,7 @@ namespace Trinity.UI
                     if (672 + i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 726 + i * 62
                         && 284 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338)
                     {
-                        if (tower.Store.available_Equipement.Count > i) tower.Store.Buy_Equip(tower.Store.available_Equipement[i]);
+                        //if (tower.Store.available_Equipement.Count > i) tower.Store.Buy_Equip(tower.Store.available_Equipement[i]);
                     }
                 }
             }*/

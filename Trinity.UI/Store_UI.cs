@@ -43,7 +43,7 @@ namespace Trinity.UI
             text.FillColor = new Color(0, 0, 0);
             window.Draw(sprite);
             window.Draw(text);
-            _item = new Item(_context.Store.Aviable_Equipement, window, _context);
+            _item = new Item(_context.Store.available_Equipement, window, _context);
             _item.Draw_Store(sprite);
         }
 

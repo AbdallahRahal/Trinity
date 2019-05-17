@@ -41,13 +41,13 @@ namespace Trinity.UI
             _draw = true;
             window.Draw(sprite);
             window.Draw(text);
-
+            minion = new Minion_UI(_summoner.Inventory.minionItem, window);
+            minion.Draw(sprite);
             item = new Item(_summoner.Inventory.Equipement, window);
             item.Draw(sprite);
 
 
-            minion = new Minion_UI(_summoner.Inventory.minionItem, window);
-            minion.Draw(sprite);
+          
         }
         
         public bool  Drawed

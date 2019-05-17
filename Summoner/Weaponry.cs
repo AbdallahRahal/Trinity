@@ -28,13 +28,13 @@ namespace Trinity
             
             
 
-            Minion minion1 = tower.Minion_Collection.Create_Minion("Morgan", 1, 1, 1, 1, 1, 1, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
-            Minion minion2 = tower.Minion_Collection.Create_Minion("Ryan", 999, 999, 999, 999, 999, 999, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Ryan.png"));
-            Minion minion3 = tower.Minion_Collection.Create_Minion("Abdel", 0, 0, 0, 0, 0, 0, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Abdel.png"));
+            Minion minion1 = tower.Minion_Collection.Create_Minion("Allié 1", 20, 100, 1, 10, 79, 31, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
+            Minion minion2 = tower.Minion_Collection.Create_Minion("Allié 2", 12, 150, 200, 20, 90, 50, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Ryan.png"));
+            Minion minion3 = tower.Minion_Collection.Create_Minion("Allié 3", 8, 210, 200, 5, 100, 95, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Abdel.png"));
 
-            Minion minion4 = tower.Minion_Collection.Create_Minion("mechant1", 100, 100, 100, 20, 85, 30, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
-            Minion minion5 = tower.Minion_Collection.Create_Minion("mechant2", 50, 23, 65, 0, 20, 12, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
-            Minion minion6 = tower.Minion_Collection.Create_Minion("mechant3", 50, 23, 65, 0, 20, 69, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Morgan.png"));
+            Minion minion4 = tower.Minion_Collection.Create_Minion("mechant 1", 15, 160, 100, 20, 85, 30, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/La fille de Morgan.png"));
+            Minion minion5 = tower.Minion_Collection.Create_Minion("mechant 2", 10, 120, 65, 20, 100, 12, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Le fils de Ryan.png"));
+            Minion minion6 = tower.Minion_Collection.Create_Minion("mechant 3", 5, 200, 65, 40, 80, 69, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Les fils d'Abdel.png"));
 
             tower.Summoner.Inventory.Attach_Minons(minion1);
             tower.Summoner.Inventory.Attach_Minons(minion2);
