@@ -22,12 +22,14 @@ namespace Trinity.UI
         List<Minion> BossMinions = new List<Minion>();
         bool SummAlive;
         bool BossAlive;
-
-        BattlegroundFight battlegroundFight;
-
-        Sprite FightBarSprite;
+        BubbleFight bubbleFight;
+        public Dictionary<Minion, Sprite> minionPos;
+       BattlegroundFight battlegroundFight;
+        public Minion targetMin;
+        public Sprite FightBarSprite;
         Texture FightBarTexture;
         public bool next;
+        public bool attak;
 
         public FightUI(RenderWindow window, Tower tower)
         {
@@ -37,6 +39,7 @@ namespace Trinity.UI
             FightBarSprite = new Sprite(FightBarTexture);
             FightBarSprite.Position = new Vector2f(29, 588);
             battlegroundFight = new BattlegroundFight(window, tower);
+            bubbleFight = new BubbleFight(window, tower);
 
         }
 
@@ -108,13 +111,11 @@ namespace Trinity.UI
             for (int playerRoundNum = 0; playerRoundNum < timeLine.Count; playerRoundNum++)
             {
                
-                _window.Clear();
-                map.Draw(_window);
-                _window.Draw(FightBarSprite);
-                fighter_UI.Draw(Fighters, timeLine[playerRoundNum]);
-                battlegroundFight.Draw(Fighters);
-                _window.Display();
-                Action(timeLine[playerRoundNum]);
+               
+
+                Action(timeLine[playerRoundNum],map, playerRoundNum);
+
+
                 int alive = 0;
                 foreach (Minion minion in SummMinions)
                 {
@@ -139,39 +140,57 @@ namespace Trinity.UI
                 
             }
             return 0;
+
+
         }
 
-        internal void Action(Minion minionAction)
+        internal void Action(Minion minionAction, Map map, int playerRoundNum)
         {
            
             this.next = false;
-            while (_context.Summoner.Inventory.ContainMinion(minionAction) && this.next == false)
+            while (this.next == false)
             {
-                
-                _window.DispatchEvents(); 
+                _window.Clear();
+                map.Draw(_window);
+                _window.Draw(FightBarSprite);
+                fighter_UI.Draw(Fighters, timeLine[playerRoundNum]);
+                minionPos = battlegroundFight.Draw(Fighters, timeLine[playerRoundNum]);
+                _window.Display();
 
-
-            }
-            while (_context.Boss.Inventory.ContainMinion(minionAction) && this.next == false)
-            {
-                Random rand = new Random();
-
-                System.Threading.Thread.Sleep(rand.Next(1000,3000));
-                Console.WriteLine("tour de " + minionAction.Name + " appartient au Boss");
-               
-                List<Minion> targetList =  new List<Minion>();
-                foreach(Minion minion in SummMinions)
+                if (_context.Summoner.Inventory.ContainMinion(minionAction))
                 {
-                    if (minion.is_alive()) targetList.Add(minion);
+
+                    _window.DispatchEvents();
+                    if (targetMin != null)
+                    {
+                        bubbleFight.Change_type(minionAction.dealDamage(targetMin),this);
+                        targetMin = null;
+                        FightBarSprite.Texture  = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/fightbar.png"));
+                        
+                    }
+
                 }
-                
-                int target = rand.Next(targetList.Count );
+                if (_context.Boss.Inventory.ContainMinion(minionAction) )
+                {
+                    Random rand = new Random();
 
-                minionAction.dealDamage(targetList[target]);
+                    System.Threading.Thread.Sleep(rand.Next(1000, 3000));
+                    Console.WriteLine("tour de " + minionAction.Name + " appartient au Boss");
+
+                    List<Minion> targetList = new List<Minion>();
+                    foreach (Minion minion in SummMinions)
+                    {
+                        if (minion.is_alive()) targetList.Add(minion);
+                    }
+
+                    int target = rand.Next(targetList.Count);
+
+                    bubbleFight.Change_type(minionAction.dealDamage(targetList[target]),);
 
 
 
-                this.next = true;
+                    this.next = true;
+                }
             }
 
             

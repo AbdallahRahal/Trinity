@@ -52,11 +52,7 @@ namespace Trinity.UI
                     sprite.Position = new Vector2f((78f + 1000 ) * _window.Size.X / 1700f, (635f + y * 70f) * _window.Size.Y / 900f);
 
                 }
-                if(fighter.Name == minRound.Name)
-                {
-                    spriteRound.Position = sprite.Position;
-                    _window.Draw(spriteRound);
-                }
+                
                 text.DisplayedString = fighter.Name+"      Vie : " + fighter.Life_point+"/"+fighter.Max_life_point;
                 text.Position = new Vector2f(sprite.Position.X + 60f, sprite.Position.Y+20f);
                 text.FillColor = new Color(0, 0, 0);
@@ -68,6 +64,11 @@ namespace Trinity.UI
                 
                 _window.Draw(sprite);
                 _window.Draw(text);
+                if (fighter.Name == minRound.Name)
+                {
+                    spriteRound.Position = sprite.Position;
+                    _window.Draw(spriteRound);
+                }
                 y++;
                 if (y == 3) y = 0;
             }
