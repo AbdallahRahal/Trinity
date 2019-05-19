@@ -166,7 +166,100 @@ namespace Trinity.UI
                     }
                 }
             }
+            if (option.Drawed)
+            {
+                //Console.WriteLine("equiper le minon 1");
+                if (339 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 442
+                    && 75 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 90)
+                {
+                    if(option.Equip is Weapon)
+                    {
+                        tower.Summoner.Inventory.Minion1.Armories.Equip((Weapon)option.Equip);
+                        Console.WriteLine("equiper weapon minion 1 ");
+                    } else
+                        if(option.Equip is Hat)
+                    {
+                        tower.Summoner.Inventory.Minion1.Armories.Equip((Hat)option.Equip);
+                    } else
+                        if(option.Equip is Leg)
+                    {
+                        tower.Summoner.Inventory.Minion1.Armories.Equip((Leg)option.Equip);
+                    } else
+                        if(option.Equip is Breastplate)
+                    {
+                        tower.Summoner.Inventory.Minion1.Armories.Equip((Breastplate)option.Equip);
+                    } else
+                        if(option.Equip is Boots)
+                    {
+                        tower.Summoner.Inventory.Minion1.Armories.Equip((Boots)option.Equip);
+                    }
 
+                }
+                //Console.WriteLine("equiper le minon 2");
+
+                if (337 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 446
+                   && 129 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 142)
+                {
+                    if (option.Equip is Weapon)
+                    {
+                        tower.Summoner.Inventory.Minion2.Armories.Equip((Weapon)option.Equip);
+                        Console.WriteLine("equiper weapon minion 2 ");
+                    }
+                    else
+                        if (option.Equip is Hat)
+                    {
+                        tower.Summoner.Inventory.Minion2.Armories.Equip((Hat)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Leg)
+                    {
+                        tower.Summoner.Inventory.Minion2.Armories.Equip((Leg)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Breastplate)
+                    {
+                        tower.Summoner.Inventory.Minion2.Armories.Equip((Breastplate)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Boots)
+                    {
+                        tower.Summoner.Inventory.Minion2.Armories.Equip((Boots)option.Equip);
+                    }
+
+                }
+                //Console.WriteLine("equiper le minon 3");
+
+                if (339 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 446
+                   && 179 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 194)
+                {
+                    if (option.Equip is Weapon)
+                    {
+                        tower.Summoner.Inventory.Minion3.Armories.Equip((Weapon)option.Equip);
+                        Console.WriteLine("equiper weapon minion 3 ");
+                    }
+                    else
+                        if (option.Equip is Hat)
+                    {
+                        tower.Summoner.Inventory.Minion3.Armories.Equip((Hat)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Leg)
+                    {
+                        tower.Summoner.Inventory.Minion3.Armories.Equip((Leg)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Breastplate)
+                    {
+                        tower.Summoner.Inventory.Minion3.Armories.Equip((Breastplate)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Boots)
+                    {
+                        tower.Summoner.Inventory.Minion3.Armories.Equip((Boots)option.Equip);
+                    }
+
+                }
+            }
             if (e.Button == Mouse.Button.Left && Onfight)
             {
 
