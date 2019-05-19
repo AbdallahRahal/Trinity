@@ -153,21 +153,25 @@ namespace Trinity.UI
                 if(Keyboard.IsKeyPressed(Keyboard.Key.Left) && Xpos < 20)
                 {
                     Console.WriteLine("collision gauche");
+                    moveSpeed = 0;
                 } else
 
                     if (Keyboard.IsKeyPressed(Keyboard.Key.Right) && Xpos > 1615)
                 {
                     Console.WriteLine("collision droite");
+                    moveSpeed = 0;
                 } else
 
                     if (Keyboard.IsKeyPressed(Keyboard.Key.Up) && Ypos < 5)
                 {
                     Console.WriteLine("collision haut");
+                    moveSpeed = 0;
                 } else
 
                     if(Keyboard.IsKeyPressed(Keyboard.Key.Down) && Ypos > 795)
                 {
                     Console.WriteLine("collision bas");
+                    moveSpeed = 0;
                 }
 
             }
