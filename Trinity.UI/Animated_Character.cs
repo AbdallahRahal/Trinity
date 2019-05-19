@@ -22,7 +22,6 @@ namespace Trinity.UI
         public float Xpos;
         public float Ypos;
         public bool _Open_Shop = false;
-        Animation currentAnimation;
         public Vector2f OldPlace;
         float xscale;
         float yscale;
@@ -37,6 +36,7 @@ namespace Trinity.UI
         protected Animation Anim_Left;
         protected Animation Anim_Down;
         protected Animation Anim_Right;
+        
 
         private Clock animationClock;
         protected float moveSpeed = 50  ;
@@ -62,7 +62,7 @@ namespace Trinity.UI
 
         public virtual void Update(float deltaTime)
         {
-            currentAnimation = null;
+            Animation currentAnimation = null;
 
 
             switch(CurrentState)
@@ -141,8 +141,8 @@ namespace Trinity.UI
                     
             //    }
             //}
-            if ( /*tabmap[y, x] == 854 && Xpos + 64 >= left && Xpos <= right && Ypos + 64 >= top && Ypos <= bottom*/((Xpos < 20 && (0 < Ypos && Ypos < 805))
-                       || (Xpos > 1622 && (0 < Ypos && Ypos < 805) || (Ypos < 0 && (20 < Xpos && Xpos < 1622)) || (Ypos > 805 && (20 < Xpos && Xpos < 1622))
+            if ( /*tabmap[y, x] == 854 && Xpos + 64 >= left && Xpos <= right && Ypos + 64 >= top && Ypos <= bottom*/((Xpos < 0 && (0 < Ypos && Ypos < 900))
+                       || (Xpos > 1700 && (0 < Ypos && Ypos < 900) || (Ypos < 0 && (0 < Xpos && Xpos < 1700)) || (Ypos > 900 && (0 < Xpos && Xpos < 1700))
                        )))
             {
                 this.sprite.Position = new Vector2f(Xpos, Ypos);
@@ -151,24 +151,20 @@ namespace Trinity.UI
                 //Console.WriteLine("collision mur "+ OldPlace);
                 //Console.WriteLine(sprite.Position);
 
-                if(Xpos < 20 && ((-0 < Ypos) || (Ypos < 800)) && Keyboard.IsKeyPressed(Keyboard.Key.Left))
+                if(Xpos < 5 && ((0 < Ypos) || (Ypos < 900)) )
                 {
-                    moveSpeed = 0;
                     Console.WriteLine("collision gauche");
                 } else
-                    if (Xpos > 1620 && ((0 < Ypos) || (Ypos < 800)) && Keyboard.IsKeyPressed(Keyboard.Key.Right))
+                    if (Xpos > 1695 && ((0 < Ypos) || (Ypos < 900)))
                 {
-                    moveSpeed = 0;
                     Console.WriteLine("collision droite");
                 } else
-                    if (Ypos < 0 && ((20 < Xpos) || (Xpos < 1620)) && Keyboard.IsKeyPressed(Keyboard.Key.Up))
+                    if (Ypos < 5 && ((0 < Xpos) || (Xpos < 1700)))
                 {
-                    moveSpeed = 0;
                     Console.WriteLine("collision haut");
                 } else
-                    if(Ypos > 800 && ((0 < Xpos) || (Xpos < 1620)) && Keyboard.IsKeyPressed(Keyboard.Key.Down))
+                    if(Ypos > 895 && ((0 < Xpos) || (Xpos < 1700)))
                 {
-                    moveSpeed = 0;
                     Console.WriteLine("collision bas");
                 }
 

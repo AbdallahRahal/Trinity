@@ -18,18 +18,31 @@ namespace Trinity.UI
         Equipement _equipement;
         bool _drawed;
 
+        static Font font = new Font(Path.Combine(Directory.GetCurrentDirectory(), "../../../Fonts/Arial.ttf"));
+        static Text text = new Text("Texte option equipement", font, 12);
+
 
         public Option_Info_UI(RenderWindow window, Equipement equipement)
         {
             texture = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/ItemDescription.png"));
             sprite = new Sprite(texture);
+            _drawed = false;
             sprite.Scale = new Vector2f((float)window.Size.X / 1700f, (float)window.Size.Y / 900f);
+            sprite.Position = new Vector2f(Mouse.GetPosition(window).X, Mouse.GetPosition(window).Y);
             _equipement = equipement;
         }
 
         public void Draw(RenderWindow window)
         {
+            _drawed = true;
+
+            text.DisplayedString = "Equiper Minion 1";
+            text.Position = new Vector2f(Mouse.GetPosition(window).X, Mouse.GetPosition(window).Y+20f);
+            text.FillColor = new Color(200, 0, 0);
+
             window.Draw(sprite);
+            window.Draw(text);
+
         }
         public bool Drawed
         {

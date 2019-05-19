@@ -6,6 +6,7 @@ using SFML.System;
 using System.IO;
 using SFML.Audio;
 using SFML.Window;
+using System.Linq;
 
 namespace Trinity.UI
 {
@@ -19,6 +20,7 @@ namespace Trinity.UI
         bool Onfight = false;
         static Weaponry warriors = tower.Weaponry;
         FightUI fight_UI = new FightUI(window, tower);
+        Option_Info_UI option;
 
 
         public void Start()
@@ -142,6 +144,21 @@ namespace Trinity.UI
 
                 Console.WriteLine(Mouse.GetPosition(window));
             }
+            if (e.Button == Mouse.Button.Left && inventory_UI.Drawed)
+            {
+                var equip_inventory = tower.Summoner.Inventory.Equipement.Values.ToList();
+                for (int i = 1; i < tower.Summoner.Inventory.Equipement.Count; i++)
+                {
+                    if (27+ i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 81 + i * 62
+                        && 284 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338)
+                    {
+                        option = new Option_Info_UI(window, equip_inventory[i]);
+                        option.Draw(window);
+                    }
+                   
+                }
+            }
+           
         }
         private void Window_Closed(object sender, EventArgs e)
         {
