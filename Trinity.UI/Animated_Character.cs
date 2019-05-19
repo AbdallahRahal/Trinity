@@ -22,7 +22,6 @@ namespace Trinity.UI
         public float Xpos;
         public float Ypos;
         public bool _Open_Shop = false;
-        Animation currentAnimation;
         public Vector2f OldPlace;
         float xscale;
         float yscale;
@@ -37,6 +36,7 @@ namespace Trinity.UI
         protected Animation Anim_Left;
         protected Animation Anim_Down;
         protected Animation Anim_Right;
+        
 
         private Clock animationClock;
         protected float moveSpeed = 50  ;
@@ -62,7 +62,7 @@ namespace Trinity.UI
 
         public virtual void Update(float deltaTime)
         {
-            currentAnimation = null;
+            Animation currentAnimation = null;
 
 
             switch(CurrentState)
@@ -141,6 +141,7 @@ namespace Trinity.UI
                     
             //    }
             //}
+
             /*if (((Xpos < 0 && (0 < Ypos && Ypos < 800)) || (Xpos > 1615 && (0 < Ypos && Ypos < 800) || 
                 (Ypos < 0 && (0 < Xpos && Xpos < 1615)) || (Ypos > 800 && (0 < Xpos && Xpos < 1615)))))*/
             if (Xpos < 20 || Xpos > 1615 || Ypos < 5 || Ypos > 795)
@@ -151,22 +152,21 @@ namespace Trinity.UI
 
                 if(Keyboard.IsKeyPressed(Keyboard.Key.Left) && Xpos < 20)
                 {
-                    moveSpeed = 0;
                     Console.WriteLine("collision gauche");
                 } else
+
                     if (Keyboard.IsKeyPressed(Keyboard.Key.Right) && Xpos > 1615)
                 {
-                    moveSpeed = 0;
                     Console.WriteLine("collision droite");
                 } else
+
                     if (Keyboard.IsKeyPressed(Keyboard.Key.Up) && Ypos < 5)
                 {
-                    moveSpeed = 0;
                     Console.WriteLine("collision haut");
                 } else
+
                     if(Keyboard.IsKeyPressed(Keyboard.Key.Down) && Ypos > 795)
                 {
-                    moveSpeed = 0;
                     Console.WriteLine("collision bas");
                 }
 

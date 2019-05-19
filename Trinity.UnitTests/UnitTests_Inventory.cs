@@ -15,8 +15,8 @@ namespace Trinity.UnitTests
         public void attach_minion()
         {
             Tower tower = new Tower();
-            Minion m1 = tower.Minion_Collection.Create_Minion("Ryan", 10, 10, 10, 10, 10);
-            Minion m2 = tower.Minion_Collection.Create_Minion("Ker", 10, 10, 10, 10, 10);
+            Minion m1 = tower.Minion_Collection.Create_Minion("Ryaan", 50, 23, 65, 0, 20, 20, "../../../MinionSprites/Morgan.png");
+            Minion m2 = tower.Minion_Collection.Create_Minion("ker", 50, 23, 65, 0, 20, 20, "../../../MinionSprites/Morgan.png");
             Summoner sum = new Summoner("roko", tower);
 
             var a = sum.Inventory.Attach_Minons(m1);

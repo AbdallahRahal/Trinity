@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Trinity
 {
@@ -143,18 +142,20 @@ namespace Trinity
             if (dmg >= _life_point) { _life_point = 0; Console.WriteLine(this.Name + " est mort"); }
             else { _life_point -= dmg; }
         }
-        public void dealDamage(Minion minion)
+        public int dealDamage(Minion minion)
         {
             Random rand = new Random();
             int hitChance = rand.Next(100);
             if(hitChance > this.Accuracy - minion.Dodge_rate)
             {
                 Console.WriteLine(this.Name + " Attaque " + minion.Name + " et rate comme une merde ");
+                return -1;
             }
             else
             {
                 Console.WriteLine(this.Name + " Attaque " + minion.Name + " et inflige " + this.Power + " dégats");
                 minion.takeDamage(this.Power);
+                return (int)this.Power;
             }
         }
 
