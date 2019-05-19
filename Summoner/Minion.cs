@@ -146,16 +146,18 @@ namespace Trinity
         {
             Random rand = new Random();
             int hitChance = rand.Next(100);
-            if(hitChance > this.Accuracy - minion.Dodge_rate)
-            {
-                Console.WriteLine(this.Name + " Attaque " + minion.Name + " et rate comme une merde ");
-                return -1;
-            }
-            else
+            Console.WriteLine("Chance de hit = " + hitChance + " accuracy = " + this.Accuracy + " esquive = " + minion.Dodge_rate);
+            if(hitChance < (int)this.Accuracy - (int)minion.Dodge_rate)
             {
                 Console.WriteLine(this.Name + " Attaque " + minion.Name + " et inflige " + this.Power + " dégats");
                 minion.takeDamage(this.Power);
                 return (int)this.Power;
+               
+            }
+            else
+            {
+                Console.WriteLine(this.Name + " Attaque " + minion.Name + " et rate comme une merde ");
+                return -1;
             }
         }
 

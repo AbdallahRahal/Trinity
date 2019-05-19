@@ -34,17 +34,19 @@ namespace Trinity.UI
         
         public void Draw(RenderWindow window)
         {
-            text.DisplayedString = "Money Argent Pesos Oseille Dol's : " +_summoner.Money.ToString("### ### ###") ;
+            text.DisplayedString = "Gold : " +_summoner.Money.ToString("### ### ###") ;
             text.Position = new Vector2f(27f * window.Size.X / 1700f, 256f * window.Size.Y / 900f);
             text.FillColor = new Color(0, 0, 0);
+
+
             _summoner.Inventory.Update();
             _draw = true;
             window.Draw(sprite);
             window.Draw(text);
-            minion = new Minion_UI(_summoner.Inventory.minionItem, window);
-            minion.Draw(sprite);
             item = new Item(_summoner.Inventory.Equipement, window);
             item.Draw(sprite);
+            minion = new Minion_UI(_summoner.Inventory.minionItem, window);
+            minion.Draw(sprite);
 
 
           
