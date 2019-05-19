@@ -39,6 +39,8 @@ namespace Trinity.UI
                 text.DisplayedString = "-" + x;
                 text.Position = minionPos.Position;
                 text.FillColor = new Color(255, 255, 255);
+                text.OutlineColor = new Color(255, 0, 0);
+                text.OutlineThickness = 2f;
                 bubble.Add(text, 0);
             }
         }
