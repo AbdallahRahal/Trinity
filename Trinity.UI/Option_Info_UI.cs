@@ -24,11 +24,11 @@ namespace Trinity.UI
 
         public Option_Info_UI(RenderWindow window, Equipement equipement)
         {
-            texture = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/ItemDescription.png"));
+            texture = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/MinionDescription.png"));
             sprite = new Sprite(texture);
             _drawed = false;
             sprite.Scale = new Vector2f((float)window.Size.X / 1700f, (float)window.Size.Y / 900f);
-            sprite.Position = new Vector2f(Mouse.GetPosition(window).X, Mouse.GetPosition(window).Y);
+            sprite.Position = new Vector2f(Mouse.GetPosition(window).X+100f, Mouse.GetPosition(window).Y+100f);
             _equipement = equipement;
         }
 
@@ -37,7 +37,7 @@ namespace Trinity.UI
             _drawed = true;
 
             text.DisplayedString = "Equiper Minion 1";
-            text.Position = new Vector2f(Mouse.GetPosition(window).X, Mouse.GetPosition(window).Y+20f);
+            text.Position = new Vector2f(Mouse.GetPosition(window).X, Mouse.GetPosition(window).Y + 20f);
             text.FillColor = new Color(200, 0, 0);
 
             window.Draw(sprite);

@@ -161,42 +161,44 @@ namespace Trinity.UI
                     {
                         option = new Option_Info_UI(window, equip_inventory[i]);
                         option.Draw(window);
-                        if (e.Button == Mouse.Button.Left && Onfight)
-                        {
-
-                            if (620 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 1008
-                               && 620 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 705 && !fight_UI.attak)
-                            {
-                                fight_UI.attak = true;
-                                fight_UI.FightBarSprite.Texture = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/fightbarAttak.png"));
-
-                            }
-                            if (fight_UI.attak)
-                            {
-
-
-                                foreach (KeyValuePair<Minion, Sprite> pos in fight_UI.minionPos)
-                                {
-                                    if (pos.Value.Position.X < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < pos.Value.Position.X + pos.Value.GetGlobalBounds().Width
-                                    && pos.Value.Position.Y < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < pos.Value.Position.Y + pos.Value.GetGlobalBounds().Height)
-                                    {
-
-
-
-                                        fight_UI.attak = false;
-                                        fight_UI.next = true;
-                                        fight_UI.targetMin = pos.Key;
-                                        Console.WriteLine("tour du summoner joué et cible = " + pos.Key.Name);
-                                    }
-
-
-                                }
-
-                            }
-                        }
+                        Console.WriteLine("bon!");
                     }
                 }
             }
+            if (e.Button == Mouse.Button.Left && Onfight)
+            {
+
+                if (620 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 1008
+                   && 620 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 705 && !fight_UI.attak)
+                {
+                    fight_UI.attak = true;
+                    fight_UI.FightBarSprite.Texture = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/fightbarAttak.png"));
+
+                }
+                if (fight_UI.attak)
+                {
+
+
+                    foreach (KeyValuePair<Minion, Sprite> pos in fight_UI.minionPos)
+                    {
+                        if (pos.Value.Position.X < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < pos.Value.Position.X + pos.Value.GetGlobalBounds().Width
+                        && pos.Value.Position.Y < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < pos.Value.Position.Y + pos.Value.GetGlobalBounds().Height)
+                        {
+
+
+
+                            fight_UI.attak = false;
+                            fight_UI.next = true;
+                            fight_UI.targetMin = pos.Key;
+                            Console.WriteLine("tour du summoner joué et cible = " + pos.Key.Name);
+                        }
+
+
+                    }
+
+                }
+            }
+
         }
 
 
