@@ -35,7 +35,7 @@ namespace Trinity.UI
             }
             else if (x >= 0) // l'attaque a réussi
             {
-                Text text = new Text("", font, 35);
+                Text text = new Text("", font, 40);
                 text.DisplayedString = "-" + x;
                 text.Position = minionPos.Position;
                 text.FillColor = new Color(255, 255, 255);
@@ -63,13 +63,13 @@ namespace Trinity.UI
                     if (bub is Text)
                     {
                         Text text = (Text)bub;
-                        text.Position = new Vector2f(text.Position.X, text.Position.Y - 1);
+                        text.Position = new Vector2f(text.Position.X, text.Position.Y - 2);
                         
                     }
                     if (bub is Sprite)
                     {
                         Sprite sprite = (Sprite)bub;
-                        sprite.Position = new Vector2f(sprite.Position.X, sprite.Position.Y - 1);
+                        sprite.Position = new Vector2f(sprite.Position.X, sprite.Position.Y - 2);
                         
                     }
                     _window.Draw(bub);

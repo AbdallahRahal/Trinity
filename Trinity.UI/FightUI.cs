@@ -178,7 +178,7 @@ namespace Trinity.UI
 
                     waithit++;
 
-                    if (waithit > rand.Next(50,100))
+                    if (waithit > rand.Next(70,200))
                     {
                         Console.WriteLine("tour de " + minionAction.Name + " appartient au Boss");
 
