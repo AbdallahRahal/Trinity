@@ -141,39 +141,37 @@ namespace Trinity.UI
                     
             //    }
             //}
-            if ( /*tabmap[y, x] == 854 && Xpos + 64 >= left && Xpos <= right && Ypos + 64 >= top && Ypos <= bottom*/((Xpos < 20 && (0 < Ypos && Ypos < 805))
-                       || (Xpos > 1622 && (0 < Ypos && Ypos < 805) || (Ypos < 0 && (20 < Xpos && Xpos < 1622)) || (Ypos > 805 && (20 < Xpos && Xpos < 1622))
-                       )))
+            /*if (((Xpos < 0 && (0 < Ypos && Ypos < 800)) || (Xpos > 1615 && (0 < Ypos && Ypos < 800) || 
+                (Ypos < 0 && (0 < Xpos && Xpos < 1615)) || (Ypos > 800 && (0 < Xpos && Xpos < 1615)))))*/
+            if (Xpos < 20 || Xpos > 1615 || Ypos < 5 || Ypos > 795)
             {
                 this.sprite.Position = new Vector2f(Xpos, Ypos);
                 OldPlace = new Vector2f(Xpos, Ypos);
                 Console.WriteLine("collision mur " + OldPlace);
-                //Console.WriteLine("collision mur "+ OldPlace);
-                //Console.WriteLine(sprite.Position);
 
-                if(Xpos < 20 && ((-0 < Ypos) || (Ypos < 800)) && Keyboard.IsKeyPressed(Keyboard.Key.Left))
+                if(Keyboard.IsKeyPressed(Keyboard.Key.Left) && Xpos < 20)
                 {
                     moveSpeed = 0;
                     Console.WriteLine("collision gauche");
                 } else
-                    if (Xpos > 1620 && ((0 < Ypos) || (Ypos < 800)) && Keyboard.IsKeyPressed(Keyboard.Key.Right))
+                    if (Keyboard.IsKeyPressed(Keyboard.Key.Right) && Xpos > 1615)
                 {
                     moveSpeed = 0;
                     Console.WriteLine("collision droite");
                 } else
-                    if (Ypos < 0 && ((20 < Xpos) || (Xpos < 1620)) && Keyboard.IsKeyPressed(Keyboard.Key.Up))
+                    if (Keyboard.IsKeyPressed(Keyboard.Key.Up) && Ypos < 5)
                 {
                     moveSpeed = 0;
                     Console.WriteLine("collision haut");
                 } else
-                    if(Ypos > 800 && ((0 < Xpos) || (Xpos < 1620)) && Keyboard.IsKeyPressed(Keyboard.Key.Down))
+                    if(Keyboard.IsKeyPressed(Keyboard.Key.Down) && Ypos > 795)
                 {
                     moveSpeed = 0;
                     Console.WriteLine("collision bas");
                 }
 
             }
-            if (1280 * xscale < Xpos && Xpos < 1629 * xscale && 63 * yscale < Ypos && Ypos < 223 * yscale)
+            if (1280 < Xpos && Xpos < 1629 && 63  < Ypos && Ypos < 223)
             {
                 _Open_Shop = true;
                 //Console.WriteLine("collision shop ");
