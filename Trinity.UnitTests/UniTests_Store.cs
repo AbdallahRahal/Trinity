@@ -36,8 +36,8 @@ namespace Trinity.UnitTests
             //Minion minion2 = tow.Minion_Collection.Create_Minion("Ryaan", 50, 23, 65, 0, 20, 20,  "../../../MinionSprites/Morgan.png");
             //Minion minion3 = tow.Minion_Collection.Create_Minion("Abdel", 50, 23, 65, 0, 20, 70,"../../../MinionSprites/Morgan.png");
 
-            tow.Store.Aviable();
-            int count = tow.Store.Aviable_Equipement.Count;
+            tow.Store.available();
+            int count = tow.Store.available_Equipement.Count;
 
             tow.Store.Buy_Equip(epee);
             var a = sum.Inventory.Equipement.ContainsValue(epee);

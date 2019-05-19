@@ -17,6 +17,7 @@ namespace Trinity.UI
         static Summoner summoner = tower.Summoner;
         static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner, window);
         static Store_UI story_UI = new Store_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/shop.png"), tower, window);
+        //static Armory_UI armory_UI = new Armory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/armory.png"), summoner, window);
         bool Onfight = false;
         static Weaponry warriors = tower.Weaponry;
         FightUI fight_UI = new FightUI(window, tower);
@@ -26,9 +27,8 @@ namespace Trinity.UI
         public void Start()
         {
 
-            tower.Store.Aviable();
+            tower.Store.available();
             
-
             window.SetFramerateLimit(60);
 
             window.Closed += Window_Closed;
@@ -74,24 +74,22 @@ namespace Trinity.UI
                 pokemon_fight_music.Play();
                 pokemon_fight_music.Loop = true;
 
-                while (Onfight)
-                { 
-                    zelda_menu_music.Stop();
-                    window.DispatchEvents();
-                    window.Clear();
+                if (Onfight) {
+                    fight_UI.Start();
                     fight_map.Draw(window);
-                    //player.Draw(window);
-                    fight_UI.Round();
-                   
+                }
 
+                while (Onfight)
+                {
+                    zelda_menu_music.Stop();
 
+                    int roundresult = fight_UI.Round(fight_map);
+                    if  (roundresult == 1 || roundresult == -1)
+                    {
+                        Onfight = false;
+                    }
 
-
-
-
-
-
-                    window.Display();
+                    
                     zelda_menu_music.Play();
                 }
 
@@ -112,7 +110,7 @@ namespace Trinity.UI
             }
             if (e.Code == Keyboard.Key.S)
             {
-                tower.Store.Aviable();
+                tower.Store.available();
             }
             if (e.Code == Keyboard.Key.F)
             {
@@ -128,18 +126,27 @@ namespace Trinity.UI
         {
             if (e.Button == Mouse.Button.Left && story_UI.Drawed)
             {
-               
-
                 for (int i = 0; i < 9; i++)
                 {
                     if (672 + i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 726 + i * 62
                         && 284 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338)
                     {
-                        if (tower.Store.Aviable_Equipement.Count > i) tower.Store.Buy_Equip(tower.Store.Aviable_Equipement[i]);
+                        if (tower.Store.available_Equipement.Count > i) tower.Store.Buy_Equip(tower.Store.available_Equipement[i]);
                     }
                 }
             }
-            if (e.Button == Mouse.Button.Right )
+            /*if (e.Button == Mouse.Button.Left && inventory_UI.Drawed)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    if (672 + i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 726 + i * 62
+                        && 284 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338)
+                    {
+                        //if (tower.Store.available_Equipement.Count > i) tower.Store.Buy_Equip(tower.Store.available_Equipement[i]);
+                    }
+                }
+            }*/
+            if (e.Button == Mouse.Button.Right)
             {
 
                 Console.WriteLine(Mouse.GetPosition(window));
@@ -149,17 +156,50 @@ namespace Trinity.UI
                 var equip_inventory = tower.Summoner.Inventory.Equipement.Values.ToList();
                 for (int i = 1; i < tower.Summoner.Inventory.Equipement.Count; i++)
                 {
-                    if (27+ i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 81 + i * 62
+                    if (27 + i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 81 + i * 62
                         && 284 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338)
                     {
                         option = new Option_Info_UI(window, equip_inventory[i]);
                         option.Draw(window);
+                        if (e.Button == Mouse.Button.Left && Onfight)
+                        {
+
+                            if (620 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 1008
+                               && 620 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 705 && !fight_UI.attak)
+                            {
+                                fight_UI.attak = true;
+                                fight_UI.FightBarSprite.Texture = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/fightbarAttak.png"));
+
+                            }
+                            if (fight_UI.attak)
+                            {
+
+
+                                foreach (KeyValuePair<Minion, Sprite> pos in fight_UI.minionPos)
+                                {
+                                    if (pos.Value.Position.X < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < pos.Value.Position.X + pos.Value.GetGlobalBounds().Width
+                                    && pos.Value.Position.Y < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < pos.Value.Position.Y + pos.Value.GetGlobalBounds().Height)
+                                    {
+
+
+
+                                        fight_UI.attak = false;
+                                        fight_UI.next = true;
+                                        fight_UI.targetMin = pos.Key;
+                                        Console.WriteLine("tour du summoner joué et cible = " + pos.Key.Name);
+                                    }
+
+
+                                }
+
+                            }
+                        }
                     }
-                   
                 }
             }
-           
         }
+
+
         private void Window_Closed(object sender, EventArgs e)
         {
             Window window = (Window)sender;

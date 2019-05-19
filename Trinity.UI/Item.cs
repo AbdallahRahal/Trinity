@@ -21,17 +21,14 @@ namespace Trinity.UI
         List<Equipement> equipementListShop = new List<Equipement>();
         List<Sprite> itemSpriteList = new List<Sprite>();
         List<Equipement> equipementList = new List<Equipement>();
-        Option_Info_UI option;
         Tower _context;
-        float scaleX;
-        float scaleY;
+
 
         public Item(Dictionary<string, Equipement> equipementDictionnary, RenderWindow newWindow) // inventaire
         {
             equip = equipementDictionnary;
             window = newWindow;
-            scaleX = window.Size.X / 1700f;
-            scaleY = window.Size.Y / 900f;
+
         }
 
         public Item(List<Equipement> equipementList, RenderWindow newWindow, Tower context ) //shop
@@ -39,8 +36,7 @@ namespace Trinity.UI
             equipList = equipementList;
             window = newWindow;
             _context = context;
-            scaleX = window.Size.X / 1700f;
-            scaleY = window.Size.Y / 900f;
+
         }
 
 
@@ -52,9 +48,8 @@ namespace Trinity.UI
             foreach (KeyValuePair<string, Equipement> item in equip)
             {
                 sprite = new Sprite(new Texture(item.Value.Path));
-                sprite.Position = new Vector2f(27f * (float)inventorySprite.Scale.X + x * 62f * (float)inventorySprite.Scale.X, 286f * (float)inventorySprite.Scale.Y);
+                sprite.Position = new Vector2f(27f * (float)inventorySprite.Scale.X + x * 62f * (float)inventorySprite.Scale.X,(286f + y * 62f) * (float)inventorySprite.Scale.Y);
                 sprite.Scale = new Vector2f((float)inventorySprite.Scale.X, (float)inventorySprite.Scale.Y);
-
                 equipementList.Add(item.Value);
                 itemSpriteList.Add(sprite);
                 window.Draw(sprite);
@@ -64,22 +59,11 @@ namespace Trinity.UI
 
                 foreach (Sprite sprite in itemSpriteList)
                 {
-                    if ((float)Mouse.GetPosition(window).X > sprite.Position.X && (float)Mouse.GetPosition(window).X < sprite.Position.X + 54f * scaleX
-                        && (float)Mouse.GetPosition(window).Y > sprite.Position.Y && (float)Mouse.GetPosition(window).Y < sprite.Position.Y + 54f * scaleY)
+                    if ((float)Mouse.GetPosition(window).X > sprite.Position.X && (float)Mouse.GetPosition(window).X < sprite.Position.X + 54f && 
+                        (float)Mouse.GetPosition(window).Y > sprite.Position.Y && (float)Mouse.GetPosition(window).Y < sprite.Position.Y + 54f)
 
                     {
-                        option = new Option_Info_UI(window, equipementList[equipement]);
-                        if (Mouse.IsButtonPressed(Mouse.Button.Left) && option.Drawed == false)
-                        {
-                            option.Drawed = !option.Drawed;
-                        }
-                        else
-                        {
-                            itemDescription = new ItemDescription(equipementList[equipement], window);
-                            itemDescription.Draw(window);
-                        }
 
-                        if (option.Drawed) option.Draw(window);
                         itemDescription = new ItemDescription(equipementList[equipement], window);
                         itemDescription.Draw(window);
                     }
@@ -95,10 +79,6 @@ namespace Trinity.UI
                 }
 
             }
-
-
-
-
         }
 
         public void Draw_Store(Sprite storeSprite)
@@ -107,8 +87,8 @@ namespace Trinity.UI
             for (int i = 0; i < equipList.Count; i++)
             {
                 sprite = new Sprite(new Texture(equipList[i].Path));
-                sprite.Position = new Vector2f((storeSprite.Position.X + 27f + i * 62f) * storeSprite.Scale.X, 285f * storeSprite.Scale.Y);
-                sprite.Scale = new Vector2f(storeSprite.Scale.X, storeSprite.Scale.Y);
+                sprite.Position = new Vector2f((storeSprite.Position.X + 27f + i * 62f), 285f);
+
 
                 equipementListShop.Add(equipList[i]);
                 itemSpriteListShop.Add(sprite);
@@ -118,8 +98,8 @@ namespace Trinity.UI
                 int compte = 0;
                 foreach (Sprite sprite in itemSpriteListShop)
                 {
-                    if (Mouse.GetPosition(window).X > sprite.Position.X && Mouse.GetPosition(window).X < sprite.Position.X + 54f * scaleX
-                     && Mouse.GetPosition(window).Y > sprite.Position.Y && Mouse.GetPosition(window).Y < sprite.Position.Y + 54f * scaleY)
+                    if (Mouse.GetPosition(window).X > sprite.Position.X && Mouse.GetPosition(window).X < sprite.Position.X + 54f
+                     && Mouse.GetPosition(window).Y > sprite.Position.Y && Mouse.GetPosition(window).Y < sprite.Position.Y + 54f)
                     {
                         itemDescription = new ItemDescription(equipementListShop[compte], window);
                         itemDescription.Draw(window);
