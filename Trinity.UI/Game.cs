@@ -21,7 +21,7 @@ namespace Trinity.UI
         bool Onfight = false;
         static Weaponry warriors = tower.Weaponry;
         FightUI fight_UI = new FightUI(window, tower);
-        Option_Info_UI option;
+        Option_Info_UI option = new Option_Info_UI(window, tower);
 
 
         public void Start()
@@ -70,6 +70,8 @@ namespace Trinity.UI
                 }
 
                 if (inventory_UI.Drawed) { inventory_UI.Draw(window); }
+                if ( option != null && option.Drawed) { option.Draw(window); }
+               
                 pokemon_fight_music.Volume = 20;
                 pokemon_fight_music.Play();
                 pokemon_fight_music.Loop = true;
@@ -124,6 +126,12 @@ namespace Trinity.UI
         }
         private void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
+
+            if (e.Button == Mouse.Button.Left )
+            {
+                option.Drawed = false;
+            }
+
             if (e.Button == Mouse.Button.Left && story_UI.Drawed)
             {
                 for (int i = 0; i < 9; i++)
@@ -135,17 +143,7 @@ namespace Trinity.UI
                     }
                 }
             }
-            /*if (e.Button == Mouse.Button.Left && inventory_UI.Drawed)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    if (672 + i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 726 + i * 62
-                        && 284 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338)
-                    {
-                        //if (tower.Store.available_Equipement.Count > i) tower.Store.Buy_Equip(tower.Store.available_Equipement[i]);
-                    }
-                }
-            }*/
+
             if (e.Button == Mouse.Button.Right)
             {
 
@@ -154,17 +152,21 @@ namespace Trinity.UI
             if (e.Button == Mouse.Button.Left && inventory_UI.Drawed)
             {
                 var equip_inventory = tower.Summoner.Inventory.Equipement.Values.ToList();
-                for (int i = 1; i < tower.Summoner.Inventory.Equipement.Count; i++)
+               
+                
+                for (int i = 0; i < tower.Summoner.Inventory.Equipement.Count; i++)
                 {
                     if (27 + i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 81 + i * 62
                         && 284 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338)
                     {
-                        option = new Option_Info_UI(window, equip_inventory[i]);
-                        option.Draw(window);
+                        option.Equip = equip_inventory[i];
+                        option.Drawed = !option.Drawed;
+
                         Console.WriteLine("bon!");
                     }
                 }
             }
+
             if (e.Button == Mouse.Button.Left && Onfight)
             {
 
