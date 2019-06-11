@@ -86,7 +86,18 @@ namespace Trinity.UI
                     zelda_menu_music.Stop();
 
                     int roundresult = fight_UI.Round(fight_map);
-                    if  (roundresult == 1 || roundresult == -1)
+                    if (roundresult == 1)
+                    {
+                        Onfight = false;
+                        tower.Boss.Inventory.Minion1.Bonus();
+                        tower.Boss.Inventory.Minion2.Bonus();
+                        tower.Boss.Inventory.Minion3.Bonus();
+
+                        tower.Boss.Inventory.Minion1.Regen();
+                        tower.Boss.Inventory.Minion2.Regen();
+                        tower.Boss.Inventory.Minion3.Regen();
+                    }
+                    if ( roundresult == -1)
                     {
                         Onfight = false;
                     }
@@ -132,6 +143,13 @@ namespace Trinity.UI
                 option.Drawed = false;
             }
 
+
+            if (e.Button == Mouse.Button.Right)
+            {
+
+                Console.WriteLine(Mouse.GetPosition(window));
+            }
+
             if (e.Button == Mouse.Button.Left && story_UI.Drawed)
             {
                 for (int i = 0; i < 9; i++)
@@ -144,26 +162,24 @@ namespace Trinity.UI
                 }
             }
 
-            if (e.Button == Mouse.Button.Right)
-            {
 
-                Console.WriteLine(Mouse.GetPosition(window));
-            }
             if (e.Button == Mouse.Button.Left && inventory_UI.Drawed)
             {
                 var equip_inventory = tower.Summoner.Inventory.Equipement.Values.ToList();
-               
-                
-                for (int i = 0; i < tower.Summoner.Inventory.Equipement.Count; i++)
+
+                int y = 0;
+                int i = 0;
+                for (int nbinvent = 0; nbinvent < tower.Summoner.Inventory.Equipement.Count; nbinvent++)
                 {
                     if (27 + i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 81 + i * 62
-                        && 284 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338)
+                        && 284 + y * 58 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338 + y * 112)
                     {
-                        option.Equip = equip_inventory[i];
+                        option.Equip = equip_inventory[i+y*9];
                         option.Drawed = !option.Drawed;
 
-                        Console.WriteLine("bon!");
+                        
                     }
+                    if (i == 8) { i = 0; y++ ; } else { i++; }
                 }
             }
             if (option.Drawed)
@@ -175,7 +191,7 @@ namespace Trinity.UI
                     if(option.Equip is Weapon)
                     {
                         tower.Summoner.Inventory.Minion1.Armories.Equip((Weapon)option.Equip);
-                        Console.WriteLine("equiper weapon minion 1 ");
+                       
                     } else
                         if(option.Equip is Hat)
                     {
@@ -193,6 +209,8 @@ namespace Trinity.UI
                     {
                         tower.Summoner.Inventory.Minion1.Armories.Equip((Boots)option.Equip);
                     }
+                    tower.Summoner.Inventory.RemovEquip(option.Equip);
+                    option.Drawed = false;
 
                 }
                 //Console.WriteLine("equiper le minon 2");
@@ -203,7 +221,7 @@ namespace Trinity.UI
                     if (option.Equip is Weapon)
                     {
                         tower.Summoner.Inventory.Minion2.Armories.Equip((Weapon)option.Equip);
-                        Console.WriteLine("equiper weapon minion 2 ");
+                        
                     }
                     else
                         if (option.Equip is Hat)
@@ -225,6 +243,8 @@ namespace Trinity.UI
                     {
                         tower.Summoner.Inventory.Minion2.Armories.Equip((Boots)option.Equip);
                     }
+                    tower.Summoner.Inventory.RemovEquip(option.Equip);
+                    option.Drawed = false;
 
                 }
                 //Console.WriteLine("equiper le minon 3");
@@ -235,7 +255,7 @@ namespace Trinity.UI
                     if (option.Equip is Weapon)
                     {
                         tower.Summoner.Inventory.Minion3.Armories.Equip((Weapon)option.Equip);
-                        Console.WriteLine("equiper weapon minion 3 ");
+                      
                     }
                     else
                         if (option.Equip is Hat)
@@ -257,6 +277,8 @@ namespace Trinity.UI
                     {
                         tower.Summoner.Inventory.Minion3.Armories.Equip((Boots)option.Equip);
                     }
+                    tower.Summoner.Inventory.RemovEquip(option.Equip);
+                    option.Drawed = false;
 
                 }
             }
@@ -285,7 +307,7 @@ namespace Trinity.UI
                             fight_UI.attak = false;
                             fight_UI.next = true;
                             fight_UI.targetMin = pos.Key;
-                            Console.WriteLine("tour du summoner joué et cible = " + pos.Key.Name);
+                          
                         }
 
 
