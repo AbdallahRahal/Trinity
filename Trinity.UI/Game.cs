@@ -21,6 +21,7 @@ namespace Trinity.UI
         bool Onfight = false;
         bool launch_game = false;
         bool launch_history = false;
+        bool launch_credit = false;
         //bool back_home = false;
         static Weaponry warriors = tower.Weaponry;
         FightUI fight_UI = new FightUI(window, tower);
@@ -113,6 +114,11 @@ namespace Trinity.UI
                 {
                     window.Clear();
                     menu.History();
+                }
+                if(launch_credit == true)
+                {
+                    window.Clear();
+                    menu.Credit();
                 }
                 //if(back_home == true)
                 //{
@@ -323,21 +329,27 @@ namespace Trinity.UI
             if(e.Button == Mouse.Button.Left && launch_game == false)
             {
                 //Launch game
-                if(304 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 546
-                    && 302 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 368/* && back_home == false*/)
+                if(302 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 546
+                    && 201 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 268/* && back_home == false*/)
                 {
                     //Play();
                     launch_game = true;
                 }
                 //History
-                if(307 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 546
-                    && 401 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 466 && launch_history == false)
+                if(304 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 544
+                    && 403 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 466 && launch_history == false)
                 {
                     launch_history = true;
                 }
+                //Credits
+                if (302 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 543
+                && 499 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 568 && launch_history == false)
+                {
+                    launch_credit = true;
+                }
                 //Quit game
-                if(301 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 547 
-                    && 601 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 669 && launch_history == false)
+                if (303 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 542 
+                    && 674 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 735 && launch_history == false)
                 {
                     Window_Closed(window, e);
                 }

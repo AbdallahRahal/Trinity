@@ -43,15 +43,16 @@ namespace Trinity.UI
         public Shape[] Menu_Display()
         {
             Vector2f Size = new Vector2f(250, 72);
-            Shape[] buttons = new RectangleShape[4];
+            Shape[] buttons = new RectangleShape[5];
 
             Shape MenuBackground = CreateShape(1700, 900, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/MenuMain.jpg"),0,0);
             _window.Draw(MenuBackground);
 
-            _window.Draw(buttons[0] = CreateShape(Size, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/bouton_new_game.PNG"), 300, 300));
+            _window.Draw(buttons[0] = CreateShape(Size, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/bouton_new_game.PNG"), 300, 200));
+            _window.Draw(buttons[0] = CreateShape(Size, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/bouton_load_game.png"), 300, 300));
             _window.Draw(buttons[1] = CreateShape(Size, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/bouton_new_History.png"), 300, 400));
             _window.Draw(buttons[2] = CreateShape(Size, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/bouton_new_credits.png"), 300, 500));
-            _window.Draw(buttons[3] = CreateShape(Size, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/bouton_quit_game.png"), 300, 600));
+            _window.Draw(buttons[3] = CreateShape(Size, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/bouton_quit_game.png"), 300, 670));
 
             return buttons;
         }
@@ -65,6 +66,19 @@ namespace Trinity.UI
             _window.Draw(BackHome);
 
             _window.Draw(button = CreateShape(Size, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/bouton_back_home.png"), 246, 594));
+
+            return button;
+        }
+
+        public Shape Credit()
+        {
+            Vector2f Size = new Vector2f(150, 50);
+            Shape button = new RectangleShape();
+
+            Shape BackHome = CreateShape(1700, 900, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/credits.png"), 0, 0);
+            _window.Draw(BackHome);
+
+            _window.Draw(button = CreateShape(Size, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/bouton_back_home.png"), 246, 670));
 
             return button;
         }
