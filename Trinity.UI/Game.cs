@@ -72,7 +72,7 @@ namespace Trinity.UI
                     player.Update(deltaTime);
                     player.Draw(window);
 
-<<<<<<< HEAD
+
 
                 // Ouverture du shop
                 if (player._Open_Shop == true)
@@ -97,20 +97,6 @@ namespace Trinity.UI
                 pokemon_fight_music.Volume = 20;
                 pokemon_fight_music.Play();
                 pokemon_fight_music.Loop = true;
-=======
-                    if (player._Open_Shop == true)
-                    {
-                        story_UI.Draw(window);
-
-                    }
-                    else
-                    {
-                        story_UI.Drawed = false;
-                    }
-
-                    if (inventory_UI.Drawed) { inventory_UI.Draw(window); }
-                    if (option != null && option.Drawed) { option.Draw(window); }
->>>>>>> e4e816ba0f99d63a54cf342fbc7fcad6e82dfd82
 
                     pokemon_fight_music.Volume = 20;
                     pokemon_fight_music.Play();
