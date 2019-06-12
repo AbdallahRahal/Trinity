@@ -210,14 +210,6 @@ namespace Trinity.UI
                 }
             }
 
-<<<<<<< HEAD
-            
-
-            if (e.Button == Mouse.Button.Right)
-            {
-=======
->>>>>>> ad8c3ec168e67b5be62919a37f94063994ffb882
-
             if (e.Button == Mouse.Button.Left && inventory_UI.Drawed)
             {
                 var equip_inventory = tower.Summoner.Inventory.Equipement.Values.ToList();
