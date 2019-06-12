@@ -32,17 +32,17 @@ namespace Trinity
             Minion minion2 = tower.Minion_Collection.Create_Minion("Allié 2", 12, 150, 200, 15,  90, 50, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Ryan.png"));
             Minion minion3 = tower.Minion_Collection.Create_Minion("Allié 3",  8, 210, 200,  5, 100, 95, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Abdel.png"));
 
-            Minion minion4 = tower.Minion_Collection.Create_Minion("mechant 1", 15, 160, 100,  20,  98, 30, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/La fille de Morgan.png"));
-            Minion minion5 = tower.Minion_Collection.Create_Minion("mechant 2", 10, 120,  90,  20, 100, 12, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Le fils de Ryan.png"));
-            Minion minion6 = tower.Minion_Collection.Create_Minion("mechant 3",  5, 200,  95, 200,  92, 69, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Les fils d'Abdel.png"));
+            Minion BossMinion1 = tower.Minion_Collection.Create_Minion("mechant 1", 15, 160, 100,  20,  98, 30, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/La fille de Morgan.png"));
+            Minion BossMinion2 = tower.Minion_Collection.Create_Minion("mechant 2", 10, 120,  90,  20, 100, 12, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Le fils de Ryan.png"));
+            Minion BossMinion3 = tower.Minion_Collection.Create_Minion("mechant 3",  5, 200,  95, 20,  92, 69, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Les fils d'Abdel.png"));
 
             tower.Summoner.Inventory.Attach_Minons(minion1);
             tower.Summoner.Inventory.Attach_Minons(minion2);
             tower.Summoner.Inventory.Attach_Minons(minion3);
 
-            tower.Boss.Inventory.Attach_Minons(minion4);
-            tower.Boss.Inventory.Attach_Minons(minion5);
-            tower.Boss.Inventory.Attach_Minons(minion6);
+            tower.Boss.Inventory.Attach_Minons(BossMinion1);
+            tower.Boss.Inventory.Attach_Minons(BossMinion2);
+            tower.Boss.Inventory.Attach_Minons(BossMinion3);
         }
     }
 }

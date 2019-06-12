@@ -73,7 +73,7 @@ namespace Trinity
             if (this is Weapon)
             {
                 Weapon weapon = (Weapon)this;
-                equip.Add("Vie : +", weapon.Power.ToString());
+                equip.Add("Pouvoir : +", weapon.Power.ToString());
                 equip.Add("Type : ", "Arme");
             }
 
