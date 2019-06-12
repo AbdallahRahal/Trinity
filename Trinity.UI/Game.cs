@@ -17,7 +17,7 @@ namespace Trinity.UI
         static Summoner summoner = tower.Summoner;
         static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner, window);
         static Store_UI story_UI = new Store_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/shop.png"), tower, window);
-        //static Armory_UI armory_UI = new Armory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/armory.png"), summoner, window);
+        static Armory_UI armory_UI = new Armory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/armory.png"), summoner, window);
         bool Onfight = false;
         static Weaponry warriors = tower.Weaponry;
         FightUI fight_UI = new FightUI(window, tower);
@@ -59,18 +59,26 @@ namespace Trinity.UI
                 player.Update(deltaTime);
                 player.Draw(window);
 
+
+                // Ouverture du shop
                 if (player._Open_Shop == true)
                 {
                     story_UI.Draw(window);
-
                 }
                 else
                 {
                     story_UI.Drawed = false;
                 }
-
-                if (inventory_UI.Drawed) { inventory_UI.Draw(window); }
-                if ( option != null && option.Drawed) { option.Draw(window); }
+                
+                // Ouverture de l'inventaire & des inventaires des minions
+                if (inventory_UI.Drawed)
+                {
+                    inventory_UI.Draw(window);
+                    armory_UI.Draw(window);
+                }
+               
+               
+                if (option != null && option.Drawed) { option.Draw(window); }
                
                 pokemon_fight_music.Volume = 20;
                 pokemon_fight_music.Play();
@@ -109,6 +117,7 @@ namespace Trinity.UI
             if (e.Code == Keyboard.Key.I)
             {
                 inventory_UI.Drawed = !inventory_UI.Drawed;
+                armory_UI.Drawed = !armory_UI.Drawed;
             }
             if (e.Code == Keyboard.Key.S)
             {
@@ -120,9 +129,6 @@ namespace Trinity.UI
                 fight_UI.Start();
                 Onfight = !Onfight;
             }
-            //if (e.Code == Keyboard.Key.O /*&& player._Open_Shop == true*/)
-            //{
-            //}
         }
         private void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
@@ -143,6 +149,8 @@ namespace Trinity.UI
                     }
                 }
             }
+
+            
 
             if (e.Button == Mouse.Button.Right)
             {
@@ -175,7 +183,7 @@ namespace Trinity.UI
                 {
                     fight_UI.attak = true;
                     fight_UI.FightBarSprite.Texture = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/fightbarAttak.png"));
-
+                    
                 }
                 if (fight_UI.attak)
                 {

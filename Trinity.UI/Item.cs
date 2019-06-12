@@ -39,12 +39,18 @@ namespace Trinity.UI
 
         }
 
+        /*public Item(Dictionary<string, Equipement> equipementDictionnary, RenderWindow newWindow) // armory
+        {
+            equip = equipementDictionnary;
+            window = newWindow;
+        }*/
+
 
         public void Draw(Sprite inventorySprite)
         {
             int x = 0;
             int y = 0;
-
+            
             foreach (KeyValuePair<string, Equipement> item in equip)
             {
                 sprite = new Sprite(new Texture(item.Value.Path));
