@@ -9,23 +9,23 @@ namespace Trinity
         string _path;
         // life_point
         uint _life_point;
-        readonly uint _base_max_life_point;
+         uint _base_max_life_point;
         uint _bonus_max_life_point;
         // mana_point
         uint _mana_point;
-        readonly uint _base_max_mana_point;
+         uint _base_max_mana_point;
         uint _bonus_max_mana_point;
         // power
-        readonly uint _base_power;
+         uint _base_power;
         uint _bonus_power;
         // dodge_rate
-        readonly uint _base_dodge_rate;
+         uint _base_dodge_rate;
         uint _bonus_dodge_rate; 
         // lead
-        readonly uint _base_lead;
+         uint _base_lead;
         uint _bonus_lead;
         // accuracy
-        readonly uint _base_accuracy;
+         uint _base_accuracy;
         uint _bonus_accuracy;
         bool _is_Attach;
         Tower _context;
@@ -80,8 +80,28 @@ namespace Trinity
         {
             get { return _base_power + _bonus_power; }
         }
-        
 
+        public void Bonus()
+        {
+            double x;
+            Random rand = new Random();
+
+            x = (double)_base_accuracy * (1 + rand.NextDouble() );
+            _base_accuracy = (uint)x;
+
+            x = (double)_base_dodge_rate * (1 + rand.NextDouble());
+            _base_dodge_rate = (uint)x;
+
+           
+            x = (double)_base_max_life_point * (1 + rand.NextDouble());
+            _base_max_life_point = (uint)x;
+ 
+            x = (double)_base_power * (1 + rand.NextDouble());
+            _base_power = (uint)x;
+
+            x = (double)_base_max_mana_point * (1 + rand.NextDouble());
+            _base_max_mana_point = (uint)x;
+        }
         public uint Bonus_power
         {
             get { return _bonus_power; }
@@ -137,26 +157,32 @@ namespace Trinity
             set { _bonus_accuracy = value; }
         }
 
+        public void Regen()
+        {
+            Life_point = Max_life_point;
+            Mana_point = Max_mana_point;
+        }
+
         public void takeDamage(uint dmg)
         {
-            if (dmg >= _life_point) { _life_point = 0; Console.WriteLine(this.Name + " est mort"); }
+            if (dmg >= _life_point) { _life_point = 0;  }
             else { _life_point -= dmg; }
         }
         public int dealDamage(Minion minion)
         {
             Random rand = new Random();
             int hitChance = rand.Next(100);
-            Console.WriteLine("Chance de hit = " + hitChance + " accuracy = " + this.Accuracy + " esquive = " + minion.Dodge_rate);
+           
             if(hitChance < (int)this.Accuracy - (int)minion.Dodge_rate)
             {
-                Console.WriteLine(this.Name + " Attaque " + minion.Name + " et inflige " + this.Power + " dégats");
+               
                 minion.takeDamage(this.Power);
                 return (int)this.Power;
                
             }
             else
             {
-                Console.WriteLine(this.Name + " Attaque " + minion.Name + " et rate comme une merde ");
+               
                 return -1;
             }
         }

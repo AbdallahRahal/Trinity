@@ -17,11 +17,19 @@ namespace Trinity.UI
         static Sprite sprite;
         static Texture texture;
 
+        static Sprite spriteLifeBarEmpty;
+        static Texture textureLifeBarEmpty;
+
+        static Sprite spriteLifeBar;
+        static Texture textureLifeBar = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Lifebar.png"));
+
         static Sprite spriteRound;
         static Texture textureRound;
         static Font font = new Font(Path.Combine(Directory.GetCurrentDirectory(), "../../../Fonts/Arial.ttf"));
         static Text text = new Text("Test description objet", font, 16);
         RenderWindow _window;
+
+        double percentLife;
 
         public Fighter_UI(RenderWindow window, Tower tower, List<Minion> _Fighters)
         {
@@ -52,16 +60,31 @@ namespace Trinity.UI
                     sprite.Position = new Vector2f((78f + 1000 ) * _window.Size.X / 1700f, (635f + y * 70f) * _window.Size.Y / 900f);
 
                 }
-                
+                textureLifeBarEmpty = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/EmptyLifeBar.png"));
+                spriteLifeBarEmpty = new Sprite(textureLifeBarEmpty);
+                spriteLifeBarEmpty.Position = new Vector2f(sprite.Position.X + 60f, sprite.Position.Y + 15f);
+
+                percentLife = ((double)fighter.Life_point / (double)fighter.Max_life_point) * 100 ;
+
+                for (int barNmb = 0; barNmb < percentLife; barNmb++)
+                {
+
+                    spriteLifeBar = new Sprite(textureLifeBar);
+                    spriteLifeBar.Position = new Vector2f(sprite.Position.X + 62f + 4f * (float)barNmb, sprite.Position.Y + 17f);
+
+                    _window.Draw(spriteLifeBar);
+                }
+
+
                 text.DisplayedString = fighter.Name+"      Vie : " + fighter.Life_point+"/"+fighter.Max_life_point;
-                text.Position = new Vector2f(sprite.Position.X + 60f, sprite.Position.Y+20f);
+                text.Position = new Vector2f(sprite.Position.X + 60f, sprite.Position.Y+50f);
                 text.FillColor = new Color(0, 0, 0);
 
 
 
 
 
-                
+                _window.Draw(spriteLifeBarEmpty);
                 _window.Draw(sprite);
                 _window.Draw(text);
                 if (fighter.Name == minRound.Name)
