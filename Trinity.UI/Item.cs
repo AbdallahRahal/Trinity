@@ -54,7 +54,7 @@ namespace Trinity.UI
             foreach (KeyValuePair<string, Equipement> item in equip)
             {
                 sprite = new Sprite(new Texture(item.Value.Path));
-                sprite.Position = new Vector2f(27f * (float)inventorySprite.Scale.X + x * 62f * (float)inventorySprite.Scale.X,(286f + y * 62f) * (float)inventorySprite.Scale.Y);
+                sprite.Position = new Vector2f(27f * (float)inventorySprite.Scale.X + x * 61f * (float)inventorySprite.Scale.X,(286f + y * 62f) * (float)inventorySprite.Scale.Y);
                 sprite.Scale = new Vector2f((float)inventorySprite.Scale.X, (float)inventorySprite.Scale.Y);
                 equipementList.Add(item.Value);
                 itemSpriteList.Add(sprite);

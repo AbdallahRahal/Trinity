@@ -19,11 +19,22 @@ namespace Trinity.UI
         static Store_UI story_UI = new Store_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/shop.png"), tower, window);
         static Armory_UI armory_UI = new Armory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/armory.png"), summoner, window);
         bool Onfight = false;
+        bool launch_game = false;
+        bool launch_history = false;
+        bool launch_credit = false;
+        //bool back_home = false;
         static Weaponry warriors = tower.Weaponry;
         FightUI fight_UI = new FightUI(window, tower);
         Option_Info_UI option = new Option_Info_UI(window, tower);
+        Map map = new Map(window, "");
+        Map fight_map = new Map(window, "fight");
+        Player player = new Player(window);
+        Music zelda_menu_music = new Music(Path.Combine(Directory.GetCurrentDirectory(), "../../../Music/Zelda_Menu_Music.ogg"));
+        Music pokemon_fight_music = new Music(Path.Combine(Directory.GetCurrentDirectory(), "../../../Music/Pokemon_Fight_Music.ogg"));
+        Menu menu = new Menu(window);
 
-
+        Clock clock = new Clock();
+        
         public void Start()
         {
 
@@ -34,31 +45,34 @@ namespace Trinity.UI
             window.Closed += Window_Closed;
             window.KeyPressed += Window_KeyPressed;
             window.MouseButtonPressed += Window_MouseButtonPressed;
+      
 
-            Map map = new Map(window, "");
-            Map fight_map = new Map(window, "fight");
-            Player player = new Player(window);
-            Clock clock = new Clock();
+            
 
             // Generation du player
             player = new Player(window);
 
-            Music zelda_menu_music = new Music(Path.Combine(Directory.GetCurrentDirectory(), "../../../Music/Zelda_Menu_Music.ogg"));
-            Music pokemon_fight_music = new Music(Path.Combine(Directory.GetCurrentDirectory(), "../../../Music/Pokemon_Fight_Music.ogg"));
+            
             zelda_menu_music.Play();
 
             while (window.IsOpen)
             {
                 window.DispatchEvents();
                 window.Clear();
-                map.Draw(window);
-                player.collide();
+                menu.Menu_Display();
+                //PLAY
+                if (launch_game == true)
+                {
+                    window.Clear();
+                    map.Draw(window);
+                    player.collide();
 
-                float deltaTime = clock.Restart().AsSeconds();
+                    float deltaTime = clock.Restart().AsSeconds();
 
-                player.Update(deltaTime);
-                player.Draw(window);
+                    player.Update(deltaTime);
+                    player.Draw(window);
 
+<<<<<<< HEAD
 
                 // Ouverture du shop
                 if (player._Open_Shop == true)
@@ -83,28 +97,66 @@ namespace Trinity.UI
                 pokemon_fight_music.Volume = 20;
                 pokemon_fight_music.Play();
                 pokemon_fight_music.Loop = true;
-
-                if (Onfight) {
-                    fight_UI.Start();
-                    fight_map.Draw(window);
-                }
-
-                while (Onfight)
-                {
-                    zelda_menu_music.Stop();
-
-                    int roundresult = fight_UI.Round(fight_map);
-                    if  (roundresult == 1 || roundresult == -1)
+=======
+                    if (player._Open_Shop == true)
                     {
-                        Onfight = false;
+                        story_UI.Draw(window);
+
+                    }
+                    else
+                    {
+                        story_UI.Drawed = false;
                     }
 
-                    
-                    zelda_menu_music.Play();
-                }
+                    if (inventory_UI.Drawed) { inventory_UI.Draw(window); }
+                    if (option != null && option.Drawed) { option.Draw(window); }
+>>>>>>> e4e816ba0f99d63a54cf342fbc7fcad6e82dfd82
 
+                    pokemon_fight_music.Volume = 20;
+                    pokemon_fight_music.Play();
+                    pokemon_fight_music.Loop = true;
+
+                    if (Onfight)
+                    {
+                        fight_UI.Start();
+                        fight_map.Draw(window);
+                    }
+
+                    while (Onfight)
+                    {
+                        zelda_menu_music.Stop();
+
+                        int roundresult = fight_UI.Round(fight_map);
+                        if (roundresult == 1 || roundresult == -1)
+                        {
+                            Onfight = false;
+                        }
+
+
+                        zelda_menu_music.Play();
+                    }
+
+                }
+                if(launch_history == true)
+                {
+                    window.Clear();
+                    menu.History();
+                }
+                if(launch_credit == true)
+                {
+                    window.Clear();
+                    menu.Credit();
+                }
+                //if(back_home == true)
+                //{
+                //    back_home = false;
+                //    window.Clear();
+                //    menu.Menu_Display();
+                //}
                 window.Display();
+
             }
+
         }
 
         private void Window_MouseMoved(object sender, MouseMoveEventArgs e)
@@ -156,7 +208,7 @@ namespace Trinity.UI
             {
 
                 Console.WriteLine(Mouse.GetPosition(window));
-            }
+            }   
             if (e.Button == Mouse.Button.Left && inventory_UI.Drawed)
             {
                 var equip_inventory = tower.Summoner.Inventory.Equipement.Values.ToList();
@@ -174,7 +226,101 @@ namespace Trinity.UI
                     }
                 }
             }
+            if (option.Drawed)
+            {
+                //Console.WriteLine("equiper le minon 1");
+                if (339 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 442
+                    && 75 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 90)
+                {
+                    if(option.Equip is Weapon)
+                    {
+                        tower.Summoner.Inventory.Minion1.Armories.Equip((Weapon)option.Equip);
+                        tower.Summoner.Inventory.RemovEquip(option.Equip);
+                        Console.WriteLine("equiper weapon minion 1 ");
+                    } else
+                        if(option.Equip is Hat)
+                    {
+                        tower.Summoner.Inventory.Minion1.Armories.Equip((Hat)option.Equip);
+                    } else
+                        if(option.Equip is Leg)
+                    {
+                        tower.Summoner.Inventory.Minion1.Armories.Equip((Leg)option.Equip);
+                    } else
+                        if(option.Equip is Breastplate)
+                    {
+                        tower.Summoner.Inventory.Minion1.Armories.Equip((Breastplate)option.Equip);
+                    } else
+                        if(option.Equip is Boots)
+                    {
+                        tower.Summoner.Inventory.Minion1.Armories.Equip((Boots)option.Equip);
+                    }
 
+                }
+                //Console.WriteLine("equiper le minon 2");
+
+                if (337 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 446
+                   && 129 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 142)
+                {
+                    if (option.Equip is Weapon)
+                    {
+                        tower.Summoner.Inventory.Minion2.Armories.Equip((Weapon)option.Equip);
+                        Console.WriteLine("equiper weapon minion 2 ");
+                    }
+                    else
+                        if (option.Equip is Hat)
+                    {
+                        tower.Summoner.Inventory.Minion2.Armories.Equip((Hat)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Leg)
+                    {
+                        tower.Summoner.Inventory.Minion2.Armories.Equip((Leg)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Breastplate)
+                    {
+                        tower.Summoner.Inventory.Minion2.Armories.Equip((Breastplate)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Boots)
+                    {
+                        tower.Summoner.Inventory.Minion2.Armories.Equip((Boots)option.Equip);
+                    }
+
+                }
+                //Console.WriteLine("equiper le minon 3");
+
+                if (339 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 446
+                   && 179 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 194)
+                {
+                    if (option.Equip is Weapon)
+                    {
+                        tower.Summoner.Inventory.Minion3.Armories.Equip((Weapon)option.Equip);
+                        Console.WriteLine("equiper weapon minion 3 ");
+                    }
+                    else
+                        if (option.Equip is Hat)
+                    {
+                        tower.Summoner.Inventory.Minion3.Armories.Equip((Hat)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Leg)
+                    {
+                        tower.Summoner.Inventory.Minion3.Armories.Equip((Leg)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Breastplate)
+                    {
+                        tower.Summoner.Inventory.Minion3.Armories.Equip((Breastplate)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Boots)
+                    {
+                        tower.Summoner.Inventory.Minion3.Armories.Equip((Boots)option.Equip);
+                    }
+
+                }
+            }
             if (e.Button == Mouse.Button.Left && Onfight)
             {
 
@@ -187,7 +333,6 @@ namespace Trinity.UI
                 }
                 if (fight_UI.attak)
                 {
-
 
                     foreach (KeyValuePair<Minion, Sprite> pos in fight_UI.minionPos)
                     {
@@ -206,6 +351,34 @@ namespace Trinity.UI
 
                     }
 
+                }
+            }
+            if(e.Button == Mouse.Button.Left && launch_game == false)
+            {
+                //Launch game
+                if(302 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 546
+                    && 201 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 268/* && back_home == false*/)
+                {
+                    //Play();
+                    launch_game = true;
+                }
+                //History
+                if(304 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 544
+                    && 403 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 466 && launch_history == false)
+                {
+                    launch_history = true;
+                }
+                //Credits
+                if (302 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 543
+                && 499 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 568 && launch_history == false)
+                {
+                    launch_credit = true;
+                }
+                //Quit game
+                if (303 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 542 
+                    && 674 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 735 && launch_history == false)
+                {
+                    Window_Closed(window, e);
                 }
             }
 
