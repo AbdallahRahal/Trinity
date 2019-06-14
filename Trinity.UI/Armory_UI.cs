@@ -28,6 +28,8 @@ namespace Trinity.UI
         Sprite carreSprite = new Sprite(new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/carreSprite.png")));
         Sprite weaponSprite;
         Sprite gemSprite;
+        ItemDescription itemDescription;
+        RenderWindow _window;
 
         public Armory_UI(string filename, Summoner summoner, RenderWindow window)
         {
@@ -39,16 +41,19 @@ namespace Trinity.UI
             minionTab[0] = _summoner.Inventory.Minion1;
             minionTab[1] = _summoner.Inventory.Minion2;
             minionTab[2] = _summoner.Inventory.Minion3;
+            _window = window;
         }
         public void Draw(RenderWindow window)
         {
             int i = 0;
             foreach (Minion minion in minionTab)
             {
+
                 sprite.Position = new Vector2f(0 + i * 200, 560);
                 window.Draw(sprite);
                 iconSprite = new Sprite(new Texture(Path.Combine(Directory.GetCurrentDirectory(), minion.Path)));
                 iconSprite.Position = new Vector2f(108 + i * 200, 605);
+                window.Draw(iconSprite);
                 if (minion.Armories.Hat != null)
                 {
                     hatSprite = new Sprite(new Texture(Path.Combine(Directory.GetCurrentDirectory(), minion.Armories.Hat.Path)));
@@ -56,6 +61,12 @@ namespace Trinity.UI
                     carreSprite.Position = hatSprite.Position;
                     window.Draw(carreSprite);
                     window.Draw(hatSprite);
+                    if (((float)Mouse.GetPosition(window).X > hatSprite.Position.X && (float)Mouse.GetPosition(window).X < hatSprite.Position.X + 54f &&
+                       (float)Mouse.GetPosition(window).Y > hatSprite.Position.Y && (float)Mouse.GetPosition(window).Y < hatSprite.Position.Y + 54f))
+                    {
+                        itemDescription = new ItemDescription(minion.Armories.Hat, _window);
+                        itemDescription.Draw(_window);
+                    }
                 }
                 if (minion.Armories.Breastplate != null)
                 {
@@ -64,6 +75,12 @@ namespace Trinity.UI
                     carreSprite.Position = breastplateSprite.Position;
                     window.Draw(carreSprite);
                     window.Draw(breastplateSprite);
+                    if (((float)Mouse.GetPosition(window).X > breastplateSprite.Position.X && (float)Mouse.GetPosition(window).X < breastplateSprite.Position.X + 54f &&
+                       (float)Mouse.GetPosition(window).Y > breastplateSprite.Position.Y && (float)Mouse.GetPosition(window).Y < breastplateSprite.Position.Y + 54f))
+                    {
+                        itemDescription = new ItemDescription(minion.Armories.Breastplate, _window);
+                        itemDescription.Draw(_window);
+                    }
                 }
 
                 if (minion.Armories.Leg != null)
@@ -73,6 +90,12 @@ namespace Trinity.UI
                     carreSprite.Position = legSprite.Position;
                     window.Draw(carreSprite);
                     window.Draw(legSprite);
+                    if (((float)Mouse.GetPosition(window).X > legSprite.Position.X && (float)Mouse.GetPosition(window).X < legSprite.Position.X + 54f &&
+                       (float)Mouse.GetPosition(window).Y > legSprite.Position.Y && (float)Mouse.GetPosition(window).Y < legSprite.Position.Y + 54f))
+                    {
+                        itemDescription = new ItemDescription(minion.Armories.Leg, _window);
+                        itemDescription.Draw(_window);
+                    }
                 }
                 if (minion.Armories.Boots != null)
                 {
@@ -81,6 +104,12 @@ namespace Trinity.UI
                     carreSprite.Position = bootsSprite.Position;
                     window.Draw(carreSprite);
                     window.Draw(bootsSprite);
+                    if (((float)Mouse.GetPosition(window).X > bootsSprite.Position.X && (float)Mouse.GetPosition(window).X < bootsSprite.Position.X + 54f &&
+                       (float)Mouse.GetPosition(window).Y > bootsSprite.Position.Y && (float)Mouse.GetPosition(window).Y < bootsSprite.Position.Y + 54f))
+                    {
+                        itemDescription = new ItemDescription(minion.Armories.Boots, _window);
+                        itemDescription.Draw(_window);
+                    }
                 }
                 if (minion.Armories.Weapon != null)
                 {
@@ -89,6 +118,12 @@ namespace Trinity.UI
                     carreSprite.Position = weaponSprite.Position;
                     window.Draw(carreSprite);
                     window.Draw(weaponSprite);
+                    if (((float)Mouse.GetPosition(window).X > weaponSprite.Position.X && (float)Mouse.GetPosition(window).X < weaponSprite.Position.X + 54f &&
+                       (float)Mouse.GetPosition(window).Y > weaponSprite.Position.Y && (float)Mouse.GetPosition(window).Y < weaponSprite.Position.Y + 54f))
+                    {
+                        itemDescription = new ItemDescription(minion.Armories.Weapon, _window);
+                        itemDescription.Draw(_window);
+                    }
                 }
                 if (minion.Armories.Gem1 != null)
                 {
@@ -97,9 +132,15 @@ namespace Trinity.UI
                     carreSprite.Position = gemSprite.Position;
                     window.Draw(carreSprite);
                     window.Draw(gemSprite);
+                    if (((float)Mouse.GetPosition(window).X > gemSprite.Position.X && (float)Mouse.GetPosition(window).X < gemSprite.Position.X + 54f &&
+                       (float)Mouse.GetPosition(window).Y > gemSprite.Position.Y && (float)Mouse.GetPosition(window).Y < gemSprite.Position.Y + 54f))
+                    {
+                        itemDescription = new ItemDescription(minion.Armories.Gem1, _window);
+                        itemDescription.Draw(_window);
+                    }
                 }
                 i++;
-                window.Draw(iconSprite);
+                
             }
                 _draw = true;
         }

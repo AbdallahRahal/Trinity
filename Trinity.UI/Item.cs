@@ -22,6 +22,7 @@ namespace Trinity.UI
         List<Sprite> itemSpriteList = new List<Sprite>();
         List<Equipement> equipementList = new List<Equipement>();
         Tower _context;
+        List<Minion> minionList = new List<Minion>();
 
 
         public Item(Dictionary<string, Equipement> equipementDictionnary, RenderWindow newWindow) // inventaire
@@ -38,12 +39,6 @@ namespace Trinity.UI
             _context = context;
 
         }
-
-        /*public Item(Dictionary<string, Equipement> equipementDictionnary, RenderWindow newWindow) // armory
-        {
-            equip = equipementDictionnary;
-            window = newWindow;
-        }*/
 
 
         public void Draw(Sprite inventorySprite)
@@ -86,6 +81,7 @@ namespace Trinity.UI
 
             }
         }
+
 
         public void Draw_Store(Sprite storeSprite)
         { 
