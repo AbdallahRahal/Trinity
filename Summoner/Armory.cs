@@ -43,7 +43,7 @@ namespace Trinity
             }
             else
             {
-                throw new ArgumentException("Un objet est deja equipé ");
+                return false;
             }
             Update();
             return true;
@@ -60,7 +60,7 @@ namespace Trinity
             }
             else
             {
-                throw new ArgumentException("Un objet est deja equipé ");
+                return false;
             }
             Update();
             return true;
@@ -76,7 +76,7 @@ namespace Trinity
             }
             else
             {
-                throw new ArgumentException("Un objet est deja equipé ");
+                return false;
             }
             Update();
             return true;
@@ -94,7 +94,7 @@ namespace Trinity
             }
             else
             {
-                throw new ArgumentException("Un objet est deja equipé ");
+                return false;
             }
             Update();
             return true;
@@ -111,7 +111,7 @@ namespace Trinity
             }
             else
             {
-                throw new ArgumentException("Un objet est deja equipé ");
+                return false;
             }
             Update();
             return true;
@@ -127,7 +127,7 @@ namespace Trinity
             }
             else
             {
-                throw new ArgumentException("Un objet est deja equipé ");
+                return false;
             }
             Update();
             return true;

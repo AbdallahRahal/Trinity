@@ -117,7 +117,7 @@ namespace Trinity
         {
             get { return _minion3; }
         }
-
+        
         public void Update()
         {
             if (_minion1 != null) Minion1.Armories.Update();

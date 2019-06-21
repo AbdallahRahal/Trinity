@@ -22,6 +22,7 @@ namespace Trinity.UI
         List<Sprite> itemSpriteList = new List<Sprite>();
         List<Equipement> equipementList = new List<Equipement>();
         Tower _context;
+        List<Minion> minionList = new List<Minion>();
 
 
         public Item(Dictionary<string, Equipement> equipementDictionnary, RenderWindow newWindow) // inventaire
@@ -44,7 +45,7 @@ namespace Trinity.UI
         {
             int x = 0;
             int y = 0;
-
+            
             foreach (KeyValuePair<string, Equipement> item in equip)
             {
                 sprite = new Sprite(new Texture(item.Value.Path));
@@ -80,6 +81,7 @@ namespace Trinity.UI
 
             }
         }
+
 
         public void Draw_Store(Sprite storeSprite)
         { 

@@ -19,7 +19,7 @@ namespace Trinity.UI
         Item item;
         Minion_UI minion;
         static Font font = new Font(Path.Combine(Directory.GetCurrentDirectory(), "../../../Fonts/Arial.ttf"));
-        static Text text = new Text("Gold", font, 15);
+        static Text text = new Text("", font, 15);
 
         public Inventory_UI(string filename, Summoner summoner, RenderWindow window)
         {
@@ -34,7 +34,7 @@ namespace Trinity.UI
         
         public void Draw(RenderWindow window)
         {
-            text.DisplayedString = "Gold : " +_summoner.Money.ToString("### ### ###") ;
+            text.DisplayedString = "Pièces d'or : " +_summoner.Money.ToString("### ### ###") ;
             text.Position = new Vector2f(27f * window.Size.X / 1700f, 256f * window.Size.Y / 900f);
             text.FillColor = new Color(0, 0, 0);
 
@@ -43,13 +43,10 @@ namespace Trinity.UI
             _draw = true;
             window.Draw(sprite);
             window.Draw(text);
-            item = new Item(_summoner.Inventory.Equipement, window);
-            item.Draw(sprite);
             minion = new Minion_UI(_summoner.Inventory.minionItem, window);
             minion.Draw(sprite);
-
-
-          
+            item = new Item(_summoner.Inventory.Equipement, window);
+            item.Draw(sprite);
         }
         
         public bool  Drawed

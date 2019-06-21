@@ -17,7 +17,7 @@ namespace Trinity.UI
         static Summoner summoner = tower.Summoner;
         static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner, window);
         static Store_UI story_UI = new Store_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/shop.png"), tower, window);
-        //static Armory_UI armory_UI = new Armory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/armory.png"), summoner, window);
+        static Armory_UI armory_UI = new Armory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/armory.png"), summoner, window);
         bool Onfight = false;
         bool launch_game = false;
         bool launch_history = false;
@@ -33,7 +33,7 @@ namespace Trinity.UI
         Music zelda_menu_music = new Music(Path.Combine(Directory.GetCurrentDirectory(), "../../../Music/Zelda_Menu_Music.ogg"));
         Music pokemon_fight_music = new Music(Path.Combine(Directory.GetCurrentDirectory(), "../../../Music/Pokemon_Fight_Music.ogg"));
         Menu menu = new Menu(window);
-
+        Time time = new Time();
         Clock clock = new Clock();
         
         public void Start()
@@ -73,18 +73,31 @@ namespace Trinity.UI
                     player.Update(deltaTime);
                     player.Draw(window);
 
-                    if (player._Open_Shop == true)
-                    {
-                        story_UI.Draw(window);
 
-                    }
-                    else
-                    {
-                        story_UI.Drawed = false;
-                    }
 
-                    if (inventory_UI.Drawed) { inventory_UI.Draw(window); }
-                    if (option != null && option.Drawed) { option.Draw(window); }
+                // Ouverture du shop
+                if (player._Open_Shop == true)
+                {
+                    story_UI.Draw(window);
+                }
+                else
+                {
+                    story_UI.Drawed = false;
+                }
+                
+                // Ouverture de l'inventaire & des inventaires des minions
+                if (inventory_UI.Drawed)
+                {
+                    inventory_UI.Draw(window);
+                    armory_UI.Draw(window);
+                }
+               
+               
+                if (option != null && option.Drawed) { option.Draw(window); }
+               
+                pokemon_fight_music.Volume = 20;
+                pokemon_fight_music.Play();
+                pokemon_fight_music.Loop = true;
 
                     pokemon_fight_music.Volume = 20;
                     pokemon_fight_music.Play();
@@ -95,18 +108,33 @@ namespace Trinity.UI
                         fight_UI.Start();
                         fight_map.Draw(window);
                     }
-
+                    
                     while (Onfight)
                     {
                         zelda_menu_music.Stop();
 
+                       
                         int roundresult = fight_UI.Round(fight_map);
-                        if (roundresult == 1 || roundresult == -1)
+
+
+
+
+
+                        if (roundresult == 1)
+                        {
+                            Onfight = false;
+                            tower.Boss.Inventory.Minion1.Bonus();
+                            tower.Boss.Inventory.Minion2.Bonus();
+                            tower.Boss.Inventory.Minion3.Bonus();
+
+                            tower.Boss.Inventory.Minion1.Regen();
+                            tower.Boss.Inventory.Minion2.Regen();
+                            tower.Boss.Inventory.Minion3.Regen();
+                        }
+                        if (roundresult == -1)
                         {
                             Onfight = false;
                         }
-
-
                         zelda_menu_music.Play();
                     }
 
@@ -142,6 +170,7 @@ namespace Trinity.UI
             if (e.Code == Keyboard.Key.I)
             {
                 inventory_UI.Drawed = !inventory_UI.Drawed;
+                armory_UI.Drawed = !armory_UI.Drawed;
             }
             if (e.Code == Keyboard.Key.S)
             {
@@ -153,9 +182,6 @@ namespace Trinity.UI
                 fight_UI.Start();
                 Onfight = !Onfight;
             }
-            //if (e.Code == Keyboard.Key.O /*&& player._Open_Shop == true*/)
-            //{
-            //}
         }
         private void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
@@ -163,6 +189,13 @@ namespace Trinity.UI
             if (e.Button == Mouse.Button.Left )
             {
                 option.Drawed = false;
+            }
+
+
+            if (e.Button == Mouse.Button.Right)
+            {
+
+                Console.WriteLine(Mouse.GetPosition(window));
             }
 
             if (e.Button == Mouse.Button.Left && story_UI.Drawed)
@@ -177,26 +210,23 @@ namespace Trinity.UI
                 }
             }
 
-            if (e.Button == Mouse.Button.Right)
-            {
-
-                Console.WriteLine(Mouse.GetPosition(window));
-            }   
             if (e.Button == Mouse.Button.Left && inventory_UI.Drawed)
             {
                 var equip_inventory = tower.Summoner.Inventory.Equipement.Values.ToList();
-               
-                
-                for (int i = 0; i < tower.Summoner.Inventory.Equipement.Count; i++)
+
+                int y = 0;
+                int i = 0;
+                for (int nbinvent = 0; nbinvent < tower.Summoner.Inventory.Equipement.Count; nbinvent++)
                 {
                     if (27 + i * 62 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 81 + i * 62
-                        && 284 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338)
+                        && 284 + y * 58 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 338 + y * 112)
                     {
-                        option.Equip = equip_inventory[i];
+                        option.Equip = equip_inventory[i+y*9];
                         option.Drawed = !option.Drawed;
 
-                        Console.WriteLine("bon!");
+                        
                     }
+                    if (i == 8) { i = 0; y++ ; } else { i++; }
                 }
             }
             if (option.Drawed)
@@ -209,7 +239,6 @@ namespace Trinity.UI
                     {
                         tower.Summoner.Inventory.Minion1.Armories.Equip((Weapon)option.Equip);
                         tower.Summoner.Inventory.RemovEquip(option.Equip);
-                        Console.WriteLine("equiper weapon minion 1 ");
                     } else
                         if(option.Equip is Hat)
                     {
@@ -227,6 +256,8 @@ namespace Trinity.UI
                     {
                         tower.Summoner.Inventory.Minion1.Armories.Equip((Boots)option.Equip);
                     }
+                    tower.Summoner.Inventory.RemovEquip(option.Equip);
+                    option.Drawed = false;
 
                 }
                 //Console.WriteLine("equiper le minon 2");
@@ -237,7 +268,7 @@ namespace Trinity.UI
                     if (option.Equip is Weapon)
                     {
                         tower.Summoner.Inventory.Minion2.Armories.Equip((Weapon)option.Equip);
-                        Console.WriteLine("equiper weapon minion 2 ");
+                        
                     }
                     else
                         if (option.Equip is Hat)
@@ -259,6 +290,8 @@ namespace Trinity.UI
                     {
                         tower.Summoner.Inventory.Minion2.Armories.Equip((Boots)option.Equip);
                     }
+                    tower.Summoner.Inventory.RemovEquip(option.Equip);
+                    option.Drawed = false;
 
                 }
                 //Console.WriteLine("equiper le minon 3");
@@ -269,7 +302,7 @@ namespace Trinity.UI
                     if (option.Equip is Weapon)
                     {
                         tower.Summoner.Inventory.Minion3.Armories.Equip((Weapon)option.Equip);
-                        Console.WriteLine("equiper weapon minion 3 ");
+                      
                     }
                     else
                         if (option.Equip is Hat)
@@ -291,6 +324,8 @@ namespace Trinity.UI
                     {
                         tower.Summoner.Inventory.Minion3.Armories.Equip((Boots)option.Equip);
                     }
+                    tower.Summoner.Inventory.RemovEquip(option.Equip);
+                    option.Drawed = false;
 
                 }
             }
@@ -302,7 +337,7 @@ namespace Trinity.UI
                 {
                     fight_UI.attak = true;
                     fight_UI.FightBarSprite.Texture = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/fightbarAttak.png"));
-
+                    
                 }
                 if (fight_UI.attak)
                 {
@@ -318,7 +353,7 @@ namespace Trinity.UI
                             fight_UI.attak = false;
                             fight_UI.next = true;
                             fight_UI.targetMin = pos.Key;
-                            Console.WriteLine("tour du summoner joué et cible = " + pos.Key.Name);
+                          
                         }
 
 
