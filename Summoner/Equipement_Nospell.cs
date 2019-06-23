@@ -51,6 +51,7 @@ namespace Trinity
             stats.Add("_max_mana_point", _max_mana_point);
             stats.Add("_dodge_rate", _dodge_rate);
             stats.Add("_accuracy", _accuracy);
+            stats.Add("_lead", _lead);
             return stats;
         }
     }

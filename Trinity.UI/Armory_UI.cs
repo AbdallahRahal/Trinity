@@ -18,7 +18,7 @@ namespace Trinity.UI
         Tower _context;
         Item _item;
         Summoner _summoner;
-        static Minion[] minionTab;
+        static Minion[] minionTab = new Minion[3];
 
         public Armory_UI(string filename, Summoner summoner, RenderWindow window)
         {

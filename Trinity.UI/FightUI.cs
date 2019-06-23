@@ -24,20 +24,30 @@ namespace Trinity.UI
         bool BossAlive;
         BubbleFight bubbleFight;
         public Dictionary<Minion, Sprite> minionPos;
-       BattlegroundFight battlegroundFight;
-        public Minion targetMin;
+        BattlegroundFight battlegroundFight;
         public Sprite FightBarSprite;
         Texture FightBarTexture;
-        public bool next;
         public bool attak;
         int waithit = 0;
         Random rand = new Random();
+        Minion minionAction;
+        Time time;
+        Clock clock;
+        public Minion focus = null;
+        public Minion focusheal = null;
+        float result;
+        float decalX;
+        float decalY;
 
+        List<Minion> minionSummTargetList = new List<Minion>();
+        List<Minion>  minionBossTargetList = new List<Minion>();
         public FightUI(RenderWindow window, Tower tower)
         {
             _context = tower;
             _window = window;
             FightBarTexture = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/fightbar.png"));
+            //FightBarTexture = new Texture("C:/S3/Trinity/Trinity.UI/Sprites/fightbar.png");
+            
             FightBarSprite = new Sprite(FightBarTexture);
             FightBarSprite.Position = new Vector2f(29, 588);
             battlegroundFight = new BattlegroundFight(window, tower);
@@ -102,35 +112,174 @@ namespace Trinity.UI
         {
             updateTimeLine();
             fighter_UI = new Fighter_UI(_window,_context ,Fighters);
-           
+            minionPos = battlegroundFight.Start(Fighters);
+            time = new Time();
+            clock = new Clock();
 
 
         }
-        public int Round(Map map)
+        public int Round(Map map, int minionRoundNum)
         {
+            _window.Clear();
+            //time = clock.Restart();
+            //Console.WriteLine("1er = " + time.AsSeconds());
+            time += clock.Restart();
+
+            map.Draw(_window);
+
+            //time = clock.Restart();
+            //Console.WriteLine("temps = " + time.AsSeconds());
+
+            _window.Draw(FightBarSprite);
+
+            //time = clock.Restart();
+            //Console.WriteLine("3 = " + time.AsSeconds());
+
+            fighter_UI.Draw(Fighters);
+
+            //time = clock.Restart();
+            //Console.WriteLine("4 = " + time.AsSeconds());
+
+            minionPos = battlegroundFight.Draw(minionPos,focus,focusheal);
+
+            //time = clock.Restart();
+            //Console.WriteLine("5 = " + time.AsSeconds());
+
+            bubbleFight.Draw();
+
+            //time = clock.Restart();
+            //Console.WriteLine("6 = " + time.AsSeconds());
+
+            minionAction = timeLine[minionRoundNum];
+
+
+            //time = clock.Restart();
+            //Console.WriteLine("7 = " + time.AsSeconds());
+
+
             
+            _window.Display();
 
-            for (int playerRoundNum = 0; playerRoundNum < timeLine.Count; playerRoundNum++)
+           
+            minionSummTargetList.Clear();
+            minionBossTargetList.Clear();
+           
+            foreach (Minion minion in SummMinions)
             {
-               
-               
+                if (minion.is_alive()) minionSummTargetList.Add(minion);
+            }
+            foreach (Minion minion in BossMinions)
+            {
+                if (minion.is_alive()) minionBossTargetList.Add(minion);
+            }
 
-                Action(timeLine[playerRoundNum],map, playerRoundNum);
+            if (focusheal != null && !focusheal.is_alive()) focusheal = null;
+            if (focus != null && !focus.is_alive()) focus = null;
+
+            if (minionAction.is_alive())
+            {
+
+                if (minionAction.targetMin == minionAction)//je retourne a  la pos de base
+                {
+                    int summcount = 0;
+                    int bosscount = 0;
+                    foreach(Minion min in _context.Summoner.Inventory.Allminion())
+                    {
+                        if (minionAction == min)
+                        {
+                            if (minionPos[minionAction].Position.X > new Vector2f(400f * _window.Size.X / 1700f, (64f + summcount * 200f) * _window.Size.Y / 900f).X -10 &&
+                                minionPos[minionAction].Position.X < new Vector2f(400f * _window.Size.X / 1700f, (64f + summcount * 200f) * _window.Size.Y / 900f).X +10 &&
+                                minionPos[minionAction].Position.Y > new Vector2f(400f * _window.Size.X / 1700f, (64f + summcount * 200f) * _window.Size.Y / 900f).Y -10 &&
+                                minionPos[minionAction].Position.Y < new Vector2f(400f * _window.Size.X / 1700f, (64f + summcount * 200f) * _window.Size.Y / 900f).Y +10)
+                            {
+                                minionAction.targetMin = null;
+                            }
+                            else
+                            {
+                                goToPosition(minionPos[minionAction], new Vector2f(400f * _window.Size.X / 1700f, (64f + summcount * 200f) * _window.Size.Y / 900f));
+                            }
+                           
+                            
+                        }
+                        summcount++;
+                    }
+
+                    foreach (Minion min in _context.Boss.Inventory.Allminion())
+                    {
+                        if (minionAction == min)
+                        {
+                            if (minionPos[minionAction].Position.X > new Vector2f(1000f * _window.Size.X / 1700f, (64f + bosscount * 200f) * _window.Size.Y / 900f).X -10 &&
+                                minionPos[minionAction].Position.X < new Vector2f(1000f * _window.Size.X / 1700f, (64f + bosscount * 200f) * _window.Size.Y / 900f).X +10 &&
+                                minionPos[minionAction].Position.Y > new Vector2f(1000f * _window.Size.X / 1700f, (64f + bosscount * 200f) * _window.Size.Y / 900f).Y -10 &&
+                                minionPos[minionAction].Position.Y < new Vector2f(1000f * _window.Size.X / 1700f, (64f + bosscount * 200f) * _window.Size.Y / 900f).Y +10)
+                            {
+                                minionAction.targetMin = null;
+                            }
+                            else
+                            {
+                                goToPosition(minionPos[minionAction], new Vector2f(1000f * _window.Size.X / 1700f, (64f + bosscount * 200f) * _window.Size.Y / 900f));
+                            }
+                            
+                           
+                        }
+                        bosscount++;
+                    }
+                }
+                else if (minionAction.targetMin == null)//j'ai pas de cible
+                {
+                    minionAction.last_attak = time.AsSeconds();
+
+                    if (_context.Summoner.Inventory.ContainMinion(minionAction))
+                    {
+                        if (focus != null)
+                        {
+                            minionAction.targetMin = focus;
+                        }
+                        else
+                        {
+                            minionAction.targetMin = minionBossTargetList[rand.Next(minionBossTargetList.Count)];
+                        }
+                    }
+                    else if (_context.Boss.Inventory.ContainMinion(minionAction))
+                    {
+                        minionAction.targetMin = minionSummTargetList[rand.Next(minionSummTargetList.Count)];
+                    }
+                }
+
+
+                else if (minionAction.can_Attak(time.AsSeconds()))//j'attaque si je suis a porté
+                {
+
+                    decalX = vec(minionPos[minionAction].Position.X, minionPos[minionAction.targetMin].Position.X);
+                    decalY = vec(minionPos[minionAction].Position.Y, minionPos[minionAction.targetMin].Position.Y);
+
+                    if (decalX < 10 && decalY < 2 )
+                    {
+                        bubbleFight.Change_type(minionAction.dealDamage(minionAction.targetMin), minionPos[minionAction.targetMin]);
+                        minionAction.targetMin = minionAction;
+                    }
+                    else
+                    {
+                        goToPosition(minionPos[minionAction], minionPos[minionAction.targetMin].Position);
+
+                    }
+                }
+                
+            }
 
 
 
 
 
-
-
-
-                int alive = 0;
+            int alive = 0;
+            
                 foreach (Minion minion in SummMinions)
                 {
                     if (minion.is_alive()) { alive++; }
                 }
                 if (alive == 0)
                 {
+
                     Console.WriteLine("Le joueur a perdu");
                     return -1;
                 }
@@ -146,102 +295,43 @@ namespace Trinity.UI
                     return 1;
                 }
                 
-            }
+            
             return 0;
 
 
         }
 
-        internal void Action(Minion minionAction, Map map, int playerRoundNum)
+        internal float vec(float a, float b)
         {
-           
-            this.next = false;
-            while (this.next == false)
-            {
-                _window.Clear();
-                map.Draw(_window);
-                _window.Draw(FightBarSprite);
-                fighter_UI.Draw(Fighters, timeLine[playerRoundNum]);
-                minionPos = battlegroundFight.Draw(Fighters, timeLine[playerRoundNum]);
-                bubbleFight.Draw();
-
-                //time += clock.Restart();
-
-
-
-
-
-
-
-
-
-                _window.Display();
-
-                List<Minion> targetList = new List<Minion>();
-                foreach (Minion minion in SummMinions)
-                {
-                    if (minion.is_alive()) targetList.Add(minion);
-                }
-
-
-
-
-                if (!minionAction.is_alive())
-                {
-                    this.next = true;
-                }
-                else
-                {
-                    if (_context.Summoner.Inventory.ContainMinion(minionAction)) // si minion appartient au summoner
-                    {
-                        
-                        if (targetMin ==  null)//j'ai pas de cible
-                        {
-                            targetMin = targetList[rand.Next(targetList.Count)];
-                        }
-                        else
-                        {
-                            if(true)//j'ai pas atteind la cible
-                            {
-
-                            }
-                            else//j'ai atteind la cible
-                            {
-                                bubbleFight.Change_type(minionAction.dealDamage(targetMin), minionPos[targetMin]);
-                                targetMin = null;
-
-                            }
-                        }
-
-                    }
-                    if (_context.Boss.Inventory.ContainMinion(minionAction))// si minion appartient au Boss
-                    {
-                        
-
-                        waithit++;
-
-                        if (waithit > rand.Next(70, 200))
-                        {
-                            
-
-                           
-
-                            int target = rand.Next(targetList.Count);
-
-                            bubbleFight.Change_type(minionAction.dealDamage(targetList[target]), minionPos[targetList[target]]);
-                            waithit = 0;
-                            this.next = true;
-                        }
-
-
-
-                    }
-                }
-            }
-
-            
+            result = Math.Abs(a - b)/8;
+            return result;
         }
 
+        internal void goToPosition(Sprite sprite,Vector2f position)
+        {
 
+            decalX = vec(sprite.Position.X, position.X);
+            decalY = vec(sprite.Position.Y, position.Y);
+
+            if (sprite.Position.X < position.X)
+            {
+                sprite.Position = new Vector2f(sprite.Position.X + decalX, sprite.Position.Y);
+            }
+            else
+            if (sprite.Position.X > position.X)
+            {
+                sprite.Position = new Vector2f(sprite.Position.X - decalX, sprite.Position.Y);
+            }
+            if (sprite.Position.Y < position.Y)
+            {
+                sprite.Position = new Vector2f(sprite.Position.X, sprite.Position.Y + decalY);
+            }
+            else
+            if (sprite.Position.Y > position.Y)
+            {
+                sprite.Position = new Vector2f(sprite.Position.X, sprite.Position.Y - decalY);
+            }
+            
+        }
     }
 }

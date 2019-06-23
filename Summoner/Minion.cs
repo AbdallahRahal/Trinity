@@ -29,7 +29,8 @@ namespace Trinity
         uint _bonus_accuracy;
         bool _is_Attach;
         Tower _context;
-
+        public Minion targetMin;
+        public float last_attak = 0;
          readonly Armory _armories;
         
 
@@ -58,7 +59,15 @@ namespace Trinity
         {
             get { return _name; }
         }
-
+        public bool can_Attak(float time)
+        {
+            if ( time  >= last_attak + (100-Math.Min(99,(float)Lead))/20)
+            {
+                
+                return true;
+            }
+            return false;
+        }
         public uint Life_point
         {
             get { return _life_point; }
@@ -161,6 +170,8 @@ namespace Trinity
         {
             Life_point = Max_life_point;
             Mana_point = Max_mana_point;
+            targetMin = null;
+            last_attak = 0;
         }
 
         public void takeDamage(uint dmg)

@@ -16,7 +16,7 @@ namespace Trinity.UI
         Tower _context;
         Dictionary<IDrawable,int> bubble = new Dictionary<IDrawable, int>();
         Font font = new Font(Path.Combine(Directory.GetCurrentDirectory(), "../../../Fonts/Arial.ttf"));
-
+        Sprite sprite = new Sprite(new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/rate.png")));
 
         public BubbleFight(RenderWindow window, Tower tower)
         {
@@ -29,7 +29,7 @@ namespace Trinity.UI
         {
             if(x == -1) // l'attaque a raté
             {
-                Sprite sprite = new Sprite(new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/rate.png")));
+                sprite = new Sprite(new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/rate.png")));
                 sprite.Position = minionPos.Position;
                 bubble.Add(sprite,0);
             }

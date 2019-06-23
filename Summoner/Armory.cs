@@ -140,6 +140,7 @@ namespace Trinity
             uint _dodge_rate = 0;
             uint _accuracy = 0;
             uint _power = 0;
+            uint _lead = 0;
 
             if (_hat != null) {
 
@@ -148,7 +149,7 @@ namespace Trinity
                 _max_mana_point += stats["_max_mana_point"];
                 _dodge_rate += stats["_dodge_rate"];
                 _accuracy += stats["_accuracy"];
-
+                _lead += stats["_lead"];
             }
             if (_breastplate != null)
             {
@@ -158,6 +159,7 @@ namespace Trinity
                 _max_mana_point += stats["_max_mana_point"];
                 _dodge_rate += stats["_dodge_rate"];
                 _accuracy += stats["_accuracy"];
+                _lead += stats["_lead"];
 
             }
             if (_leg != null)
@@ -168,6 +170,7 @@ namespace Trinity
                 _max_mana_point += stats["_max_mana_point"];
                 _dodge_rate += stats["_dodge_rate"];
                 _accuracy += stats["_accuracy"];
+                _lead += stats["_lead"];
 
             }
             if (_boots != null)
@@ -178,6 +181,7 @@ namespace Trinity
                 _max_mana_point += stats["_max_mana_point"];
                 _dodge_rate += stats["_dodge_rate"];
                 _accuracy += stats["_accuracy"];
+                _lead += stats["_lead"];
 
             }
             if (_weapon != null)
@@ -192,7 +196,7 @@ namespace Trinity
             _minion.Bonus_dodge_rate = _dodge_rate;
             _minion.Bonus_accuracy = _accuracy;
             _minion.Bonus_power = _power;
-
+            _minion.Bonus_lead = _lead;
         }
 
         
@@ -222,7 +226,7 @@ namespace Trinity
                 else
                 if (_gem3 != null && name == _gem3.Name ){ _gem3 = null; }
 
-
+                Update();
                 return true;
             }
             else

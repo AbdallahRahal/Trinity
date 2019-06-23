@@ -10,8 +10,8 @@ namespace Trinity.UI
     class Map
     {
         Sprite[,] tiles;
-        int mapwidth = 100;
-        int mapheight = 100;
+        int mapwidth = 54;
+        int mapheight = 29;
 
         public Map(RenderWindow window,string typemap)
         {

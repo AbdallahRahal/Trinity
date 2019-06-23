@@ -12,12 +12,21 @@ namespace Trinity
         Minion _minion2;
         Minion _minion3;
         Tower _context;
+        
 
         public Inventory(Tower context)
         {
             _minions = new Dictionary<string, Minion>();
             _equipements = new Dictionary<string, Equipement>();
             _context = context;
+        }
+        public List<Minion> Allminion()
+        {
+            List<Minion> allminion = new List<Minion>();
+            allminion.Add(Minion1);
+            allminion.Add(Minion2);
+            allminion.Add(Minion3);
+            return allminion;
         }
 
         public Dictionary<string, Equipement> Equipement
