@@ -20,8 +20,6 @@ namespace Trinity.UI
         Item _item;
         Summoner _summoner;
         static Minion[] minionTab = new Minion[3];
-<<<<<<< HEAD
-=======
         Sprite iconSprite;
         Sprite hatSprite;
         Sprite breastplateSprite;
@@ -32,7 +30,6 @@ namespace Trinity.UI
         Sprite gemSprite;
         ItemDescription itemDescription;
         RenderWindow _window;
->>>>>>> d754f88d4eaca0ff81e546b1cd905adaf0c83173
 
         public Armory_UI(string filename, Summoner summoner, RenderWindow window)
         {
