@@ -21,6 +21,7 @@ namespace Trinity.UI
         bool Onfight = false;
         bool launch_game = false;
         bool launch_history = false;
+        bool back_home = false;
         bool launch_credit = false;
         //bool back_home = false;
         static Weaponry warriors = tower.Weaponry;
@@ -158,12 +159,11 @@ namespace Trinity.UI
                     window.Clear();
                     menu.Credit();
                 }
-                //if(back_home == true)
-                //{
-                //    back_home = false;
-                //    window.Clear();
-                //    menu.Menu_Display();
-                //}
+                if (back_home == true)
+                {
+                    window.Clear();
+                    menu.Menu_Display();
+                }
                 window.Display();
 
             }
@@ -378,12 +378,20 @@ namespace Trinity.UI
                     && 403 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 466 && launch_history == false)
                 {
                     launch_history = true;
+                    back_home = false;
                 }
                 //Credits
                 if (302 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 543
                 && 499 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 568 && launch_history == false)
                 {
                     launch_credit = true;
+                    back_home = false;
+                }
+                //Back Home
+                if (247 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 393
+                && 670 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 716 && back_home == false)
+                {
+                    back_home = true;
                 }
                 //Quit game
                 if (303 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 542 

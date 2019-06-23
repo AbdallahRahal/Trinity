@@ -20,7 +20,7 @@ namespace Trinity.UI
         Tower _context;
         Item _item;
         static Font font = new Font(Path.Combine(Directory.GetCurrentDirectory(), "../../../Fonts/Arial.ttf"));
-        static Text text = new Text("Gold", font, 15);
+        static Text text = new Text("", font, 15);
 
 
         public Store_UI(string filename,Tower tower, RenderWindow window)
@@ -38,7 +38,6 @@ namespace Trinity.UI
         public void Draw(RenderWindow window)
         {
             _draw = true;
-            text.DisplayedString = "Money Argent Pesos Oseille Dol's : " + _context.Summoner.Money.ToString("### ### ###");
             text.Position = new Vector2f(672f * window.Size.X / 1700f, 256f * window.Size.Y / 900f);
             text.FillColor = new Color(0, 0, 0);
             window.Draw(sprite);
