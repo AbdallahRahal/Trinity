@@ -10,17 +10,18 @@ namespace Trinity
         readonly Store _store;
         readonly Summoner _summoner;
         readonly Summoner _boss;
-        
+        readonly Spell _spell;
         readonly Weaponry _weaponry;
 
         public Tower()
         {
-            _equipement = new Equipement_Collection();
+            _equipement = new Equipement_Collection(this);
             _minion = new Minion_Collection(this);
             _store = new Store(this);
             _summoner = new Summoner("Joueur", this);
             _boss = new Summoner("Boss", this);
             _weaponry = new Weaponry(this);
+            _spell = new Spell(this);
         }
 
 
@@ -43,6 +44,10 @@ namespace Trinity
             get { return _boss; }
         }
 
+        public Spell Spell
+        {
+            get { return _spell; }
+        }
         public Store Store
         {
             get { return _store; }

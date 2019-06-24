@@ -8,15 +8,18 @@ namespace Trinity
 {
     public class Gem : Equipement
     {
-        uint _ratio;
-        Spell _spell;
-        string _description;
+        
 
-        public Gem(string name, uint price, uint ratio, Spell spell, string description,string path) : base(name, price, path)
+        public Gem(string name, uint price,string path) : base(name, price, path)
         {
-            _ratio = ratio;
-            _description = description;
-            _spell = spell;
+
+
         }
+
+        public void action()
+        {
+
+        }
+
     }
 }

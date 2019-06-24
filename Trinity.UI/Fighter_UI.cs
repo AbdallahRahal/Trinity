@@ -17,7 +17,7 @@ namespace Trinity.UI
         static Sprite sprite;
         static Texture texture;
 
-        static Sprite spriteLifeBarEmpty;
+        
         static Texture textureLifeBarEmpty;
 
         static Sprite spriteLifeBar;
@@ -28,8 +28,11 @@ namespace Trinity.UI
         static Font font = new Font(Path.Combine(Directory.GetCurrentDirectory(), "../../../Fonts/Arial.ttf"));
         static Text text = new Text("Test description objet", font, 16);
         RenderWindow _window;
-
+        static Sprite spriteLifeBarEmpty = new Sprite(new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/EmptyLifeBar.png")));
         double percentLife;
+        int y ;
+
+        int x ;
 
         public Fighter_UI(RenderWindow window, Tower tower, List<Minion> _Fighters)
         {
@@ -41,16 +44,17 @@ namespace Trinity.UI
 
 
 
-        public void Draw(List<Minion> _Fighters,Minion minRound)
+        public void Draw(List<Minion> _Fighters)
         {
             Fighters = _Fighters;
-            int y = 0;
-            int x = 0;
+            y = 0;
+            x = 0;
             foreach(Minion fighter in _Fighters)
             {
                 texture = new Texture(fighter.Path);
                 sprite = new Sprite(texture);
                 sprite.Scale = new Vector2f(_window.Size.X / 1700f, _window.Size.Y / 900f);
+
                 if (fighter.summMin())
                 {
                     sprite.Position = new Vector2f(78f  * _window.Size.X / 1700f, (635f + y * 70f) * _window.Size.Y / 900f);
@@ -60,8 +64,7 @@ namespace Trinity.UI
                     sprite.Position = new Vector2f((78f + 1000 ) * _window.Size.X / 1700f, (635f + y * 70f) * _window.Size.Y / 900f);
 
                 }
-                textureLifeBarEmpty = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/EmptyLifeBar.png"));
-                spriteLifeBarEmpty = new Sprite(textureLifeBarEmpty);
+                
                 spriteLifeBarEmpty.Position = new Vector2f(sprite.Position.X + 60f, sprite.Position.Y + 15f);
 
                 percentLife = ((double)fighter.Life_point / (double)fighter.Max_life_point) * 100 ;
@@ -74,9 +77,8 @@ namespace Trinity.UI
 
                     _window.Draw(spriteLifeBar);
                 }
-
-
-                text.DisplayedString = fighter.Name+"      Vie : " + fighter.Life_point+"/"+fighter.Max_life_point;
+                
+                text.DisplayedString = fighter.Name+"  Vie : " + fighter.Life_point+"/"+fighter.Max_life_point;
                 text.Position = new Vector2f(sprite.Position.X + 60f, sprite.Position.Y+50f);
                 text.FillColor = new Color(0, 0, 0);
 
@@ -84,16 +86,11 @@ namespace Trinity.UI
 
 
 
+                y++;
+                if (y == 3) y = 0;
                 _window.Draw(spriteLifeBarEmpty);
                 _window.Draw(sprite);
                 _window.Draw(text);
-                if (fighter.Name == minRound.Name)
-                {
-                    spriteRound.Position = sprite.Position;
-                    _window.Draw(spriteRound);
-                }
-                y++;
-                if (y == 3) y = 0;
             }
 
 

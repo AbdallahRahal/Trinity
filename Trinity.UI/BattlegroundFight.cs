@@ -17,12 +17,17 @@ namespace Trinity.UI
         Tower _context;
         static Sprite sprite;
         static Texture texture;
+        int Xdecal = 0;
+        int Ydecal = 0;
 
         Dictionary<Minion, Sprite> minonPos = new Dictionary<Minion, Sprite> ();
 
         static Sprite spriteRound;
         static Texture textureRound;
 
+
+        static Sprite spriteRoundheal;
+        static Texture textureRoundheal;
         public BattlegroundFight(RenderWindow window, Tower tower)
         {
             _context = tower;
@@ -30,36 +35,40 @@ namespace Trinity.UI
 
             textureRound = new Texture((Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/TargetRound.png")));
             spriteRound = new Sprite(textureRound);
-
             spriteRound.Scale = new Vector2f(2 * _window.Size.X / 1700f, 2 * _window.Size.Y / 900f);
 
-        }
-        public Dictionary<Minion, Sprite> Draw(List<Minion> _Fighters,Minion minRound) // draw et return la pos de chaque minion dans un dictionnaire
-        {
 
-        
+            textureRoundheal = new Texture((Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/TargetRoundheal.png")));
+            spriteRoundheal = new Sprite(textureRoundheal);
+            spriteRoundheal.Scale = new Vector2f(2 * _window.Size.X / 1700f, 2 * _window.Size.Y / 900f);
+        }
+
+
+
+        public Dictionary<Minion, Sprite> Start(List<Minion> _Fighters) // draw et return la pos de chaque minion dans un dictionnaire
+        {
             int y = 0;
             int x = 0;
 
-            foreach (Minion fighter in _Fighters)
+            foreach(Minion fighter in _Fighters)
             {
                 texture = new Texture(fighter.Path);
                 sprite = new Sprite(texture);
-                sprite.Scale = new Vector2f(2 * _window.Size.X / 1700f,  2 * _window.Size.Y / 900f);
-                
+                sprite.Scale = new Vector2f(2 * _window.Size.X / 1700f, 2 * _window.Size.Y / 900f);
+
                 if (fighter.summMin())
                 {
-                    sprite.Position = new Vector2f(291f * _window.Size.X / 1700f, (64f + y * 200f) * _window.Size.Y / 900f);
+                    sprite.Position = new Vector2f(400f * _window.Size.X / 1700f, (64f + y * 200f) * _window.Size.Y / 900f);
                 }
-                else
+                else if (!fighter.summMin())
                 {
-                    sprite.Position = new Vector2f(1160 * _window.Size.X / 1700f, (64f + y * 200f) * _window.Size.Y / 900f);
+                    sprite.Position = new Vector2f(1000 * _window.Size.X / 1700f, (64f + y * 200f) * _window.Size.Y / 900f);
 
                 }
 
                 if (minonPos.ContainsKey(fighter))
                 {
-                    
+
                     minonPos[fighter] = sprite;
                 }
                 else
@@ -67,25 +76,38 @@ namespace Trinity.UI
                     minonPos.Add(fighter, sprite);
                 }
 
-
-
-
                 _window.Draw(sprite);
-                if (fighter.Name == minRound.Name)
-                {
-                    spriteRound.Position = sprite.Position;
-                    _window.Draw(spriteRound);
-                }
-
-
                 y++;
-                if (y == 3) y = 0; 
+                if (y == 3) y = 0;
+
+
+
             }
             return minonPos;
+
         }
-        
 
 
+        public Dictionary<Minion, Sprite> Draw(Dictionary<Minion, Sprite> _Fighters, Minion focus,Minion focusheal) // draw et return la pos de chaque minion dans un dictionnaire
+        {
+            foreach (KeyValuePair<Minion, Sprite> fighter in _Fighters)
+            {
 
+                _window.Draw(fighter.Value);
+                if (fighter.Key == focus)
+                {
+                    spriteRound.Position = fighter.Value.Position;
+                    _window.Draw(spriteRound);
+
+                }
+                if (fighter.Key == focusheal)
+                {
+                    spriteRoundheal.Position = fighter.Value.Position;
+                    _window.Draw(spriteRoundheal);
+
+                }
+            }
+            return _Fighters;
+        }
     }
 }

@@ -9,9 +9,10 @@ namespace Trinity
     public class Equipement_Collection
     {
         readonly Dictionary<string, Equipement> _equipements;
-
-        public Equipement_Collection()
+       Tower _context;
+        public Equipement_Collection(Tower tower)
         {
+            _context = tower;
             _equipements = new Dictionary<string, Equipement>();
         }
 
@@ -70,13 +71,19 @@ namespace Trinity
             return weapon;
         }
 
-        public Gem Create_Gem(string name, uint price, uint ratio, Spell spell, string description,string path)
+        public Gem Create_Gem(string name, uint price, string path)
         {
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements with this name already exists.", nameof(name));
-            Gem gem = new Gem(name, price, ratio, spell, description,path);
+            if (_context.Spell.join(name)) {
+                Gem gem = new Gem(name, price, path);
 
-            _equipements.Add(name, gem);
-            return gem;
+                _equipements.Add(name, gem);
+                return gem;
+
+            } else {
+                return null;
+            }
+            
         }
 
         public Dictionary<string, Equipement> Equipement_Dictionnary

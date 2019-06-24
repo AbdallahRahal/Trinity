@@ -22,6 +22,7 @@ namespace Trinity.UI
         bool Onfight = false;
         bool launch_game = false;
         bool launch_history = false;
+        bool back_home = false;
         bool launch_credit = false;
         //bool back_home = false;
         static Weaponry warriors = tower.Weaponry;
@@ -35,13 +36,13 @@ namespace Trinity.UI
         Menu menu = new Menu(window);
         Time time = new Time();
         Clock clock = new Clock();
-        
+        int minionRoundNum;
+
         public void Start()
         {
 
             tower.Store.available();
-            
-            window.SetFramerateLimit(60);
+            window.SetFramerateLimit(120);
 
             window.Closed += Window_Closed;
             window.KeyPressed += Window_KeyPressed;
@@ -108,35 +109,44 @@ namespace Trinity.UI
                     {
                         fight_UI.Start();
                         fight_map.Draw(window);
+                        minionRoundNum = 0;
                     }
                     
                     while (Onfight)
                     {
-                        zelda_menu_music.Stop();
+                        //zelda_menu_music.Stop();
 
-                       
-                        int roundresult = fight_UI.Round(fight_map);
+                        window.DispatchEvents();
+                        int roundresult = fight_UI.Round(fight_map,minionRoundNum);
+                        minionRoundNum++;
+                        if (minionRoundNum == 6)
+                        {
+                            minionRoundNum = 0;
+                        }
 
 
 
-
-
-                        if (roundresult == 1)
+                        if (roundresult == 1 || roundresult == -1)
                         {
                             Onfight = false;
-                            tower.Boss.Inventory.Minion1.Bonus();
-                            tower.Boss.Inventory.Minion2.Bonus();
-                            tower.Boss.Inventory.Minion3.Bonus();
 
+                            fight_UI.focus = null;
+                            fight_UI.focusheal = null;
                             tower.Boss.Inventory.Minion1.Regen();
                             tower.Boss.Inventory.Minion2.Regen();
                             tower.Boss.Inventory.Minion3.Regen();
-                        }
-                        if (roundresult == -1)
+
+
+                            tower.Summoner.Inventory.Minion1.Regen();
+                            tower.Summoner.Inventory.Minion2.Regen();
+                            tower.Summoner.Inventory.Minion3.Regen();
+                        }if(roundresult == -1)
                         {
-                            Onfight = false;
+                            tower.Boss.Inventory.Minion1.Bonus();
+                            tower.Boss.Inventory.Minion2.Bonus();
+                            tower.Boss.Inventory.Minion3.Bonus();
                         }
-                        zelda_menu_music.Play();
+                        //zelda_menu_music.Play();
                     }
 
                 }
@@ -150,12 +160,11 @@ namespace Trinity.UI
                     window.Clear();
                     menu.Credit();
                 }
-                //if(back_home == true)
-                //{
-                //    back_home = false;
-                //    window.Clear();
-                //    menu.Menu_Display();
-                //}
+                if (back_home == true)
+                {
+                    window.Clear();
+                    menu.Menu_Display();
+                }
                 window.Display();
 
             }
@@ -349,34 +358,27 @@ namespace Trinity.UI
             }
             if (e.Button == Mouse.Button.Left && Onfight)
             {
-
-                if (620 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 1008
-                   && 620 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 705 && !fight_UI.attak)
+                foreach (KeyValuePair<Minion, Sprite> pos in fight_UI.minionPos)
                 {
-                    fight_UI.attak = true;
-                    fight_UI.FightBarSprite.Texture = new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/fightbarAttak.png"));
-                    
-                }
-                if (fight_UI.attak)
-                {
-
-                    foreach (KeyValuePair<Minion, Sprite> pos in fight_UI.minionPos)
+                    if (pos.Value.Position.X < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < pos.Value.Position.X + pos.Value.GetGlobalBounds().Width
+                    && pos.Value.Position.Y < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < pos.Value.Position.Y + pos.Value.GetGlobalBounds().Height)
                     {
-                        if (pos.Value.Position.X < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < pos.Value.Position.X + pos.Value.GetGlobalBounds().Width
-                        && pos.Value.Position.Y < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < pos.Value.Position.Y + pos.Value.GetGlobalBounds().Height)
-                        {
-
-
-
-                            fight_UI.attak = false;
-                            fight_UI.next = true;
-                            fight_UI.targetMin = pos.Key;
-                          
+                        if (tower.Boss.Inventory.ContainMinion(pos.Key) && pos.Key.is_alive()){
+                            fight_UI.focus = pos.Key;
+                            foreach(Minion min in tower.Summoner.Inventory.Allminion())
+                            {
+                                if(min.targetMin != min)
+                                {
+                                    min.targetMin = pos.Key;
+                                }
+                            }
                         }
+                        if (tower.Summoner.Inventory.ContainMinion(pos.Key) && pos.Key.is_alive())
+                        {
+                            fight_UI.focusheal = pos.Key;
 
-
+                        }
                     }
-
                 }
             }
             if(e.Button == Mouse.Button.Left && launch_game == false)
@@ -393,12 +395,20 @@ namespace Trinity.UI
                     && 403 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 466 && launch_history == false)
                 {
                     launch_history = true;
+                    back_home = false;
                 }
                 //Credits
                 if (302 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 543
                 && 499 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 568 && launch_history == false)
                 {
                     launch_credit = true;
+                    back_home = false;
+                }
+                //Back Home
+                if (247 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 393
+                && 670 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 716 && back_home == false)
+                {
+                    back_home = true;
                 }
                 //Quit game
                 if (303 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 542 

@@ -8,7 +8,45 @@ namespace Trinity
 {
     public class Spell
     {
+        Tower _context;
+       
 
-        // propriéter du sort
+        public Spell(Tower tower)
+        {
+            _context = tower;
+
+        }
+        public bool join(string name)
+        {
+            
+
+            return true ;
+        }
+        public void Electrocute()
+        {
+
+
+
+
+
+
+
+
+
+        }
+
+        public void Heal(List<Minion> minList, Minion Focus)
+        {
+
+
+
+
+
+
+
+
+
+        }
+
     }
 }
