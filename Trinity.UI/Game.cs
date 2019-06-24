@@ -18,6 +18,7 @@ namespace Trinity.UI
         static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner, window);
         static Store_UI story_UI = new Store_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/shop.png"), tower, window);
         static Armory_UI armory_UI = new Armory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/armory.png"), summoner, window);
+        static Options_UI options_UI = new Options_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/options.png"), summoner, window);
         bool Onfight = false;
         bool launch_game = false;
         bool launch_history = false;
@@ -71,11 +72,12 @@ namespace Trinity.UI
 
                     player.Update(deltaTime);
                     player.Draw(window);
+                    options_UI.Draw(window);
 
 
 
-                // Ouverture du shop
-                if (player._Open_Shop == true)
+                    // Ouverture du shop
+                    if (player._Open_Shop == true)
                 {
                     story_UI.Draw(window);
                 }
@@ -185,12 +187,28 @@ namespace Trinity.UI
         }
         private void Window_MouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
-
-            if (e.Button == Mouse.Button.Left )
+            
+            if (e.Button == Mouse.Button.Left)
             {
-                option.Drawed = false;
+                // ouvrir les options
+                if (((float)Mouse.GetPosition(window).X > 1545 && (float)Mouse.GetPosition(window).X < 1580 &&
+                (float)Mouse.GetPosition(window).Y > 5 && (float)Mouse.GetPosition(window).Y < 44))
+                {
+                    options_UI.Draw_Options = true;
+                }
+                // fermer les options
+                if (((float)Mouse.GetPosition(window).X > 1175 && (float)Mouse.GetPosition(window).X < 1200 &&
+                (float)Mouse.GetPosition(window).Y > 115 && (float)Mouse.GetPosition(window).Y < 145))
+                {
+                    options_UI.Draw_Options = false;
+                }
+                // quitter le jeu
+                if (((float)Mouse.GetPosition(window).X > 1648 && (float)Mouse.GetPosition(window).X < 1685 &&
+                (float)Mouse.GetPosition(window).Y > 6 && (float)Mouse.GetPosition(window).Y < 43))
+                {
+                    ;
+                }
             }
-
 
             if (e.Button == Mouse.Button.Right)
             {

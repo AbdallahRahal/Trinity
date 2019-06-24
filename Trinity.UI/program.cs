@@ -14,7 +14,7 @@ namespace Trinity.UI
 
             Game game = new Game();
 
-            game.Start();
+            game.Start(); 
         }
     }
 }
