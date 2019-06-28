@@ -31,7 +31,8 @@ namespace Trinity
                     {
                         if (min.Life_point > lp)
                         {
-                            minheal;
+                            minheal = min;
+                            lp = (int)min.Life_point;
                         }
 
                     }
