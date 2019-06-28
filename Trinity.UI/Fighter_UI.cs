@@ -16,8 +16,9 @@ namespace Trinity.UI
         List<Minion> Fighters;
         static Sprite sprite;
         static Texture texture;
-
-        
+        Sprite spellSprite;
+        Tower _context;
+        Sprite borderspell = new Sprite(new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/borderspell.png")));
         static Texture textureLifeBarEmpty;
 
         static Sprite spriteLifeBar;
@@ -36,6 +37,7 @@ namespace Trinity.UI
 
         public Fighter_UI(RenderWindow window, Tower tower, List<Minion> _Fighters)
         {
+            _context = tower;
             Fighters = _Fighters;
             _window = window;
             textureRound = new Texture((Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/TargetRound.png")));
@@ -82,9 +84,21 @@ namespace Trinity.UI
                 text.Position = new Vector2f(sprite.Position.X + 60f, sprite.Position.Y+50f);
                 text.FillColor = new Color(0, 0, 0);
 
+                if (_context.Summoner.Inventory.ContainMinion(fighter) && fighter.Armories.Gem != null) {
+                    spellSprite = new Sprite(new Texture(fighter.Armories.Gem.Path));
+                    spellSprite.Position = new Vector2f(555f * _window.Size.X / 1700f, (640 + y * 70f) * _window.Size.Y / 900f);
+                    borderspell.Position = spellSprite.Position;
+
+                    _window.Draw(borderspell);
+                    _window.Draw(spellSprite);
 
 
+                    if (spellSprite.Position.X < Mouse.GetPosition(_window).X && Mouse.GetPosition(_window).X < spellSprite.Position.X + 54f
+                     && spellSprite.Position.Y < Mouse.GetPosition(_window).Y && Mouse.GetPosition(_window).Y < spellSprite.Position.Y + 54f)
+                    {
 
+                    }
+                }
 
                 y++;
                 if (y == 3) y = 0;

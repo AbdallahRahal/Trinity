@@ -12,9 +12,9 @@ namespace Trinity
         Minion _minion2;
         Minion _minion3;
         Tower _context;
-        
+        public Summoner _summoner;
 
-        public Inventory(Tower context)
+        public Inventory(Tower context,Summoner sum)
         {
             _minions = new Dictionary<string, Minion>();
             _equipements = new Dictionary<string, Equipement>();
@@ -90,18 +90,21 @@ namespace Trinity
                     _minion1 = minion;
                     _minions.Add(minion.Name, minion);
                     minion.is_Attach = true;
+                    minion._summoner = this._summoner;
                 }
                else if (_minion2 == null)
                 {
                     _minion2 = minion;
                     _minions.Add(minion.Name, minion);
                     minion.is_Attach = true;
+                    minion._summoner = this._summoner;
                 }
                 else if (_minion3 == null)
                 {
                     _minion3 = minion;
                     _minions.Add(minion.Name, minion);
                     minion.is_Attach = true;
+                    minion._summoner = this._summoner;
                 }
                 else
                 {

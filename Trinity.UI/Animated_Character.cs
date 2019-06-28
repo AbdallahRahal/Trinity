@@ -36,10 +36,10 @@ namespace Trinity.UI
         protected Animation Anim_Left;
         protected Animation Anim_Down;
         protected Animation Anim_Right;
-        
+
 
         private Clock animationClock;
-        protected float moveSpeed = 50  ;
+        protected float moveSpeed = 50;
         protected float animationSpeed = 0.1f;
 
         public Animated_Character(string filename, int frameSize, RenderWindow window)
@@ -65,7 +65,7 @@ namespace Trinity.UI
             Animation currentAnimation = null;
 
 
-            switch(CurrentState)
+            switch (CurrentState)
             {
                 case CharacterState.MovingUp:
                     currentAnimation = Anim_Up;
@@ -91,17 +91,17 @@ namespace Trinity.UI
 
             if (animationClock.ElapsedTime.AsSeconds() > animationSpeed)
             {
-                if(currentAnimation != null)
+                if (currentAnimation != null)
                 {
                     //spriteRect.Top = currentAnimation.offsetTop;
                     spriteRect = new IntRect(spriteRect.Left, currentAnimation.offsetTop, frameSize, frameSize);
 
                     if (spriteRect.Left == (currentAnimation.numFrames - 1) * frameSize)
                         //spriteRect.Left = 0;
-                    spriteRect = new IntRect(0, spriteRect.Top, frameSize, frameSize);
+                        spriteRect = new IntRect(0, spriteRect.Top, frameSize, frameSize);
                     else
                         //spriteRect.Left += frameSize;
-                    spriteRect = new IntRect(spriteRect.Left + frameSize, spriteRect.Top, frameSize, frameSize);
+                        spriteRect = new IntRect(spriteRect.Left + frameSize, spriteRect.Top, frameSize, frameSize);
                 }
                 animationClock.Restart();
             }
@@ -113,18 +113,18 @@ namespace Trinity.UI
         /// initialize tiles table map and detecte collision
         /// </summary> 
         public void collide()
-        { 
+        {
             StreamReader reader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "../../../Maps/map_trinity.csv"));
-            int[,] tabmap = new int[100,100];
-            for (int y = 0; y < 100; y++)
+            int[,] tabmap = new int[54, 29];
+            for (int y = 0; y < 29; y++)
             {
                 string line = reader.ReadLine();
                 string[] items = line.Split(',');
 
-                for (int x = 0; x < 100; x++)
+                for (int x = 0; x < 54; x++)
                 {
                     int id = Convert.ToInt32(items[x]);
-                    tabmap[x,y] = id;
+                    tabmap[x, y] = id;
                 }
             }
             reader.Close();
@@ -137,8 +137,8 @@ namespace Trinity.UI
             //        int bottom = y * 32 + 32;
             //        int left = x * 32;
             //        int right = x * 32 + 32;
-                   
-                    
+
+
             //    }
             //}
 
@@ -150,32 +150,35 @@ namespace Trinity.UI
                 OldPlace = new Vector2f(Xpos, Ypos);
                 Console.WriteLine("collision mur " + OldPlace);
 
-                if(Keyboard.IsKeyPressed(Keyboard.Key.Left) && Xpos < 20)
+                if (Keyboard.IsKeyPressed(Keyboard.Key.Left) && Xpos < 20)
                 {
                     Console.WriteLine("collision gauche");
                     moveSpeed = 0;
-                } else
+                }
+                else
 
                     if (Keyboard.IsKeyPressed(Keyboard.Key.Right) && Xpos > 1615)
                 {
                     Console.WriteLine("collision droite");
                     moveSpeed = 0;
-                } else
+                }
+                else
 
                     if (Keyboard.IsKeyPressed(Keyboard.Key.Up) && Ypos < 5)
                 {
                     Console.WriteLine("collision haut");
                     moveSpeed = 0;
-                } else
+                }
+                else
 
-                    if(Keyboard.IsKeyPressed(Keyboard.Key.Down) && Ypos > 795)
+                    if (Keyboard.IsKeyPressed(Keyboard.Key.Down) && Ypos > 795)
                 {
                     Console.WriteLine("collision bas");
                     moveSpeed = 0;
                 }
 
             }
-            if (1280 < Xpos && Xpos < 1629 && 63  < Ypos && Ypos < 223)
+            if (1280 < Xpos && Xpos < 1629 && 63 < Ypos && Ypos < 223)
             {
                 _Open_Shop = true;
                 //Console.WriteLine("collision shop ");
@@ -184,7 +187,7 @@ namespace Trinity.UI
             else
             {
                 _Open_Shop = false;
-                
+
             }
         }
 

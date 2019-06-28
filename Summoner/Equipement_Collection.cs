@@ -74,15 +74,13 @@ namespace Trinity
         public Gem Create_Gem(string name, uint price, string path)
         {
             if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements with this name already exists.", nameof(name));
-            if (_context.Spell.join(name)) {
+           
                 Gem gem = new Gem(name, price, path);
 
                 _equipements.Add(name, gem);
                 return gem;
 
-            } else {
-                return null;
-            }
+           
             
         }
 

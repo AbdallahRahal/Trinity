@@ -11,6 +11,10 @@ namespace Trinity
 
         public Weaponry(Tower tower)
         {
+
+
+            Gem electrocute = tower.Equipement_Collection.Create_Gem("electrocute", 2000, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/electrocute_gem.png"));
+
             Weapon sword_1 = tower.Equipement_Collection.Create_Weapon("Epee de Hulerion", 10, 50,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/hulerion_sword.png"));
             Weapon sword_2 = tower.Equipement_Collection.Create_Weapon("Epee de Ultraran", 10, 50,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/ultraran_sword.png"));
 

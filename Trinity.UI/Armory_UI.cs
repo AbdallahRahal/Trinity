@@ -125,9 +125,9 @@ namespace Trinity.UI
                         itemDescription.Draw(_window);
                     }
                 }
-                if (minion.Armories.Gem1 != null)
+                if (minion.Armories.Gem != null)
                 {
-                    gemSprite = new Sprite(new Texture(Path.Combine(Directory.GetCurrentDirectory(), minion.Armories.Gem1.Path)));
+                    gemSprite = new Sprite(new Texture(Path.Combine(Directory.GetCurrentDirectory(), minion.Armories.Gem.Path)));
                     gemSprite.Position = new Vector2f(106 + i * 200, 729);
                     carreSprite.Position = gemSprite.Position;
                     window.Draw(carreSprite);
@@ -135,7 +135,7 @@ namespace Trinity.UI
                     if (((float)Mouse.GetPosition(window).X > gemSprite.Position.X && (float)Mouse.GetPosition(window).X < gemSprite.Position.X + 54f &&
                        (float)Mouse.GetPosition(window).Y > gemSprite.Position.Y && (float)Mouse.GetPosition(window).Y < gemSprite.Position.Y + 54f))
                     {
-                        itemDescription = new ItemDescription(minion.Armories.Gem1, _window);
+                        itemDescription = new ItemDescription(minion.Armories.Gem, _window);
                         itemDescription.Draw(_window);
                     }
                 }

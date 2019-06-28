@@ -53,8 +53,13 @@ namespace Trinity
         {
             Dictionary<string, string> equip = new Dictionary<string, string>();
             equip.Add("Nom : ", _name);
-
-            if (this is Equipement_Nospell)
+            if (this is Gem)
+            {
+                Gem gem = (Gem)this;
+                equip.Add("Pouvoir : +", gem.desc());
+                equip.Add("Type : ", "Sort");
+            }
+            else  if (this is Equipement_Nospell)
             {
                 Equipement_Nospell equip_nospell = (Equipement_Nospell)this;
                 equip.Add("Vie : +", equip_nospell.Max_life_point.ToString());
@@ -69,8 +74,7 @@ namespace Trinity
                 if (equip_nospell is Leg) equip.Add("Type : ", "Jambières");
                 if (equip_nospell is Boots) equip.Add("Type : ", "Bottes");
                 
-            }
-            if (this is Weapon)
+            }else  if (this is Weapon)
             {
                 Weapon weapon = (Weapon)this;
                 equip.Add("Pouvoir : +", weapon.Power.ToString());

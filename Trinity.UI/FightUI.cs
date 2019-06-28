@@ -121,41 +121,25 @@ namespace Trinity.UI
         public int Round(Map map, int minionRoundNum)
         {
             _window.Clear();
-            //time = clock.Restart();
-            //Console.WriteLine("1er = " + time.AsSeconds());
+
             time += clock.Restart();
 
             map.Draw(_window);
-
-            //time = clock.Restart();
-            //Console.WriteLine("temps = " + time.AsSeconds());
+            
 
             _window.Draw(FightBarSprite);
-
-            //time = clock.Restart();
-            //Console.WriteLine("3 = " + time.AsSeconds());
+            
 
             fighter_UI.Draw(Fighters);
-
-            //time = clock.Restart();
-            //Console.WriteLine("4 = " + time.AsSeconds());
+            
 
             minionPos = battlegroundFight.Draw(minionPos,focus,focusheal);
-
-            //time = clock.Restart();
-            //Console.WriteLine("5 = " + time.AsSeconds());
+            
 
             bubbleFight.Draw();
 
-            //time = clock.Restart();
-            //Console.WriteLine("6 = " + time.AsSeconds());
-
             minionAction = timeLine[minionRoundNum];
-
-
-            //time = clock.Restart();
-            //Console.WriteLine("7 = " + time.AsSeconds());
-
+            
 
             
             _window.Display();

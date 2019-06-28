@@ -63,6 +63,10 @@ namespace Trinity.UI
                 window.Clear();
                 menu.Menu_Display();
                 //PLAY
+                foreach(Minion min in summoner.Inventory.Allminion())
+                {
+                    if (min.Armories.Gem != null) Console.WriteLine(min.Name + " a un sort");
+                }
                 if (launch_game == true)
                 {
                     window.Clear();
@@ -283,6 +287,11 @@ namespace Trinity.UI
                     {
                         tower.Summoner.Inventory.Minion1.Armories.Equip((Boots)option.Equip);
                     }
+                    else
+                        if (option.Equip is Gem)
+                    {
+                        tower.Summoner.Inventory.Minion1.Armories.Equip((Gem)option.Equip);
+                    }
                     tower.Summoner.Inventory.RemovEquip(option.Equip);
                     option.Drawed = false;
 
@@ -316,6 +325,11 @@ namespace Trinity.UI
                         if (option.Equip is Boots)
                     {
                         tower.Summoner.Inventory.Minion2.Armories.Equip((Boots)option.Equip);
+                    }
+                    else
+                        if (option.Equip is Gem)
+                    {
+                        tower.Summoner.Inventory.Minion2.Armories.Equip((Gem)option.Equip);
                     }
                     tower.Summoner.Inventory.RemovEquip(option.Equip);
                     option.Drawed = false;
@@ -351,6 +365,11 @@ namespace Trinity.UI
                     {
                         tower.Summoner.Inventory.Minion3.Armories.Equip((Boots)option.Equip);
                     }
+                    else
+                        if (option.Equip is Gem)
+                    {
+                        tower.Summoner.Inventory.Minion3.Armories.Equip((Gem)option.Equip);
+                    }
                     tower.Summoner.Inventory.RemovEquip(option.Equip);
                     option.Drawed = false;
 
@@ -358,7 +377,25 @@ namespace Trinity.UI
             }
             if (e.Button == Mouse.Button.Left && Onfight)
             {
-                foreach (KeyValuePair<Minion, Sprite> pos in fight_UI.minionPos)
+                //FOCUS A ENVOYER QUE SI MINION ALLI2 TAPE
+
+                //if (pos.Value.Position.X < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < pos.Value.Position.X + pos.Value.GetGlobalBounds().Width
+                //    && pos.Value.Position.Y < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < pos.Value.Position.Y + pos.Value.GetGlobalBounds().Height)
+                //{
+
+                //}
+
+
+
+
+
+
+
+
+
+
+
+                    foreach (KeyValuePair<Minion, Sprite> pos in fight_UI.minionPos)
                 {
                     if (pos.Value.Position.X < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < pos.Value.Position.X + pos.Value.GetGlobalBounds().Width
                     && pos.Value.Position.Y < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < pos.Value.Position.Y + pos.Value.GetGlobalBounds().Height)

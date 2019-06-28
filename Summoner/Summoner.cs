@@ -15,7 +15,7 @@ namespace Trinity
         public Summoner(string name, Tower context)
         {
             _name = name;
-            _inventory = new Inventory(context);
+            _inventory = new Inventory(context,this);
             _money = 100000;
         }
 

@@ -13,9 +13,7 @@ namespace Trinity
         Breastplate _breastplate;
         Leg _leg;
         Boots _boots;
-        Gem _gem1;
-        Gem _gem2;
-        Gem _gem3;
+        Gem _gem;
         Weapon _weapon;
         Dictionary<string, Equipement> _equipements = new Dictionary<string, Equipement>();
         Tower _context;
@@ -118,12 +116,13 @@ namespace Trinity
         }
         public bool Equip(Gem gem)
         {
-            if (_context.Equipement_Collection.Equipement_Dictionnary.ContainsKey(gem.Name) && gem.Is_Equiped == false)
+            if (_context.Equipement_Collection.Equipement_Dictionnary.ContainsKey(gem.Name) && gem.Is_Equiped == false && _gem == null)
             {
+                 gem.new_Wearer(this.Minion);
+                gem.Is_Equiped = true;
+                _gem = gem;
+                _equipements.Add(gem.Name, gem); 
                 
-                if (_gem1 == null) { gem.Is_Equiped = true; _gem1 = gem; _equipements.Add(gem.Name, gem); }
-                else if (_gem2 == null) { gem.Is_Equiped = true; _gem2 = gem; _equipements.Add(gem.Name, gem); }
-                else if (_gem3 == null) { gem.Is_Equiped = true; _gem3 = gem; _equipements.Add(gem.Name, gem); }
             }
             else
             {
@@ -220,11 +219,7 @@ namespace Trinity
                 else
                 if (_weapon != null && name == _weapon.Name) { _weapon = null; }
                 else
-                if (_gem1 != null && name == _gem1.Name) { _gem1 = null; }
-                else
-                if (_gem2 != null && name == _gem2.Name) { _gem2 = null; }
-                else
-                if (_gem3 != null && name == _gem3.Name ){ _gem3 = null; }
+                if (_gem != null && name == _gem.Name) { _gem = null; }
 
                 Update();
                 return true;
@@ -255,19 +250,11 @@ namespace Trinity
             get { return _boots; }
         }
 
-        public Gem Gem1
+        public Gem Gem
         {
-            get { return _gem1; }
-        }
-
-        public Gem Gem2
-        {
-            get { return _gem2; }
-        }
-
-        public Gem Gem3
-        {
-            get { return _gem3; }
+            get { return _gem; }
+        
+        
         }
 
         public Weapon Weapon

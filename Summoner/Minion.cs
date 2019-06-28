@@ -32,10 +32,12 @@ namespace Trinity
         public Minion targetMin;
         public float last_attak = 0;
          readonly Armory _armories;
+        public Summoner _summoner;
         
 
         public Minion ( string name, uint power, uint max_life_point, uint max_mana_point, uint dodge_rate, uint accuracy,uint lead, string path, Tower context )
         {
+            
             _name = name;
             _path = path;
             _life_point = _base_max_life_point = max_life_point;
