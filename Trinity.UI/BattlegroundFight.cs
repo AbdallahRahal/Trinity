@@ -50,8 +50,9 @@ namespace Trinity.UI
             int y = 0;
             int x = 0;
 
-            foreach(Minion fighter in _Fighters)
+            foreach (Minion fighter in _Fighters)
             {
+
                 texture = new Texture(fighter.Path);
                 sprite = new Sprite(texture);
                 sprite.Scale = new Vector2f(2 * _window.Size.X / 1700f, 2 * _window.Size.Y / 900f);
@@ -75,8 +76,10 @@ namespace Trinity.UI
                 {
                     minonPos.Add(fighter, sprite);
                 }
-
-                _window.Draw(sprite);
+                if (fighter.is_alive())
+                {
+                    _window.Draw(sprite);
+                }
                 y++;
                 if (y == 3) y = 0;
 
@@ -92,8 +95,10 @@ namespace Trinity.UI
         {
             foreach (KeyValuePair<Minion, Sprite> fighter in _Fighters)
             {
-
-                _window.Draw(fighter.Value);
+                if (fighter.Key.is_alive())
+                {
+                    _window.Draw(fighter.Value);
+                }
                 if (fighter.Key == focus)
                 {
                     spriteRound.Position = fighter.Value.Position;

@@ -51,9 +51,9 @@ namespace Trinity.UI
             window.KeyPressed += Window_KeyPressed;
             window.MouseButtonPressed += Window_MouseButtonPressed;
             window.MouseButtonReleased += Window_MouseButtonReleased;
-      
 
-            
+
+
 
             // Generation du player
             player = new Player(window);
@@ -67,10 +67,7 @@ namespace Trinity.UI
                 window.Clear();
                 menu.Menu_Display();
                 //PLAY
-                foreach(Minion min in summoner.Inventory.Allminion())
-                {
-                    if (min.Armories.Gem != null) Console.WriteLine(min.Name + " a un sort");
-                }
+               
                 if (launch_game == true)
                 {
                     window.Clear();
@@ -128,7 +125,7 @@ namespace Trinity.UI
                     while (Onfight)
                     {
                         //zelda_menu_music.Stop();
-
+                        
                         window.DispatchEvents();
                         int roundresult = fight_UI.Round(fight_map,minionRoundNum);
                         minionRoundNum++;
@@ -517,34 +514,61 @@ namespace Trinity.UI
             }
             if (e.Button == Mouse.Button.Left && Onfight)
             {
-                //FOCUS A ENVOYER QUE SI MINION ALLI2 TAPE
+                //FOCUS A ENVOYER QUE SI MINION ALLI2 TAPE et fighter envoyer que quand en vie
 
-                //if (pos.Value.Position.X < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < pos.Value.Position.X + pos.Value.GetGlobalBounds().Width
-                //    && pos.Value.Position.Y < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < pos.Value.Position.Y + pos.Value.GetGlobalBounds().Height)
-                //{
+                int y = 0;
+                foreach (Minion min in fight_UI.SummMinions)
+                {
+                    if (555f < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 555f + 50f
+                        && (640f + y *70f) < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < (690f + y * 70f))
+                    {
+                        min.Armories.Gem.action(fight_UI.Fighters, fight_UI.focus, fight_UI.focusheal, fight_UI.time.AsSeconds());
+                    }
+                    
 
-                //}
+                    y++;
+                    
+
+                }
 
 
-                    foreach (KeyValuePair<Minion, Sprite> pos in fight_UI.minionPos)
+
+
+
+
+
+                foreach (KeyValuePair<Minion, Sprite> pos in fight_UI.minionPos)
                 {
                     if (pos.Value.Position.X < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < pos.Value.Position.X + pos.Value.GetGlobalBounds().Width
                     && pos.Value.Position.Y < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < pos.Value.Position.Y + pos.Value.GetGlobalBounds().Height)
                     {
                         if (tower.Boss.Inventory.ContainMinion(pos.Key) && pos.Key.is_alive()){
-                            fight_UI.focus = pos.Key;
-                            foreach(Minion min in tower.Summoner.Inventory.Allminion())
+                            if (fight_UI.focus != null && fight_UI.focus == pos.Key)
                             {
-                                if(min.targetMin != min)
+                                fight_UI.focus = null;
+                            }
+                            else
+                            {
+                                fight_UI.focus = pos.Key;
+                                foreach (Minion min in tower.Summoner.Inventory.Allminion())
                                 {
-                                    min.targetMin = pos.Key;
+                                    if (min.targetMin != min)
+                                    {
+                                        min.targetMin = pos.Key;
+                                    }
                                 }
                             }
                         }
                         if (tower.Summoner.Inventory.ContainMinion(pos.Key) && pos.Key.is_alive())
                         {
-                            fight_UI.focusheal = pos.Key;
-
+                            if (fight_UI.focusheal != null && fight_UI.focusheal == pos.Key)
+                            {
+                                fight_UI.focusheal = null;
+                            }
+                            else
+                            {
+                                fight_UI.focusheal = pos.Key;
+                            }
                         }
                     }
                 }

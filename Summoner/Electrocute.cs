@@ -9,24 +9,35 @@ namespace Trinity
     class Electrocute
     {
         Gem gem;
+        public float lastuse = 0;
+        public float cooldown = 15;
 
         public Electrocute(Gem _gem) 
         {
             gem = _gem;
         }
 
-        public void action(List<Minion> Fighters ,Minion focus, Minion focusheal) { 
-            foreach (Minion min in Fighters)
+        public void action(List<Minion> Fighters ,Minion focus, Minion focusheal, float time) {
+
+            if (lastuse + cooldown < time)
             {
-                if (focus == min)
+                Console.WriteLine("Compétence utilisé ");
+                lastuse = time;
+                cooldown = 15;
+                foreach (Minion min in Fighters)
                 {
-                    //bubbleFight.Change_type(15, minionPos[minionAction.targetMin]);
-                }
-                else
-                {
-                    //bubbleFight.Change_type(8, minionPos[minionAction.targetMin]);
+                    if (focus == min)
+                    {
+                        min.takeDamage(15);
+                    }
+                    else if (!min.summMin())
+                    {
+                        min.takeDamage(8);
+                    }
                 }
             }
+            Console.WriteLine("Prochaine utilisation dans " + (cooldown - (time - lastuse)));
+
         }
         public string description()
         {

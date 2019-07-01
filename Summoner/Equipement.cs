@@ -56,7 +56,7 @@ namespace Trinity
             if (this is Gem)
             {
                 Gem gem = (Gem)this;
-                equip.Add("Pouvoir : +", gem.desc());
+                equip.Add("Pouvoir : ", gem.desc());
                 equip.Add("Type : ", "Sort");
             }
             else  if (this is Equipement_Nospell)

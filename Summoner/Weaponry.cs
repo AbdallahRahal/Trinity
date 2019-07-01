@@ -13,7 +13,8 @@ namespace Trinity
         {
 
 
-            Gem electrocute = tower.Equipement_Collection.Create_Gem("electrocute", 2000, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/electrocute_gem.png"));
+            Gem electrocute = tower.Equipement_Collection.Create_Gem("electrocute","electrocute", 2000, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/electrocute_gem.png"));
+            Gem heal = tower.Equipement_Collection.Create_Gem("soin","heal", 2000, Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/heal_gem.png"));
 
             Weapon sword_1 = tower.Equipement_Collection.Create_Weapon("Epee de Hulerion", 10, 50,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/hulerion_sword.png"));
             Weapon sword_2 = tower.Equipement_Collection.Create_Weapon("Epee de Ultraran", 10, 50,Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/ultraran_sword.png"));
@@ -47,6 +48,10 @@ namespace Trinity
             tower.Boss.Inventory.Attach_Minons(BossMinion1);
             tower.Boss.Inventory.Attach_Minons(BossMinion2);
             tower.Boss.Inventory.Attach_Minons(BossMinion3);
+
+
+          
+
         }
     }
 }
