@@ -65,7 +65,7 @@ namespace Trinity.UI
                        (float)Mouse.GetPosition(window).Y > hatSprite.Position.Y && (float)Mouse.GetPosition(window).Y < hatSprite.Position.Y + 54f))
                     {
                         itemDescription = new ItemDescription(minion.Armories.Hat, _window);
-                        itemDescription.Draw(_window);
+                        
                     }
                 }
                 if (minion.Armories.Breastplate != null)
@@ -79,7 +79,7 @@ namespace Trinity.UI
                        (float)Mouse.GetPosition(window).Y > breastplateSprite.Position.Y && (float)Mouse.GetPosition(window).Y < breastplateSprite.Position.Y + 54f))
                     {
                         itemDescription = new ItemDescription(minion.Armories.Breastplate, _window);
-                        itemDescription.Draw(_window);
+                        
                     }
                 }
 
@@ -94,7 +94,7 @@ namespace Trinity.UI
                        (float)Mouse.GetPosition(window).Y > legSprite.Position.Y && (float)Mouse.GetPosition(window).Y < legSprite.Position.Y + 54f))
                     {
                         itemDescription = new ItemDescription(minion.Armories.Leg, _window);
-                        itemDescription.Draw(_window);
+                        
                     }
                 }
                 if (minion.Armories.Boots != null)
@@ -108,7 +108,7 @@ namespace Trinity.UI
                        (float)Mouse.GetPosition(window).Y > bootsSprite.Position.Y && (float)Mouse.GetPosition(window).Y < bootsSprite.Position.Y + 54f))
                     {
                         itemDescription = new ItemDescription(minion.Armories.Boots, _window);
-                        itemDescription.Draw(_window);
+                        
                     }
                 }
                 if (minion.Armories.Weapon != null)
@@ -122,7 +122,7 @@ namespace Trinity.UI
                        (float)Mouse.GetPosition(window).Y > weaponSprite.Position.Y && (float)Mouse.GetPosition(window).Y < weaponSprite.Position.Y + 54f))
                     {
                         itemDescription = new ItemDescription(minion.Armories.Weapon, _window);
-                        itemDescription.Draw(_window);
+                        
                     }
                 }
                 if (minion.Armories.Gem != null)
@@ -136,13 +136,17 @@ namespace Trinity.UI
                        (float)Mouse.GetPosition(window).Y > gemSprite.Position.Y && (float)Mouse.GetPosition(window).Y < gemSprite.Position.Y + 54f))
                     {
                         itemDescription = new ItemDescription(minion.Armories.Gem, _window);
-                        itemDescription.Draw(_window);
+                        
                     }
                 }
                 i++;
                 
             }
-                _draw = true;
+            if(itemDescription!=null)
+            {
+                itemDescription.Draw(_window);
+            }
+            _draw = true;
         }
 
         public bool Drawed

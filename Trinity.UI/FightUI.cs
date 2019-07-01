@@ -17,11 +17,9 @@ namespace Trinity.UI
         Tower _context;
         Fighter_UI fighter_UI;
         List<Minion> timeLine = new List<Minion>();
-        List<Minion> Fighters = new List<Minion>();
-        List<Minion> SummMinions = new List<Minion>();
+        public List<Minion> Fighters = new List<Minion>();
+        public List<Minion> SummMinions = new List<Minion>();
         List<Minion> BossMinions = new List<Minion>();
-        bool SummAlive;
-        bool BossAlive;
         BubbleFight bubbleFight;
         public Dictionary<Minion, Sprite> minionPos;
         BattlegroundFight battlegroundFight;
@@ -31,7 +29,7 @@ namespace Trinity.UI
         int waithit = 0;
         Random rand = new Random();
         Minion minionAction;
-        Time time;
+        public Time time;
         Clock clock;
         public Minion focus = null;
         public Minion focusheal = null;
@@ -79,9 +77,7 @@ namespace Trinity.UI
             SummMinions.Add(_context.Summoner.Inventory.Minion1);
             SummMinions.Add(_context.Summoner.Inventory.Minion2);
             SummMinions.Add(_context.Summoner.Inventory.Minion3);
-
-            SummAlive = true;
-            BossAlive = true;
+            
         }
 
 
@@ -130,7 +126,7 @@ namespace Trinity.UI
             _window.Draw(FightBarSprite);
             
 
-            fighter_UI.Draw(Fighters);
+            fighter_UI.Draw(Fighters,time.AsSeconds());
             
 
             minionPos = battlegroundFight.Draw(minionPos,focus,focusheal);

@@ -19,6 +19,7 @@ namespace Trinity
             _minions = new Dictionary<string, Minion>();
             _equipements = new Dictionary<string, Equipement>();
             _context = context;
+            _summoner = sum;
         }
         public List<Minion> Allminion()
         {

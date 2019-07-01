@@ -202,7 +202,13 @@ namespace Trinity
 
         public bool is_alive()
         {
-          return (_life_point > 0) ?  true :  false;
+            if(_life_point > 0)
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
         }
         public bool summMin()
         {

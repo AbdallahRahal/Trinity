@@ -28,11 +28,12 @@ namespace Trinity.UI
         static Texture textureRound;
         static Font font = new Font(Path.Combine(Directory.GetCurrentDirectory(), "../../../Fonts/Arial.ttf"));
         static Text text = new Text("Test description objet", font, 16);
+        static Text textcd = new Text("CD gem", font, 25);
         RenderWindow _window;
         static Sprite spriteLifeBarEmpty = new Sprite(new Texture(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/EmptyLifeBar.png")));
         double percentLife;
         int y ;
-
+        ItemDescription description;
         int x ;
 
         public Fighter_UI(RenderWindow window, Tower tower, List<Minion> _Fighters)
@@ -46,7 +47,7 @@ namespace Trinity.UI
 
 
 
-        public void Draw(List<Minion> _Fighters)
+        public void Draw(List<Minion> _Fighters, float time)
         {
             Fighters = _Fighters;
             y = 0;
@@ -88,15 +89,26 @@ namespace Trinity.UI
                     spellSprite = new Sprite(new Texture(fighter.Armories.Gem.Path));
                     spellSprite.Position = new Vector2f(555f * _window.Size.X / 1700f, (640 + y * 70f) * _window.Size.Y / 900f);
                     borderspell.Position = spellSprite.Position;
+                    if (fighter.Armories.Gem.cooldown(time) > 0)
+                    {
+                        textcd.DisplayedString = fighter.Armories.Gem.cooldown(time).ToString("#");
+                    }
+                    else
+                    {
+                        textcd.DisplayedString = "0";
+                    }
+                    textcd.Position = new Vector2f(spellSprite.Position.X + 60, spellSprite.Position.Y +15);
+                    textcd.FillColor = new Color(0, 0, 0);
 
                     _window.Draw(borderspell);
                     _window.Draw(spellSprite);
-
+                    _window.Draw(textcd);
 
                     if (spellSprite.Position.X < Mouse.GetPosition(_window).X && Mouse.GetPosition(_window).X < spellSprite.Position.X + 54f
                      && spellSprite.Position.Y < Mouse.GetPosition(_window).Y && Mouse.GetPosition(_window).Y < spellSprite.Position.Y + 54f)
                     {
-
+                        description = new ItemDescription(fighter.Armories.Gem, _window);
+                        description.Draw(_window);
                     }
                 }
 

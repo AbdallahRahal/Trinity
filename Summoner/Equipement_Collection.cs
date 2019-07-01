@@ -71,11 +71,10 @@ namespace Trinity
             return weapon;
         }
 
-        public Gem Create_Gem(string name, uint price, string path)
+        public Gem Create_Gem(string name,string type, uint price, string path)
         {
-            if (_equipements.ContainsKey(name)) throw new ArgumentException("An equipements with this name already exists.", nameof(name));
-           
-                Gem gem = new Gem(name, price, path);
+            
+                Gem gem = new Gem(name, type, price, path);
 
                 _equipements.Add(name, gem);
                 return gem;
