@@ -36,7 +36,16 @@ namespace Trinity.UI
             StreamReader reader;
             if (typemap == "fight")
             {
-                reader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "../../../Maps/map_fight_trinity.csv"));
+                if (System.IO.File.Exists(@"C:\Trinity\Trinity.UI\Maps\NewMap.csv") && System.IO.File.Exists(@"C:\Trinity\Trinity.UI\bin\Debug\netcoreapp2.1\NewMap.csv"))
+                {
+                    System.IO.File.Delete(@"C:\Trinity\Trinity.UI\Maps\NewMap.csv");
+                    System.IO.File.Delete(@"C:\Trinity\Trinity.UI\bin\Debug\netcoreapp2.1\NewMap.csv");
+                }
+                Generate_Csv_Map();
+                //A array of Maps
+                //string[] maps = { "map_trinity", "hell_tower" };
+
+                reader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "../../../Maps/NewMap.csv"));
             }
             else
             {
@@ -68,5 +77,50 @@ namespace Trinity.UI
                 }
             }
         }
+
+        static void Generate_Csv_Map()
+        {
+            int lines = 29;
+            int columns = 54;
+            int mur = 854;
+            int[] gazon = { 968, 970, 974, 834, 957 };
+
+            int[] tuiles = { 930, 935, 817, 927, 928 };
+
+            Random rand = new Random();
+
+            string fileName = @"C:\Trinity\Trinity.UI\Maps\NewMap.csv";
+
+            using (StreamWriter writer = new StreamWriter(fileName, false))
+            {
+                for (int i = 0; i < lines; i++)
+                {
+                    List<string> line = new List<string>();
+                    for (int j = 0; j < columns; j++)
+                    {
+                        if (i == 0 || j == 0)
+                        {
+                            line.Add($"{mur}");
+                        }
+                        else
+                        {
+                            int index = rand.Next(tuiles.Length);
+
+                            line.Add($"{tuiles[index]}");
+                        }
+
+                    }
+                    writer.WriteLine(string.Join(",", line));
+                }
+            }
+
+
+
+        }
+
+    }
+}
+
+
     }
 }
