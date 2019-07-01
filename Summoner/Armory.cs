@@ -37,7 +37,7 @@ namespace Trinity
                 weapon.Is_Equiped = true;
                 _weapon = weapon;
                 _equipements.Add(weapon.Name, weapon);
-
+                _minion._summoner.Inventory.RemovEquip(weapon);
             }
             else
             {
@@ -54,7 +54,7 @@ namespace Trinity
                 hat.Is_Equiped = true;
                 _hat = hat;
                 _equipements.Add(hat.Name, hat);
-
+                _minion._summoner.Inventory.RemovEquip(hat);
             }
             else
             {
@@ -70,7 +70,7 @@ namespace Trinity
                 breastplate.Is_Equiped = true;
                 _breastplate = breastplate;
                 _equipements.Add(breastplate.Name, breastplate);
-
+                _minion._summoner.Inventory.RemovEquip(breastplate);
             }
             else
             {
@@ -88,7 +88,7 @@ namespace Trinity
                 leg.Is_Equiped = true;
                 _leg = leg;
                 _equipements.Add(leg.Name, leg);
-
+                _minion._summoner.Inventory.RemovEquip(leg);
             }
             else
             {
@@ -105,7 +105,7 @@ namespace Trinity
                 boots.Is_Equiped = true;
                 _boots = boots;
                 _equipements.Add(boots.Name, boots);
-
+                _minion._summoner.Inventory.RemovEquip(boots);
             }
             else
             {
@@ -121,8 +121,8 @@ namespace Trinity
                  gem.new_Wearer(this.Minion);
                 gem.Is_Equiped = true;
                 _gem = gem;
-                _equipements.Add(gem.Name, gem); 
-                
+                _equipements.Add(gem.Name, gem);
+                _minion._summoner.Inventory.RemovEquip(gem);
             }
             else
             {

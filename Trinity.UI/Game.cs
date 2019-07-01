@@ -21,6 +21,7 @@ namespace Trinity.UI
         static Options_UI options_UI = new Options_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/options.png"), summoner, window);
         static DragAndDrop_Sprite DragAndDrop_Sprite = new DragAndDrop_Sprite(window, tower);
         static Minion[] minionTab = new Minion[3];
+
         bool Onfight = false;
         bool launch_game = false;
         bool launch_history = false;
@@ -210,122 +211,126 @@ namespace Trinity.UI
         {
             if (e.Button == Mouse.Button.Left && DragAndDrop_Sprite.Drawed)
             {
+                Equipement Equipp;
                 DragAndDrop_Sprite.Drawed = false;
+                Equipp = DragAndDrop_Sprite.equip;
                 DragAndDrop_Sprite.equip = null;
-
+                minionTab[0] = summoner.Inventory.Minion1;
+                minionTab[1] = summoner.Inventory.Minion2;
+                minionTab[2] = summoner.Inventory.Minion3;
                 foreach (Minion minion in minionTab)
                 {
-                    if (minion.Armories.Weapon != null)
+                    if (minion.Armories.Weapon == null)
                     {
                         if (((float)Mouse.GetPosition(window).X > 106 && (float)Mouse.GetPosition(window).X < 160 &&
                         (float)Mouse.GetPosition(window).Y > 665 && (float)Mouse.GetPosition(window).Y < 719))
                         {
-                            tower.Summoner.Inventory.Minion1.Armories.Equip((Weapon)option.Equip);
+                            summoner.Inventory.Minion1.Armories.Equip((Weapon)Equipp);
                         }
                         if (((float)Mouse.GetPosition(window).X > 306 && (float)Mouse.GetPosition(window).X < 360 &&
                         (float)Mouse.GetPosition(window).Y > 665 && (float)Mouse.GetPosition(window).Y < 719))
                         {
-                            tower.Summoner.Inventory.Minion2.Armories.Equip((Weapon)option.Equip);
+                            tower.Summoner.Inventory.Minion2.Armories.Equip((Weapon)Equipp);
                         }
                         if (((float)Mouse.GetPosition(window).X > 506 && (float)Mouse.GetPosition(window).X < 560 &&
                         (float)Mouse.GetPosition(window).Y > 665 && (float)Mouse.GetPosition(window).Y < 719))
                         {
-                            tower.Summoner.Inventory.Minion3.Armories.Equip((Weapon)option.Equip);
+                            tower.Summoner.Inventory.Minion3.Armories.Equip((Weapon)Equipp);
                         }
                     }
 
-                    if (minion.Armories.Gem != null)
+                    if (minion.Armories.Gem == null)
                     {
                         if (((float)Mouse.GetPosition(window).X > 106 && (float)Mouse.GetPosition(window).X < 160 &&
                         (float)Mouse.GetPosition(window).Y > 728 && (float)Mouse.GetPosition(window).Y < 782))
                         {
-                            tower.Summoner.Inventory.Minion1.Armories.Equip((Gem)option.Equip);
+                            tower.Summoner.Inventory.Minion1.Armories.Equip((Gem)Equipp);
                         }
                         if (((float)Mouse.GetPosition(window).X > 306 && (float)Mouse.GetPosition(window).X < 360 &&
                         (float)Mouse.GetPosition(window).Y > 728 && (float)Mouse.GetPosition(window).Y < 782))
                         {
-                            tower.Summoner.Inventory.Minion2.Armories.Equip((Gem)option.Equip);
+                            tower.Summoner.Inventory.Minion2.Armories.Equip((Gem)Equipp);
                         }
                         if (((float)Mouse.GetPosition(window).X > 506 && (float)Mouse.GetPosition(window).X < 560 &&
                         (float)Mouse.GetPosition(window).Y > 728 && (float)Mouse.GetPosition(window).Y < 782))
                         {
-                            tower.Summoner.Inventory.Minion3.Armories.Equip((Gem)option.Equip);
+                            tower.Summoner.Inventory.Minion3.Armories.Equip((Gem)Equipp);
                         }
                     }
 
-                    if (minion.Armories.Hat != null)
+                    if (minion.Armories.Hat == null)
                     {
                         if (((float)Mouse.GetPosition(window).X > 16 && (float)Mouse.GetPosition(window).X < 70 &&
                         (float)Mouse.GetPosition(window).Y > 578 && (float)Mouse.GetPosition(window).Y < 632))
                         {
-                            tower.Summoner.Inventory.Minion1.Armories.Equip((Hat)option.Equip);
+                            tower.Summoner.Inventory.Minion1.Armories.Equip((Hat)Equipp);
                         }
                         if (((float)Mouse.GetPosition(window).X > 216 && (float)Mouse.GetPosition(window).X < 270 &&
                         (float)Mouse.GetPosition(window).Y > 578 && (float)Mouse.GetPosition(window).Y < 632))
                         {
-                            tower.Summoner.Inventory.Minion2.Armories.Equip((Hat)option.Equip);
+                            tower.Summoner.Inventory.Minion2.Armories.Equip((Hat)Equipp);
                         }
                         if (((float)Mouse.GetPosition(window).X > 416 && (float)Mouse.GetPosition(window).X < 470 &&
                         (float)Mouse.GetPosition(window).Y > 578 && (float)Mouse.GetPosition(window).Y < 632))
                         {
-                            tower.Summoner.Inventory.Minion3.Armories.Equip((Hat)option.Equip);
+                            tower.Summoner.Inventory.Minion3.Armories.Equip((Hat)Equipp);
                         }
                     }
 
-                    if (minion.Armories.Breastplate != null)
+                    if (minion.Armories.Breastplate == null)
                     {
                         if (((float)Mouse.GetPosition(window).X > 16 && (float)Mouse.GetPosition(window).X < 70 &&
                         (float)Mouse.GetPosition(window).Y > 639 && (float)Mouse.GetPosition(window).Y < 692))
                         {
-                            tower.Summoner.Inventory.Minion1.Armories.Equip((Breastplate)option.Equip);
+                            tower.Summoner.Inventory.Minion1.Armories.Equip((Breastplate)Equipp);
                         }
                         if (((float)Mouse.GetPosition(window).X > 216 && (float)Mouse.GetPosition(window).X < 270 &&
                         (float)Mouse.GetPosition(window).Y > 639 && (float)Mouse.GetPosition(window).Y < 692))
                         {
-                            tower.Summoner.Inventory.Minion2.Armories.Equip((Breastplate)option.Equip);
+                            tower.Summoner.Inventory.Minion2.Armories.Equip((Breastplate)Equipp);
                         }
                         if (((float)Mouse.GetPosition(window).X > 416 && (float)Mouse.GetPosition(window).X < 470 &&
                         (float)Mouse.GetPosition(window).Y > 639 && (float)Mouse.GetPosition(window).Y < 692))
                         {
-                            tower.Summoner.Inventory.Minion3.Armories.Equip((Breastplate)option.Equip);
+                            tower.Summoner.Inventory.Minion3.Armories.Equip((Breastplate)Equipp);
                         }
                     }
 
-                    if (minion.Armories.Leg != null)
+                    if (minion.Armories.Leg == null)
                     {
                         if (((float)Mouse.GetPosition(window).X > 16 && (float)Mouse.GetPosition(window).X < 70 &&
                         (float)Mouse.GetPosition(window).Y > 699 && (float)Mouse.GetPosition(window).Y < 753))
                         {
-                            tower.Summoner.Inventory.Minion1.Armories.Equip((Leg)option.Equip);
+                            tower.Summoner.Inventory.Minion1.Armories.Equip((Leg)Equipp);
                         }
                         if (((float)Mouse.GetPosition(window).X > 216 && (float)Mouse.GetPosition(window).X < 270 &&
                         (float)Mouse.GetPosition(window).Y > 699 && (float)Mouse.GetPosition(window).Y < 753))
                         {
-                            tower.Summoner.Inventory.Minion2.Armories.Equip((Leg)option.Equip);
+                            tower.Summoner.Inventory.Minion2.Armories.Equip((Leg)Equipp);
                         }
                         if (((float)Mouse.GetPosition(window).X > 416 && (float)Mouse.GetPosition(window).X < 470 &&
                         (float)Mouse.GetPosition(window).Y > 699 && (float)Mouse.GetPosition(window).Y < 753))
                         {
-                            tower.Summoner.Inventory.Minion3.Armories.Equip((Leg)option.Equip);
+                            tower.Summoner.Inventory.Minion3.Armories.Equip((Leg)Equipp);
                         }
                     }
 
-                    if (minion.Armories.Boots != null)
+                    if (minion.Armories.Boots == null)
                     {
                         if (((float)Mouse.GetPosition(window).X > 16 && (float)Mouse.GetPosition(window).X < 70 &&
                         (float)Mouse.GetPosition(window).Y > 759 && (float)Mouse.GetPosition(window).Y < 813))
                         {
-                            tower.Summoner.Inventory.Minion1.Armories.Equip((Boots)option.Equip);
+                            tower.Summoner.Inventory.Minion1.Armories.Equip((Boots)Equipp);
                         }
                         if (((float)Mouse.GetPosition(window).X > 216 && (float)Mouse.GetPosition(window).X < 270 &&
                         (float)Mouse.GetPosition(window).Y > 759 && (float)Mouse.GetPosition(window).Y < 813))
                         {
-                            tower.Summoner.Inventory.Minion2.Armories.Equip((Boots)option.Equip);
+                            tower.Summoner.Inventory.Minion2.Armories.Equip((Boots)Equipp);
                         }
                         if (((float)Mouse.GetPosition(window).X > 416 && (float)Mouse.GetPosition(window).X < 470 &&
                         (float)Mouse.GetPosition(window).Y > 759 && (float)Mouse.GetPosition(window).Y < 813))
                         {
-                            tower.Summoner.Inventory.Minion3.Armories.Equip((Boots)option.Equip);
+                            tower.Summoner.Inventory.Minion3.Armories.Equip((Boots)Equipp);
                         }
                     }
                 }
