@@ -12,7 +12,7 @@ namespace Trinity.UI
 {
     class Game
     {
-        static RenderWindow window = new RenderWindow(new SFML.Window.VideoMode(1700, 900), "Trinity");
+        static RenderWindow window = new RenderWindow(new SFML.Window.VideoMode(1700,900), "Trinity");
         static Tower tower = new Tower();
         static Summoner summoner = tower.Summoner;
         static Inventory_UI inventory_UI = new Inventory_UI(Path.Combine(Directory.GetCurrentDirectory(), "../../../Sprites/Inventory.png"), summoner, window);
@@ -159,17 +159,17 @@ namespace Trinity.UI
                         //zelda_menu_music.Play();
                     }
 
-                }
+                } else
                 if(launch_history == true)
                 {
                     window.Clear();
                     menu.History();
-                }
+                } else
                 if(launch_credit == true)
                 {
                     window.Clear();
                     menu.Credit();
-                }
+                } else
                 if (back_home == true)
                 {
                     window.Clear();
@@ -577,34 +577,36 @@ namespace Trinity.UI
             {
                 //Launch game
                 if(302 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 546
-                    && 201 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 268/* && back_home == false*/)
+                    && 201 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 268)
                 {
                     //Play();
                     launch_game = true;
-                }
+                } else
                 //History
                 if(304 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 544
                     && 403 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 466 && launch_history == false)
                 {
                     launch_history = true;
                     back_home = false;
-                }
+                } else
                 //Credits
                 if (302 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 543
                 && 499 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 568 && launch_history == false)
                 {
                     launch_credit = true;
                     back_home = false;
-                }
+                } else
                 //Back Home
-                if (247 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 393
-                && 670 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 716 && back_home == false)
+                if (1304 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 1445
+                && 674 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 717 && (launch_credit == true || launch_history == true))
                 {
+                    launch_history = false;
+                    launch_credit = false;
                     back_home = true;
-                }
+                } else
                 //Quit game
                 if (303 < Mouse.GetPosition(window).X && Mouse.GetPosition(window).X < 542 
-                    && 674 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 735 && launch_history == false)
+                    && 674 < Mouse.GetPosition(window).Y && Mouse.GetPosition(window).Y < 735 && launch_history == false && back_home == true)
                 {
                     Window_Closed(window, e);
                 }
