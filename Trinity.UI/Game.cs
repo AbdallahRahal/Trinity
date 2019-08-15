@@ -124,7 +124,7 @@ namespace Trinity.UI
                     
                     while (Onfight)
                     {
-                        //zelda_menu_music.Stop();
+                        zelda_menu_music.Stop();
                         
                         window.DispatchEvents();
                         int roundresult = fight_UI.Round(fight_map,minionRoundNum);
@@ -217,7 +217,7 @@ namespace Trinity.UI
                 minionTab[2] = summoner.Inventory.Minion3;
                 foreach (Minion minion in minionTab)
                 {
-                    if (minion.Armories.Weapon == null)
+                    if (minion.Armories.Weapon == null && Equipp is Weapon)
                     {
                         if (((float)Mouse.GetPosition(window).X > 106 && (float)Mouse.GetPosition(window).X < 160 &&
                         (float)Mouse.GetPosition(window).Y > 665 && (float)Mouse.GetPosition(window).Y < 719))
@@ -236,7 +236,7 @@ namespace Trinity.UI
                         }
                     }
 
-                    if (minion.Armories.Gem == null)
+                    if (minion.Armories.Gem == null && Equipp is Gem)
                     {
                         if (((float)Mouse.GetPosition(window).X > 106 && (float)Mouse.GetPosition(window).X < 160 &&
                         (float)Mouse.GetPosition(window).Y > 728 && (float)Mouse.GetPosition(window).Y < 782))
@@ -255,7 +255,7 @@ namespace Trinity.UI
                         }
                     }
 
-                    if (minion.Armories.Hat == null)
+                    if (minion.Armories.Hat == null && Equipp is Hat)
                     {
                         if (((float)Mouse.GetPosition(window).X > 16 && (float)Mouse.GetPosition(window).X < 70 &&
                         (float)Mouse.GetPosition(window).Y > 578 && (float)Mouse.GetPosition(window).Y < 632))
@@ -274,7 +274,7 @@ namespace Trinity.UI
                         }
                     }
 
-                    if (minion.Armories.Breastplate == null)
+                    if (minion.Armories.Breastplate == null && Equipp is Breastplate)
                     {
                         if (((float)Mouse.GetPosition(window).X > 16 && (float)Mouse.GetPosition(window).X < 70 &&
                         (float)Mouse.GetPosition(window).Y > 639 && (float)Mouse.GetPosition(window).Y < 692))
@@ -293,7 +293,7 @@ namespace Trinity.UI
                         }
                     }
 
-                    if (minion.Armories.Leg == null)
+                    if (minion.Armories.Leg == null && Equipp is Leg)
                     {
                         if (((float)Mouse.GetPosition(window).X > 16 && (float)Mouse.GetPosition(window).X < 70 &&
                         (float)Mouse.GetPosition(window).Y > 699 && (float)Mouse.GetPosition(window).Y < 753))
@@ -312,7 +312,7 @@ namespace Trinity.UI
                         }
                     }
 
-                    if (minion.Armories.Boots == null)
+                    if (minion.Armories.Boots == null && Equipp is Boots)
                     {
                         if (((float)Mouse.GetPosition(window).X > 16 && (float)Mouse.GetPosition(window).X < 70 &&
                         (float)Mouse.GetPosition(window).Y > 759 && (float)Mouse.GetPosition(window).Y < 813))

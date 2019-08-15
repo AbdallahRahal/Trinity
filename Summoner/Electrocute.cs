@@ -28,11 +28,11 @@ namespace Trinity
                 {
                     if (focus == min)
                     {
-                        min.takeDamage(15);
+                        min.takeDamage(35);
                     }
                     else if (!min.summMin())
                     {
-                        min.takeDamage(8);
+                        min.takeDamage(18);
                     }
                 }
             }
@@ -41,7 +41,7 @@ namespace Trinity
         }
         public string description()
         {
-            return " Electrocute tout les ennemies, inflige plus de degats au focus";
+            return " Electrocute tout les \n ennemies, inflige plus \n de degats au focus";
         }
         public void update()
         {

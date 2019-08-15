@@ -37,9 +37,9 @@ namespace Trinity
             Minion minion2 = tower.Minion_Collection.Create_Minion("Allié 2", 12, 150, 200, 15,  90, 10, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Ryan.png"));
             Minion minion3 = tower.Minion_Collection.Create_Minion("Allié 3",  8, 210, 200,  5, 100, 20, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Abdel.png"));
 
-            Minion BossMinion1 = tower.Minion_Collection.Create_Minion("mechant 1", 15, 160, 100,  20,  98, 1, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/La fille de Morgan.png"));
-            Minion BossMinion2 = tower.Minion_Collection.Create_Minion("mechant 2", 10, 120,  90,  20, 100, 12, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Le fils de Ryan.png"));
-            Minion BossMinion3 = tower.Minion_Collection.Create_Minion("mechant 3",  5, 200,  95, 20,  92, 19, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Les fils d'Abdel.png"));
+            Minion BossMinion1 = tower.Minion_Collection.Create_Minion("Méchant 1", 15, 360, 100,  20,  98, 1, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/La fille de Morgan.png"));
+            Minion BossMinion2 = tower.Minion_Collection.Create_Minion("Méchant 2", 10, 200,  90,  20, 100, 12, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Le fils de Ryan.png"));
+            Minion BossMinion3 = tower.Minion_Collection.Create_Minion("Méchant 3",  5, 700,  95, 20,  92, 19, Path.Combine(Directory.GetCurrentDirectory(), "../../../MinionSprites/Les fils d'Abdel.png"));
 
             tower.Summoner.Inventory.Attach_Minons(minion1);
             tower.Summoner.Inventory.Attach_Minons(minion2);

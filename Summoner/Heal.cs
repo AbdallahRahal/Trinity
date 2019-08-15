@@ -26,7 +26,7 @@ namespace Trinity
                 cooldown = 15;
                 if (focusheal != null)
                 {
-                    focusheal.Life_point += Math.Min(20, focusheal.Max_life_point-focusheal.Life_point);
+                    focusheal.Life_point += Math.Min(40, focusheal.Max_life_point-focusheal.Life_point);
                     Console.WriteLine("Compétence heal utilisé sur "+ focusheal.Name);
                 }
                 else
@@ -46,7 +46,7 @@ namespace Trinity
                         }
                     }
                     
-                    minheal.Life_point += Math.Min(20, minheal.Max_life_point - minheal.Life_point);
+                    minheal.Life_point += Math.Min(40, minheal.Max_life_point - minheal.Life_point);
 
                     Console.WriteLine("Compétence heal utilisé sur " + minheal.Name);
                 }
@@ -61,7 +61,7 @@ namespace Trinity
 
         public string description()
         {
-            return " Soigne le focus allié si il existe, sinon soigne l'allié avec le plus bas taux de point de vie";
+            return " Soigne le focus allié \n si il existe, sinon soigne \n l'allié avec le plus bas \n taux de point de vie";
         }
     }
 }
